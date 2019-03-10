@@ -15,6 +15,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.dariapro.traincounting.activity.LevelListActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.LevelListActivity">
+        </activity>
+        <activity android:name="com.dariapro.traincounting.activity.ExamplesListActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.ExamplesListActivity">
+        </activity>
+        <activity android:name="com.dariapro.traincounting.activity.ExamplesPagerActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.ExamplesPagerActivity">
+        </activity>
     </application>
 
 </manifest>

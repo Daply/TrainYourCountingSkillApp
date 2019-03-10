@@ -15,18 +15,19 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.LevelListActivity;
-import com.dariapro.traincounting.activity.MainActivity;
 import com.dariapro.traincounting.dao.CategoryLab;
+import com.dariapro.traincounting.dao.LevelLab;
 import com.dariapro.traincounting.entity.Category;
+import com.dariapro.traincounting.entity.Level;
 
 import java.util.List;
 
-public class CategoryListFragment extends Fragment {
+public class LevelListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
     private RecyclerView recyclerView;
-    private CategoryAdapter adapter;
+    private LevelAdapter adapter;
 
 
     @Override
@@ -38,8 +39,8 @@ public class CategoryListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.category_list_fragment, container,false);
-        recyclerView = view.findViewById(R.id.category_recycler_view);
+        View view = inflater.inflate(R.layout.level_list_fragment, container,false);
+        recyclerView = view.findViewById(R.id.level_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -50,15 +51,15 @@ public class CategoryListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu,menuInflater);
-        menuInflater.inflate(R.menu.category_list_fragment, menu);
+        menuInflater.inflate(R.menu.level_list_fragment, menu);
     }
 
     private void updateUI(){
-        CategoryLab categoryLab = CategoryLab.get(getActivity());
-        List categories = categoryLab.getCategories();
+        LevelLab levelLab = LevelLab.get(getActivity());
+        List levels = levelLab.getLevels();
 
         if(adapter == null){
-            adapter = new CategoryAdapter(categories);
+            adapter = new LevelAdapter(levels);
             recyclerView.setAdapter(adapter);
         }
         else{
@@ -66,59 +67,59 @@ public class CategoryListFragment extends Fragment {
         }
     }
 
-    private class CategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class LevelHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private Category category;
+        private Level level;
 
         public TextView titleTextView;
 
-        public CategoryHolder(View itemView) {
+        public LevelHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
-            titleTextView = itemView.findViewById(R.id.list_item_category_title);
+            titleTextView = itemView.findViewById(R.id.list_item_level_title);
         }
 
-        public void bindEvent(Category cat){
-            category = cat;
-            titleTextView.setText(cat.getTitle());
+        public void bindEvent(Level lev){
+            level = lev;
+            titleTextView.setText(lev.getTitle());
         }
 
         @Override
         public void onClick(View v) { ;
-            Intent intent = MainActivity.newIntent(getActivity(), category.getCategoryId());
+            Intent intent = LevelListActivity.newIntent(getActivity(), level.getLevelId());
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
 
-    private class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder>{
+    private class LevelAdapter extends RecyclerView.Adapter<LevelHolder>{
 
-        private List<Category> categories;
+        private List<Level> levels;
 
-        public CategoryAdapter(List<Category> categories) {
-            this.categories = categories;
+        public LevelAdapter(List<Level> levels) {
+            this.levels = levels;
         }
 
         @Override
-        public CategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public LevelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.category_item_list, parent, false);
-            return new CategoryHolder(view);
+            View view = inflater.inflate(R.layout.level_item_list, parent, false);
+            return new LevelHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(CategoryHolder holder, int position) {
-            Category category = categories.get(position);
-            holder.bindEvent(category);
+        public void onBindViewHolder(LevelHolder holder, int position) {
+            Level level = levels.get(position);
+            holder.bindEvent(level);
         }
 
-        public void setCategories (List<Category> categories){
-            this.categories = categories;
+        public void setLevels(List<Level> levels){
+            this.levels = levels;
         }
 
         @Override
         public int getItemCount() {
-            return categories.size();
+            return levels.size();
         }
     }
 

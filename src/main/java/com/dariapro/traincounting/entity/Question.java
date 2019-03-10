@@ -4,13 +4,38 @@ import java.util.UUID;
 
 public class Question {
     private UUID questionId;
+    private String title = null;
     private String example = null;
-    private Answer rightAnswer = null;
+    private String rightAnswer = null;
 
-    public Question(String example, Answer rightAnswer) {
+    public Question() {
         this.questionId = UUID.randomUUID();
+        this.title = new String();
+        this.example = new String();
+        this.rightAnswer = new String();
+    }
+
+    public Question(String title, String example, String rightAnswer) {
+        this.questionId = UUID.randomUUID();
+        this.title = title;
         this.example = example;
         this.rightAnswer = rightAnswer;
+    }
+
+    public UUID getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(UUID questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getExample() {
@@ -21,11 +46,11 @@ public class Question {
         this.example = example;
     }
 
-    public Answer getRightAnswer() {
+    public String getRightAnswer() {
         return rightAnswer;
     }
 
-    public void setRightAnswer(Answer rightAnswer) {
+    public void setRightAnswer(String rightAnswer) {
         this.rightAnswer = rightAnswer;
     }
 }

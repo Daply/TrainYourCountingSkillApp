@@ -35,7 +35,8 @@ public class CategoryLab {
     public List<Category> getCategories() {
         return categories;
     }
-    public Category getCrime(UUID id) {
+
+    public Category getCategory(UUID id) {
         for (Category category : categories) {
             if (category.getCategoryId().equals(id)) {
                 return category;
