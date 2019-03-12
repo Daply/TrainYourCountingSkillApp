@@ -1,32 +1,37 @@
 package com.dariapro.traincounting.entity;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.UUID;
 
+@Entity
 public class Question {
-    private UUID questionId;
+    @PrimaryKey
+    private long questionId;
     private String title = null;
     private String example = null;
     private String rightAnswer = null;
 
     public Question() {
-        this.questionId = UUID.randomUUID();
+        this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = new String();
         this.example = new String();
         this.rightAnswer = new String();
     }
 
     public Question(String title, String example, String rightAnswer) {
-        this.questionId = UUID.randomUUID();
+        this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
         this.example = example;
         this.rightAnswer = rightAnswer;
     }
 
-    public UUID getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(UUID questionId) {
+    public void setQuestionId(long questionId) {
         this.questionId = questionId;
     }
 

@@ -66,13 +66,13 @@ public class ExampleFragment extends Fragment{
         menuInflater.inflate(R.menu.category_list_fragment, menu);
     }
 
-    public static ExampleFragment newInstance(UUID eventID){
+    public static ExampleFragment newInstance(long eventID){
         Bundle args = new Bundle();
         args.putSerializable(ARG_EXAMPLE_ID, eventID);
 
         ExampleFragment exampleFragment = new ExampleFragment();
 
-        if(eventID == null){
+        if(eventID == 0){
             Question newExample = new Question();
             exampleFragment.question = newExample;
         }

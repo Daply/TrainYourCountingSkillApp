@@ -31,7 +31,7 @@ public class ExamplesPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_pager);
 
-        final UUID questionId = (UUID) getIntent().getSerializableExtra(EXTRA_EXAMPLE_ID);
+        final long questionId = (long) getIntent().getSerializableExtra(EXTRA_EXAMPLE_ID);
 
         viewPager = findViewById(R.id.activity_question_view_pager);
 
@@ -41,7 +41,7 @@ public class ExamplesPagerActivity extends AppCompatActivity {
         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                if(questionId != null){
+                if(questionId != 0){
                     Question example = questions.get(position);
                     return ExampleFragment.newInstance(example.getQuestionId());
                 }
@@ -60,7 +60,7 @@ public class ExamplesPagerActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < questions.size(); i++) {
-            if (questions.get(i).getQuestionId().equals(questionId)) {
+            if (questions.get(i).getQuestionId() == questionId) {
                 viewPager.setCurrentItem(i);
                 break;
             }

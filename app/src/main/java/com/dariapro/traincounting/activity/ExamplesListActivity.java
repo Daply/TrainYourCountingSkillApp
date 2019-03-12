@@ -10,14 +10,14 @@ import java.util.UUID;
 
 public class ExamplesListActivity extends SingleFragmentActivity{
 
-    public static final String EXTRA_EXAMPLE_ID = "com.dariapro.traincounting._id";
+    public static final String EXTRA_EXAMPLE_ID = "com.dariapro.traincounting.example_id";
 
     @Override
     protected Fragment createFragment() {
         return new ExampleListFragment();
     }
 
-    public static Intent newIntent(Context packegeContext, UUID exampleId){
+    public static Intent newIntent(Context packegeContext, long exampleId){
         Intent intent = new Intent(packegeContext, ExamplesPagerActivity.class);
         intent.putExtra(EXTRA_EXAMPLE_ID, exampleId);
         return intent;

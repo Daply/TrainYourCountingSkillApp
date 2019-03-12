@@ -16,11 +16,15 @@ import android.widget.TextView;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.ExamplesListActivity;
 import com.dariapro.traincounting.activity.LevelListActivity;
+import com.dariapro.traincounting.app.App;
 import com.dariapro.traincounting.dao.ExampleLab;
 import com.dariapro.traincounting.dao.LevelLab;
+import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.repository.QuestionRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ExampleListFragment extends Fragment {
@@ -56,8 +60,13 @@ public class ExampleListFragment extends Fragment {
     }
 
     private void updateUI(){
-        ExampleLab exampleLab = ExampleLab.get(getActivity());
-        List examples = exampleLab.getExamples();
+        //ExampleLab exampleLab = ExampleLab.get(getActivity());
+        //List examples = exampleLab.getExamples();
+        //QuestionDao questionDao = App.getInstance().getDatabase().questionDao();
+        //List examples = questionDao.getAll();
+
+        QuestionRepository questionRepository = new QuestionRepository();
+        List examples = Collections.singletonList(questionRepository.getAllQuestions());
 
         if(adapter == null){
             adapter = new ExampleAdapter(examples);
@@ -123,5 +132,7 @@ public class ExampleListFragment extends Fragment {
             return examples.size();
         }
     }
+
+
 
 }
