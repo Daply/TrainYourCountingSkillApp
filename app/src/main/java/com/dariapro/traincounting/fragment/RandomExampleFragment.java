@@ -1,10 +1,9 @@
 package com.dariapro.traincounting.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,36 +15,48 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.random.RandomExampleGenerator;
 
-import java.util.UUID;
+public class RandomExampleFragment extends Fragment {
 
-public class ExampleFragment extends Fragment{
+    public static final int REQUEST_EVENT = 1;
+    static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
 
-    private static final String ARG_EXAMPLE_ID = "com.dariapro.traincounting.example_id";
-
-    private Question question = null;
-    private TextView exampleExpression;
+    private TextView problemTask;
     private EditText answerField;
     private String answer = null;
     private Button answerButton;
 
+    private Question question = null;
+
+    public static RandomExampleFragment newInstance(int page) {
+        RandomExampleFragment pageFragment = new RandomExampleFragment();
+        Bundle arguments = new Bundle();
+        arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
+        pageFragment.setArguments(arguments);
+        return pageFragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.question = new Question();
+        setHasOptionsMenu(true);
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.example_fragment, container, false);
-        exampleExpression = v.findViewById(R.id.example_expression);
-        exampleExpression.setText(question.getExample());
-        answerField = v.findViewById(R.id.example_answer);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.random_example_item, container,false);
+
+        RandomExampleGenerator randomExampleGenerator = new RandomExampleGenerator();
+        question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+
+        problemTask = view.findViewById(R.id.rand_example_expression);
+        problemTask.setText(question.getExample());
+        answerField = view.findViewById(R.id.rand_example_answer);
         answer = answerField.getText().toString();
-        answerButton = v.findViewById(R.id.example_answer_button);
+        answerButton = view.findViewById(R.id.rand_example_answer_button);
         answerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -57,27 +68,12 @@ public class ExampleFragment extends Fragment{
                 }
             }
         });
-        return v;
+        return view;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu,menuInflater);
-        menuInflater.inflate(R.menu.category_list_fragment, menu);
-    }
-
-    public static ExampleFragment newInstance(long eventID){
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_EXAMPLE_ID, eventID);
-
-        ExampleFragment exampleFragment = new ExampleFragment();
-
-        if(eventID == 0){
-            Question newExample = new Question();
-            exampleFragment.question = newExample;
-        }
-
-        exampleFragment.setArguments(args);
-        return exampleFragment;
+        menuInflater.inflate(R.menu.random_example, menu);
     }
 }

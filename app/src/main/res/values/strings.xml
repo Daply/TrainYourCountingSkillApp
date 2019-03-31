@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">TrainCounting</string>
+    <string name="main_title">Train Your Counting Skills</string>
+    <string name="random_examples_title">Random examples</string>
+    <string name="random_expressions_title">Random expressions</string>
+    <string name="solve_problems_title">Solve problems</string>
     <string name="set">TrainCounting</string>
     <string name="category_title">TrainCounting</string>
 </resources>

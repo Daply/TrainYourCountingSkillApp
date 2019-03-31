@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
+import com.dariapro.traincounting.activity.CategoryActivity;
 import com.dariapro.traincounting.activity.LevelListActivity;
 import com.dariapro.traincounting.activity.MainActivity;
 import com.dariapro.traincounting.dao.CategoryLab;
@@ -85,8 +86,8 @@ public class CategoryListFragment extends Fragment {
         }
 
         @Override
-        public void onClick(View v) { ;
-            Intent intent = MainActivity.newIntent(getActivity(), category.getCategoryId());
+        public void onClick(View v) {
+            Intent intent = CategoryActivity.newIntent(getActivity(), category.getCategoryId());
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }

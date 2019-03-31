@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.dariapro.traincounting.fragment.CategoryListFragment;
 import com.dariapro.traincounting.fragment.LevelListFragment;
 
 import java.util.UUID;
@@ -19,7 +18,7 @@ public class LevelListActivity extends SingleFragmentActivity  {
     }
 
     public static Intent newIntent(Context packegeContext, UUID levelId){
-        Intent intent = new Intent(packegeContext, ExamplesListActivity.class);
+        Intent intent = new Intent(packegeContext, ProblemsListActivity.class);
         intent.putExtra(EXTRA_LEVEL_ID, levelId);
         return intent;
     }

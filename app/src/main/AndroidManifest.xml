@@ -20,13 +20,21 @@
             android:label="@string/app_name"
             android:parentActivityName=".activity.LevelListActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ExamplesListActivity"
+        <activity android:name="com.dariapro.traincounting.activity.ProblemsListActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ExamplesListActivity">
+            android:parentActivityName=".activity.ProblemsListActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ExamplesPagerActivity"
+        <activity android:name="com.dariapro.traincounting.activity.ProblemsPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ExamplesPagerActivity">
+            android:parentActivityName=".activity.ProblemsPagerActivity">
+        </activity>
+        <activity android:name="com.dariapro.traincounting.activity.CategoryActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.CategoryActivity">
+        </activity>
+        <activity android:name="com.dariapro.traincounting.activity.RandomExampleActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.RandomExampleActivity">
         </activity>
     </application>
 

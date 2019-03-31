@@ -18,22 +18,29 @@ import android.widget.TextView;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.fragment.CategoryFragment;
 import com.dariapro.traincounting.fragment.CategoryListFragment;
+import com.dariapro.traincounting.fragment.MainFragment;
 
 import java.util.List;
 import java.util.UUID;
 
 public class MainActivity extends SingleFragmentActivity {
 
-    public static final String EXTRA_CATEGORY_ID = "com.dariapro.traincounting.category_id";
+    public static final String EXTRA_CHOICE = "com.dariapro.traincounting.choice";
 
     @Override
     protected Fragment createFragment() {
-        return new CategoryListFragment();
+        return new MainFragment();
     }
 
-    public static Intent newIntent(Context packegeContext, UUID categoryId){
-        Intent intent = new Intent(packegeContext, LevelListActivity.class);
-        intent.putExtra(EXTRA_CATEGORY_ID, categoryId);
+    public static Intent newRandomExampleIntent(Context packegeContext){
+        Intent intent = new Intent(packegeContext, RandomExampleActivity.class);
+        //intent.putExtra(EXTRA_CATEGORY_ID, categoryId);
+        return intent;
+    }
+
+    public static Intent newCategoryIntent(Context packegeContext){
+        Intent intent = new Intent(packegeContext, CategoryActivity.class);
+        //intent.putExtra(EXTRA_CATEGORY_ID, categoryId);
         return intent;
     }
 }

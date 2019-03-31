@@ -1,12 +1,15 @@
 package com.dariapro.traincounting.app;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 
 import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.database.AppDatabase;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.repository.QuestionRepository;
+
+import java.util.List;
 
 public class App extends Application {
 
@@ -40,5 +43,8 @@ public class App extends Application {
         questionRepository.insert(question2);
         Question question3 = new Question("Question 1", "78 + 324 = ", "402");
         questionRepository.insert(question3);
+        LiveData<List<Question>> list = questionRepository.getAllQuestions();
+        System.out.println(list.getValue());
+
     }
 }

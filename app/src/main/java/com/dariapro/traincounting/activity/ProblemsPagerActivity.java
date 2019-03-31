@@ -13,12 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.dao.ExampleLab;
 import com.dariapro.traincounting.entity.Question;
-import com.dariapro.traincounting.fragment.ExampleFragment;
+import com.dariapro.traincounting.fragment.ProblemFragment;
 
 import java.util.List;
 import java.util.UUID;
 
-public class ExamplesPagerActivity extends AppCompatActivity {
+public class ProblemsPagerActivity extends AppCompatActivity {
 
 
     public static final String EXTRA_EXAMPLE_ID = "com.dariapro.traincounting.example_id";
@@ -43,10 +43,10 @@ public class ExamplesPagerActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 if(questionId != 0){
                     Question example = questions.get(position);
-                    return ExampleFragment.newInstance(example.getQuestionId());
+                    return ProblemFragment.newInstance(example.getQuestionId());
                 }
                 else{
-                    return ExampleFragment.newInstance(questionId);
+                    return ProblemFragment.newInstance(questionId);
                 }
             }
 
@@ -71,7 +71,7 @@ public class ExamplesPagerActivity extends AppCompatActivity {
     }
 
     public static Intent newIntent(Context packageContext, UUID recipeId){
-        Intent intent = new Intent(packageContext, ExamplesPagerActivity.class);
+        Intent intent = new Intent(packageContext, ProblemsPagerActivity.class);
         intent.putExtra(EXTRA_EXAMPLE_ID, recipeId);
         return intent;
     }

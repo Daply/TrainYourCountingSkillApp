@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/main_fragmnt"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/main_title"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/random_examples"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:text="@string/random_examples_title"/>
+
+    <Button
+        android:id="@+id/random_expressions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:text="@string/random_expressions_title"/>
+
+    <Button
+        android:id="@+id/solve_problems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:text="@string/solve_problems_title"/>
+
+</LinearLayout>

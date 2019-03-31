@@ -14,20 +14,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.activity.ExamplesListActivity;
-import com.dariapro.traincounting.activity.LevelListActivity;
-import com.dariapro.traincounting.app.App;
-import com.dariapro.traincounting.dao.ExampleLab;
-import com.dariapro.traincounting.dao.LevelLab;
-import com.dariapro.traincounting.dao.QuestionDao;
-import com.dariapro.traincounting.entity.Level;
+import com.dariapro.traincounting.activity.ProblemsListActivity;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.repository.QuestionRepository;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ExampleListFragment extends Fragment {
+public class ProblemListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
@@ -44,7 +38,7 @@ public class ExampleListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.example_list_fragment, container,false);
+        View view = inflater.inflate(R.layout.problem_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.example_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -56,7 +50,7 @@ public class ExampleListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu, menuInflater);
-        menuInflater.inflate(R.menu.example_list_fragment, menu);
+        menuInflater.inflate(R.menu.problem_list_fragment, menu);
     }
 
     private void updateUI(){
@@ -97,7 +91,7 @@ public class ExampleListFragment extends Fragment {
 
         @Override
         public void onClick(View v) { ;
-            Intent intent = ExamplesListActivity.newIntent(getActivity(), example.getQuestionId());
+            Intent intent = ProblemsListActivity.newIntent(getActivity(), example.getQuestionId());
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -113,7 +107,7 @@ public class ExampleListFragment extends Fragment {
         @Override
         public ExampleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.example_item_list, parent, false);
+            View view = inflater.inflate(R.layout.problem_item_list, parent, false);
             return new ExampleHolder(view);
         }
 

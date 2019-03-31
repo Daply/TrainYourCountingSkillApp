@@ -23,6 +23,7 @@ public class QuestionRepository {
     }
 
     public LiveData<List<Question>> getAllQuestions() {
+        questions = questionDao.getAll();
         return questions;
     }
 
