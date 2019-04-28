@@ -6,4 +6,8 @@
     <string name="solve_problems_title">Solve problems</string>
     <string name="set">TrainCounting</string>
     <string name="category_title">TrainCounting</string>
+
+    <string name="start_randoms">Start</string>
+    <string name="level_title">Level</string>
+    <string name="time_title">Time</string>
 </resources>

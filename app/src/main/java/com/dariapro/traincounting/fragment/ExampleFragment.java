@@ -1,9 +1,9 @@
 package com.dariapro.traincounting.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,26 +12,31 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dariapro.traincounting.R;
+import com.dariapro.traincounting.activity.ExampleActivity;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.random.RandomExampleGenerator;
 
-public class RandomExampleFragment extends Fragment {
+public class ExampleFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
     static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
+
+    public static final String MODE = "com.dariapro.traincounting.mode";
+
+    public String modeValue = null;
 
     private TextView problemTask;
     private EditText answerField;
     private String answer = null;
     private Button answerButton;
+    private TextView correctAnswer;
 
     private Question question = null;
 
-    public static RandomExampleFragment newInstance(int page) {
-        RandomExampleFragment pageFragment = new RandomExampleFragment();
+    public static ExampleFragment newInstance(int page) {
+        ExampleFragment pageFragment = new ExampleFragment();
         Bundle arguments = new Bundle();
         arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
         pageFragment.setArguments(arguments);
@@ -47,24 +52,39 @@ public class RandomExampleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.random_example_item, container,false);
+        this.modeValue  = getArguments().getString(MODE);
 
-        RandomExampleGenerator randomExampleGenerator = new RandomExampleGenerator();
-        question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+        final View view = inflater.inflate(R.layout.example_item, container,false);
 
-        problemTask = view.findViewById(R.id.rand_example_expression);
+        if (this.modeValue.equals("random")) {
+            RandomExampleGenerator randomExampleGenerator = new RandomExampleGenerator();
+            question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+        }
+
+        problemTask = view.findViewById(R.id.example_expression);
         problemTask.setText(question.getExample());
-        answerField = view.findViewById(R.id.rand_example_answer);
-        answer = answerField.getText().toString();
-        answerButton = view.findViewById(R.id.rand_example_answer_button);
+        answerField = view.findViewById(R.id.example_answer);
+        answerButton = view.findViewById(R.id.example_answer_button); //rand_example_answer_result
         answerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                answer = answerField.getText().toString();
                 if (answer.equals(question.getRightAnswer())) {
-                    Toast.makeText(getContext(), "Correct", Toast.LENGTH_SHORT);
+                    correctAnswer = view.findViewById(R.id.example_answer_result);
+                    correctAnswer.setText("Correct");
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ExampleActivity activity = (ExampleActivity) getActivity();
+                            int position = activity.getPager().getCurrentItem();
+                            activity.getPager().setCurrentItem(position+1);
+                        }
+                    }, 500);
                 }
                 else {
-                    Toast.makeText(getContext(), "Wrong", Toast.LENGTH_SHORT);
+                    correctAnswer = view.findViewById(R.id.example_answer_result);
+                    correctAnswer.setText("Not correct");
                 }
             }
         });

@@ -23,7 +23,6 @@ public class App extends Application {
         instance = this;
         database = Room.databaseBuilder(this, AppDatabase.class, "countingdb")
                 .build();
-        load();
     }
 
     public static App getInstance() {
@@ -34,17 +33,4 @@ public class App extends Application {
         return database;
     }
 
-    public void load() {
-        //QuestionDao questionDao = getDatabase().questionDao();
-        QuestionRepository questionRepository = new QuestionRepository();
-        Question question1 = new Question("Question 1", "12 + 134 = ", "146");
-        questionRepository.insert(question1);
-        Question question2 = new Question("Question 1", "118 + 4 = ", "122");
-        questionRepository.insert(question2);
-        Question question3 = new Question("Question 1", "78 + 324 = ", "402");
-        questionRepository.insert(question3);
-        LiveData<List<Question>> list = questionRepository.getAllQuestions();
-        System.out.println(list.getValue());
-
-    }
 }

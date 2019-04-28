@@ -1,7 +1,5 @@
 package com.dariapro.traincounting.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,31 +7,33 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.fragment.CategoryListFragment;
-import com.dariapro.traincounting.fragment.RandomExampleFragment;
+import com.dariapro.traincounting.fragment.ExampleFragment;
 
-import java.util.UUID;
+public class ExampleActivity extends FragmentActivity {
 
-public class RandomExampleActivity extends FragmentActivity {
+    public static final String MODE = "com.dariapro.traincounting.mode";
 
-    public static final String EXTRA_CATEGORY_ID = "com.dariapro.traincounting.category_id";
-    public static final String TAG = "myLogs";
+    private String modeValue = null;
+
+    public static final String TAG = "exLogs";
     public static final int PAGE_COUNT = 10;
 
-    ViewPager pager;
-    PagerAdapter pagerAdapter;
+    private ViewPager pager = null;
+    private PagerAdapter pagerAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        modeValue = getIntent().getExtras().getString(MODE);
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.random_example);
+        setContentView(R.layout.example);
 
         pager = (ViewPager) findViewById(R.id.rand_ex_view_pager);
-        pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new ExampleFragmentPagerAdapter(getSupportFragmentManager(), modeValue);
         pager.setAdapter(pagerAdapter);
 
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -54,15 +54,22 @@ public class RandomExampleActivity extends FragmentActivity {
         });
     }
 
-    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+    private class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-        public MyFragmentPagerAdapter(FragmentManager fm) {
+        public String mode = null;
+
+        public ExampleFragmentPagerAdapter(FragmentManager fm, String mode) {
             super(fm);
+            this.mode = mode;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return RandomExampleFragment.newInstance(position);
+            Bundle bundle = new Bundle();
+            bundle.putString(MODE, this.mode);
+            Fragment fragment = ExampleFragment.newInstance(position);
+            fragment.setArguments(bundle);
+            return fragment;
         }
 
         @Override
@@ -70,5 +77,21 @@ public class RandomExampleActivity extends FragmentActivity {
             return PAGE_COUNT;
         }
 
+    }
+
+    public ViewPager getPager() {
+        return pager;
+    }
+
+    public void setPager(ViewPager pager) {
+        this.pager = pager;
+    }
+
+    public PagerAdapter getPagerAdapter() {
+        return pagerAdapter;
+    }
+
+    public void setPagerAdapter(PagerAdapter pagerAdapter) {
+        this.pagerAdapter = pagerAdapter;
     }
 }

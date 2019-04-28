@@ -25,6 +25,9 @@ import java.util.List;
 public class LevelListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
+    public static final String MODE = "com.dariapro.traincounting.mode";
+
+    private String modeValue = null;
 
     private RecyclerView recyclerView;
     private LevelAdapter adapter;
@@ -39,6 +42,8 @@ public class LevelListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.modeValue = getArguments().getString(MODE);
+
         View view = inflater.inflate(R.layout.level_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.level_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -59,7 +64,7 @@ public class LevelListFragment extends Fragment {
         List levels = levelLab.getLevels();
 
         if(adapter == null){
-            adapter = new LevelAdapter(levels);
+            adapter = new LevelAdapter(levels, this.modeValue);
             recyclerView.setAdapter(adapter);
         }
         else{
@@ -71,13 +76,17 @@ public class LevelListFragment extends Fragment {
 
         private Level level;
 
+        private String modeValue = null;
+
         public TextView titleTextView;
 
-        public LevelHolder(View itemView) {
+        public LevelHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
             titleTextView = itemView.findViewById(R.id.list_item_level_title);
+
+            this.modeValue = mode;
         }
 
         public void bindEvent(Level lev){
@@ -88,6 +97,7 @@ public class LevelListFragment extends Fragment {
         @Override
         public void onClick(View v) { ;
             Intent intent = LevelListActivity.newIntent(getActivity(), level.getLevelId());
+            intent.putExtra(MODE, this.modeValue);
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -96,15 +106,19 @@ public class LevelListFragment extends Fragment {
 
         private List<Level> levels;
 
-        public LevelAdapter(List<Level> levels) {
+        private String modeValue = null;
+
+        public LevelAdapter(List<Level> levels, String mode) {
             this.levels = levels;
+
+            this.modeValue = mode;
         }
 
         @Override
         public LevelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.level_item_list, parent, false);
-            return new LevelHolder(view);
+            return new LevelHolder(view, this.modeValue);
         }
 
         @Override

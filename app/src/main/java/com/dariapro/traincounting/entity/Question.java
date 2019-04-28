@@ -5,12 +5,16 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity
+@Entity(tableName = "question")
 public class Question {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     private long questionId;
+
     private String title = null;
+
     private String example = null;
+
     private String rightAnswer = null;
 
     public Question() {

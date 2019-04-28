@@ -32,9 +32,13 @@
             android:label="@string/app_name"
             android:parentActivityName=".activity.CategoryActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.RandomExampleActivity"
+        <activity android:name="com.dariapro.traincounting.activity.ExampleStartActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.RandomExampleActivity">
+            android:parentActivityName=".activity.ExampleActivity">
+        </activity>
+        <activity android:name="com.dariapro.traincounting.activity.ExampleActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".activity.ExampleActivity">
         </activity>
     </application>
 

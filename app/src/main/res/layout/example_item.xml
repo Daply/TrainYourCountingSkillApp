@@ -3,23 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/rand_example"
+    android:id="@+id/example"
     android:orientation="vertical">
 
-        <TextView android:id="@+id/rand_example_expression"
+        <TextView android:id="@+id/example_expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1 + 1 = "
             style="?android:listSeparatorTextViewStyle"/>
-        <EditText android:id="@+id/rand_example_answer"
+        <EditText android:id="@+id/example_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="answer"/>
-        <Button android:id="@+id/rand_example_answer_button"
+        <Button android:id="@+id/example_answer_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:text="Answer" />
+        <EditText android:id="@+id/example_answer_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
 
 </LinearLayout>

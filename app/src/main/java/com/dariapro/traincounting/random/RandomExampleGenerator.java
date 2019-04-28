@@ -17,8 +17,8 @@ public class RandomExampleGenerator {
         int oper = operatorSpecified;
         if (operatorSpecified == -1)
             oper = random.nextInt(4);
-        int firstNumber = random.nextInt(level);
-        int secondNumber = random.nextInt(level);
+        int firstNumber = random.nextInt((int) Math.pow(10, level));
+        int secondNumber = random.nextInt((int) Math.pow(10, level));
         int answer = 0;
         if (oper == 1)
             answer = firstNumber + secondNumber;

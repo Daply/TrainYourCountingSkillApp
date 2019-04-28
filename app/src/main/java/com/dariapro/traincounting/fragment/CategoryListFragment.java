@@ -25,6 +25,9 @@ import java.util.List;
 public class CategoryListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
+    public static final String MODE = "com.dariapro.traincounting.mode";
+
+    private String modeValue = null;
 
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
@@ -39,6 +42,9 @@ public class CategoryListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        modeValue = getArguments().getString(MODE);
+
         View view = inflater.inflate(R.layout.category_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.category_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -55,15 +61,20 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void updateUI(){
-        CategoryLab categoryLab = CategoryLab.get(getActivity());
-        List categories = categoryLab.getCategories();
 
-        if(adapter == null){
-            adapter = new CategoryAdapter(categories);
-            recyclerView.setAdapter(adapter);
+        if (this.modeValue.equals("simple")) {
+            CategoryLab categoryLab = CategoryLab.get(getActivity());
+            List categories = categoryLab.getCategories();
+
+            if (adapter == null) {
+                adapter = new CategoryAdapter(categories, this.modeValue);
+                recyclerView.setAdapter(adapter);
+            } else {
+                adapter.notifyDataSetChanged();
+            }
         }
-        else{
-            adapter.notifyDataSetChanged();
+        else {
+
         }
     }
 
@@ -71,13 +82,17 @@ public class CategoryListFragment extends Fragment {
 
         private Category category;
 
+        private String modeValue = null;
+
         public TextView titleTextView;
 
-        public CategoryHolder(View itemView) {
+        public CategoryHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
             titleTextView = itemView.findViewById(R.id.list_item_category_title);
+
+            this.modeValue = mode;
         }
 
         public void bindEvent(Category cat){
@@ -88,6 +103,7 @@ public class CategoryListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = CategoryActivity.newIntent(getActivity(), category.getCategoryId());
+            intent.putExtra(MODE, modeValue);
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -96,15 +112,18 @@ public class CategoryListFragment extends Fragment {
 
         private List<Category> categories;
 
-        public CategoryAdapter(List<Category> categories) {
+        private String modeValue = null;
+
+        public CategoryAdapter(List<Category> categories, String mode) {
             this.categories = categories;
+            this.modeValue = mode;
         }
 
         @Override
         public CategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.category_item_list, parent, false);
-            return new CategoryHolder(view);
+            return new CategoryHolder(view, this.modeValue);
         }
 
         @Override

@@ -36,7 +36,7 @@ public class ProblemFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.problem_fragment, container, false);
+        View v = inflater.inflate(R.layout.example_item, container, false);
         problemTask = v.findViewById(R.id.example_expression);
         problemTask.setText(question.getExample());
         answerField = v.findViewById(R.id.example_answer);

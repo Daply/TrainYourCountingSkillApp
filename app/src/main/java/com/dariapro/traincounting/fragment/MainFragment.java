@@ -20,6 +20,13 @@ public class MainFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
+    /**
+     * modes: random, simple
+     */
+    public static final String MODE = "com.dariapro.traincounting.mode";
+
+    private String modeValue = null;
+
     private Button randomExamplesButton;
     private Button randomExpressionsButton;
     private Button solveProblemsButton;
@@ -41,7 +48,8 @@ public class MainFragment extends Fragment {
         randomExamplesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = MainActivity.newRandomExampleIntent(getActivity());
+                Intent intent = MainActivity.newExampleIntent(getActivity());
+                intent.putExtra(MODE, "random");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -49,7 +57,8 @@ public class MainFragment extends Fragment {
         randomExpressionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = MainActivity.newRandomExampleIntent(getActivity());
+                Intent intent = MainActivity.newExampleIntent(getActivity());
+                intent.putExtra(MODE, "random");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -58,6 +67,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newCategoryIntent(getActivity());
+                intent.putExtra(MODE, "simple");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/random_example_start_fragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/level_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/level_title"
+        android:textStyle="bold" />
+
+    <SeekBar android:paddingTop="20dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:max="19"
+        android:progress="0"
+        android:secondaryProgress="0"
+        android:id="@+id/level_slider"
+        android:progressDrawable="@drawable/progress"
+        android:thumb="@drawable/thumb"/>
+
+    <TextView
+        android:id="@+id/level_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="50%"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/time_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="@string/time_title"
+        android:textStyle="bold" />
+
+    <SeekBar android:paddingTop="20dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:max="19"
+        android:progress="0"
+        android:secondaryProgress="0"
+        android:id="@+id/time_slider"
+        android:progressDrawable="@drawable/progress"
+        android:thumb="@drawable/thumb"/>
+
+    <TextView
+        android:id="@+id/time_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="50%"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/start_randoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:text="@string/start_randoms"/>
+
+</LinearLayout>
