@@ -1,5 +1,7 @@
 package com.dariapro.traincounting.fragment;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,8 +18,9 @@ import android.widget.TextView;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.ProblemsListActivity;
 import com.dariapro.traincounting.entity.Question;
-import com.dariapro.traincounting.repository.QuestionRepository;
+import com.dariapro.traincounting.view.model.QuestionViewModel;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class ProblemListFragment extends Fragment {
     private RecyclerView recyclerView;
     private ExampleAdapter adapter;
 
+    private QuestionViewModel questionViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,21 +58,24 @@ public class ProblemListFragment extends Fragment {
     }
 
     private void updateUI(){
-        //ExampleLab exampleLab = ExampleLab.get(getActivity());
-        //List examples = exampleLab.getExamples();
-        //QuestionDao questionDao = App.getInstance().getDatabase().questionDao();
-        //List examples = questionDao.getAll();
-
-        QuestionRepository questionRepository = new QuestionRepository();
-        List examples = Collections.singletonList(questionRepository.getAllQuestions());
-
+        initData();
         if(adapter == null){
-            adapter = new ExampleAdapter(examples);
+            adapter = new ExampleAdapter();
             recyclerView.setAdapter(adapter);
         }
         else{
             adapter.notifyDataSetChanged();
         }
+    }
+
+    private void initData() {
+        questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
+        questionViewModel.getQuestionList().observe(this, new Observer<List<Question>>() {
+            @Override
+            public void onChanged(@Nullable List<Question> questions) {
+                adapter.setQuestions(questions);
+            }
+        });
     }
 
     private class ExampleHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -92,13 +99,17 @@ public class ProblemListFragment extends Fragment {
         @Override
         public void onClick(View v) { ;
             Intent intent = ProblemsListActivity.newIntent(getActivity(), example.getQuestionId());
-            startActivityForResult(intent,REQUEST_EVENT);
+            startActivityForResult(intent, REQUEST_EVENT);
         }
     }
 
     private class ExampleAdapter extends RecyclerView.Adapter<ExampleHolder>{
 
         private List<Question> examples;
+
+        public ExampleAdapter() {
+            examples = new ArrayList<Question>();
+        }
 
         public ExampleAdapter(List<Question> examples) {
             this.examples = examples;
@@ -119,6 +130,7 @@ public class ProblemListFragment extends Fragment {
 
         public void setQuestions(List<Question> examples){
             this.examples = examples;
+            notifyDataSetChanged();
         }
 
         @Override

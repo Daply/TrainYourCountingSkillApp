@@ -15,11 +15,9 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.LevelListActivity;
-import com.dariapro.traincounting.dao.CategoryLab;
-import com.dariapro.traincounting.dao.LevelLab;
-import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LevelListFragment extends Fragment {
@@ -60,8 +58,11 @@ public class LevelListFragment extends Fragment {
     }
 
     private void updateUI(){
-        LevelLab levelLab = LevelLab.get(getActivity());
-        List levels = levelLab.getLevels();
+        List levels = new ArrayList<Level>();
+        for (int i = 0; i < 10; i++) {
+            Level lev = new Level();
+            levels.add(lev);
+        }
 
         if(adapter == null){
             adapter = new LevelAdapter(levels, this.modeValue);

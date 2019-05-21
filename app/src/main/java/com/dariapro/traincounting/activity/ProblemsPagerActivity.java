@@ -1,5 +1,7 @@
 package com.dariapro.traincounting.activity;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +13,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.dao.ExampleLab;
+import com.dariapro.traincounting.dao.QuestionDao;
+import com.dariapro.traincounting.database.AppDatabase;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.fragment.ProblemFragment;
+import com.dariapro.traincounting.view.model.QuestionViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,21 +29,24 @@ public class ProblemsPagerActivity extends AppCompatActivity {
     public static final String EXTRA_EXAMPLE_ID = "com.dariapro.traincounting.example_id";
 
     private ViewPager viewPager;
+
+    private QuestionViewModel questionViewModel;
     private List<Question> questions;
+
+    private long currentQuestionId = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        initData();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_pager);
 
         final long questionId = (long) getIntent().getSerializableExtra(EXTRA_EXAMPLE_ID);
-
+        currentQuestionId = questionId;
         viewPager = findViewById(R.id.activity_question_view_pager);
-
-        questions = ExampleLab.get(this).getExamples();
-
         final FragmentManager fragmentManager = getSupportFragmentManager();
-        viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
                 if(questionId != 0){
@@ -58,9 +66,13 @@ public class ProblemsPagerActivity extends AppCompatActivity {
                 return questions.size();
             }
         });
+        setItemPager();
+    }
 
+    public void setItemPager() {
+        viewPager.getAdapter().notifyDataSetChanged();
         for (int i = 0; i < questions.size(); i++) {
-            if (questions.get(i).getQuestionId() == questionId) {
+            if (questions.get(i).getQuestionId() == currentQuestionId) {
                 viewPager.setCurrentItem(i);
                 break;
             }
@@ -68,6 +80,22 @@ public class ProblemsPagerActivity extends AppCompatActivity {
         if(questions.size() == 0){
             viewPager.setCurrentItem(0);
         }
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+        setItemPager();
+    }
+
+    private void initData() {
+        this.questions = new ArrayList<>();
+        questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
+        questionViewModel.getQuestionList().observe(this, new Observer<List<Question>>() {
+            @Override
+            public void onChanged(@Nullable List<Question> questions) {
+                setQuestions(questions);
+            }
+        });
     }
 
     public static Intent newIntent(Context packageContext, UUID recipeId){

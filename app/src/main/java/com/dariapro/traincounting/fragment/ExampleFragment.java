@@ -60,6 +60,9 @@ public class ExampleFragment extends Fragment {
             RandomExampleGenerator randomExampleGenerator = new RandomExampleGenerator();
             question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
         }
+        else {
+            //question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+        }
 
         problemTask = view.findViewById(R.id.example_expression);
         problemTask.setText(question.getExample());

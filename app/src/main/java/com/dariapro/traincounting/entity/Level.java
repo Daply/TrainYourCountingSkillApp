@@ -12,7 +12,7 @@ public class Level {
 
     public Level() {
         this.levelId = UUID.randomUUID();
-        this.title = new String();
+        this.title = new String("Level"+this.levelId);
         this.examples = new ArrayList<Question>();
     }
 

@@ -15,11 +15,9 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.CategoryActivity;
-import com.dariapro.traincounting.activity.LevelListActivity;
-import com.dariapro.traincounting.activity.MainActivity;
-import com.dariapro.traincounting.dao.CategoryLab;
 import com.dariapro.traincounting.entity.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryListFragment extends Fragment {
@@ -63,9 +61,11 @@ public class CategoryListFragment extends Fragment {
     private void updateUI(){
 
         if (this.modeValue.equals("simple")) {
-            CategoryLab categoryLab = CategoryLab.get(getActivity());
-            List categories = categoryLab.getCategories();
-
+            List categories = new ArrayList<Category>();
+            for (int i = 0; i < 10; i++) {
+                Category cat = new Category();
+                categories.add(cat);
+            }
             if (adapter == null) {
                 adapter = new CategoryAdapter(categories, this.modeValue);
                 recyclerView.setAdapter(adapter);

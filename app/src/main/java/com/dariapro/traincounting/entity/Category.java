@@ -11,7 +11,7 @@ public class Category {
 
     public Category() {
         this.categoryId = UUID.randomUUID();
-        this.title = new String();
+        this.title = new String("Category"+this.categoryId);
         this.levels = new ArrayList<Level>();
     }
 

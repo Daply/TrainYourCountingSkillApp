@@ -21,7 +21,7 @@ public class LevelListActivity extends SingleFragmentActivity  {
         bundle.putString(MODE, value);
         Fragment fragment = new LevelListFragment();
         fragment.setArguments(bundle);
-        return new LevelListFragment();
+        return fragment;
     }
 
     public static Intent newIntent(Context packegeContext, UUID levelId){
