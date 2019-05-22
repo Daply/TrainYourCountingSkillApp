@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,17 +17,17 @@ import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.database.AppDatabase;
 import com.dariapro.traincounting.entity.Question;
-import com.dariapro.traincounting.fragment.ProblemFragment;
+import com.dariapro.traincounting.fragment.ExampleFragment;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ProblemsPagerActivity extends AppCompatActivity {
-
+public class ProblemsPagerActivity extends FragmentActivity {
 
     public static final String EXTRA_EXAMPLE_ID = "com.dariapro.traincounting.example_id";
+    private static final String ARG_EXAMPLE = "com.dariapro.traincounting.example";
 
     private ViewPager viewPager;
 
@@ -49,13 +50,12 @@ public class ProblemsPagerActivity extends AppCompatActivity {
          viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
+                ExampleFragment exampleFragment = new ExampleFragment();
                 if(questionId != 0){
                     Question example = questions.get(position);
-                    return ProblemFragment.newInstance(example.getQuestionId());
+                    return exampleFragment.newInstance(example, "simple");
                 }
-                else{
-                    return ProblemFragment.newInstance(questionId);
-                }
+                return exampleFragment;
             }
 
             @Override
@@ -85,6 +85,10 @@ public class ProblemsPagerActivity extends AppCompatActivity {
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
         setItemPager();
+    }
+
+    public ViewPager getPager() {
+        return viewPager;
     }
 
     private void initData() {

@@ -12,7 +12,7 @@ import android.util.Log;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.fragment.ExampleFragment;
 
-public class ExampleActivity extends FragmentActivity {
+public class ExamplePagerActivity extends FragmentActivity {
 
     public static final String MODE = "com.dariapro.traincounting.mode";
 
@@ -67,7 +67,7 @@ public class ExampleActivity extends FragmentActivity {
         public Fragment getItem(int position) {
             Bundle bundle = new Bundle();
             bundle.putString(MODE, this.mode);
-            Fragment fragment = ExampleFragment.newInstance(position);
+            Fragment fragment = new ExampleFragment();
             fragment.setArguments(bundle);
             return fragment;
         }

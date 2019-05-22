@@ -23,7 +23,7 @@ public class ExampleStartActivity extends SingleFragmentActivity {
     }
 
     public static Intent newExampleIntent(Context packegeContext){
-        Intent intent = new Intent(packegeContext, ExampleActivity.class);
+        Intent intent = new Intent(packegeContext, ExamplePagerActivity.class);
         return intent;
     }
 }

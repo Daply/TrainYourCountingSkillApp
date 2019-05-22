@@ -3,10 +3,11 @@ package com.dariapro.traincounting.entity;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity(tableName = "question")
-public class Question {
+public class Question implements Serializable{
 
     @PrimaryKey(autoGenerate = true)
     private long questionId;

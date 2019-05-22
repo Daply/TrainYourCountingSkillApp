@@ -14,16 +14,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.activity.ExampleActivity;
+import com.dariapro.traincounting.activity.ExamplePagerActivity;
+import com.dariapro.traincounting.activity.ProblemsPagerActivity;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.random.RandomExampleGenerator;
 
 public class ExampleFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
-    static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
-
     public static final String MODE = "com.dariapro.traincounting.mode";
+    private static final String ARG_EXAMPLE = "com.dariapro.traincounting.example";
 
     public String modeValue = null;
 
@@ -35,12 +35,13 @@ public class ExampleFragment extends Fragment {
 
     private Question question = null;
 
-    public static ExampleFragment newInstance(int page) {
-        ExampleFragment pageFragment = new ExampleFragment();
-        Bundle arguments = new Bundle();
-        arguments.putInt(ARGUMENT_PAGE_NUMBER, page);
-        pageFragment.setArguments(arguments);
-        return pageFragment;
+    public static ExampleFragment newInstance(Question example, String mode) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_EXAMPLE, example);
+        args.putSerializable(MODE, mode);
+        ExampleFragment exampleFragment = new ExampleFragment();
+        exampleFragment.setArguments(args);
+        return exampleFragment;
     }
 
     @Override
@@ -52,7 +53,7 @@ public class ExampleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.modeValue  = getArguments().getString(MODE);
+        this.modeValue = getArguments().getString(MODE);
 
         final View view = inflater.inflate(R.layout.example_item, container,false);
 
@@ -61,7 +62,7 @@ public class ExampleFragment extends Fragment {
             question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
         }
         else {
-            //question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+            this.question = (Question) getArguments().getSerializable(ARG_EXAMPLE);
         }
 
         problemTask = view.findViewById(R.id.example_expression);
@@ -79,9 +80,16 @@ public class ExampleFragment extends Fragment {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            ExampleActivity activity = (ExampleActivity) getActivity();
-                            int position = activity.getPager().getCurrentItem();
-                            activity.getPager().setCurrentItem(position+1);
+                            if (modeValue.equals("random")) {
+                                ExamplePagerActivity activity = (ExamplePagerActivity) getActivity();
+                                int position = activity.getPager().getCurrentItem();
+                                activity.getPager().setCurrentItem(position + 1);
+                            }
+                            else if (modeValue.equals("simple")) {
+                                ProblemsPagerActivity activity = (ProblemsPagerActivity) getActivity();
+                                int position = activity.getPager().getCurrentItem();
+                                activity.getPager().setCurrentItem(position + 1);
+                            }
                         }
                     }, 500);
                 }
