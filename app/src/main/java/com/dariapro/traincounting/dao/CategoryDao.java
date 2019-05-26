@@ -8,36 +8,33 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.dariapro.traincounting.entity.Level;
+import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
 @Dao
-public interface QuestionDao {
+public interface CategoryDao {
 
-    @Query("SELECT * FROM question")
-    LiveData<List<Question>> getAll();
+    @Query("SELECT * FROM category")
+    LiveData<List<Category>> getAll();
 
-    @Query("SELECT * FROM question WHERE questionId = :id")
-    Question getById(long id);
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Question question);
+    @Query("SELECT * FROM category WHERE categoryId = :id")
+    Category getById(long id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Question... questions);
+    void insert(Category category);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(Category... categories);
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    void update(Question question);
+    void update(Category category);
 
     @Delete
-    void delete(Question question);
+    void delete(Category category);
 
-    @Query("DELETE FROM question")
+    @Query("DELETE FROM category")
     void deleteAll();
-
-    @Query("SELECT * FROM question WHERE questionLevelId=:levelId")
-    LiveData<List<Question>> findQuestionsForLevel(final long levelId);
 
 }

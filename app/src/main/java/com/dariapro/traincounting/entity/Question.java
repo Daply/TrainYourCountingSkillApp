@@ -1,16 +1,25 @@
 package com.dariapro.traincounting.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-@Entity(tableName = "question")
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "question",
+        foreignKeys = @ForeignKey(entity = Level.class,
+                parentColumns = "levelId",
+                childColumns = "questionLevelId",
+                onDelete = CASCADE))
 public class Question implements Serializable{
 
     @PrimaryKey(autoGenerate = true)
     private long questionId;
+
+    private long questionLevelId;
 
     private String title = null;
 
@@ -30,6 +39,15 @@ public class Question implements Serializable{
         this.title = title;
         this.example = example;
         this.rightAnswer = rightAnswer;
+        this.questionLevelId = questionLevelId;
+    }
+
+    public Question(String title, String example, String rightAnswer, long questionLevelId) {
+        this.questionId = UUID.randomUUID().getMostSignificantBits();
+        this.title = title;
+        this.example = example;
+        this.rightAnswer = rightAnswer;
+        this.questionLevelId = questionLevelId;
     }
 
     public long getQuestionId() {
@@ -38,6 +56,14 @@ public class Question implements Serializable{
 
     public void setQuestionId(long questionId) {
         this.questionId = questionId;
+    }
+
+    public long getQuestionLevelId() {
+        return questionLevelId;
+    }
+
+    public void setQuestionLevelId(long questionLevelId) {
+        this.questionLevelId = questionLevelId;
     }
 
     public String getTitle() {

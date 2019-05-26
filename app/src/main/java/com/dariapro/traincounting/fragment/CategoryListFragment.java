@@ -1,5 +1,7 @@
 package com.dariapro.traincounting.fragment;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,9 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.CategoryActivity;
 import com.dariapro.traincounting.entity.Category;
+import com.dariapro.traincounting.entity.Level;
+import com.dariapro.traincounting.view.model.CategoryViewModel;
+import com.dariapro.traincounting.view.model.LevelViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +29,13 @@ import java.util.List;
 public class CategoryListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
-    public static final String MODE = "com.dariapro.traincounting.mode";
 
     private String modeValue = null;
 
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
 
+    private CategoryViewModel categoryViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +47,7 @@ public class CategoryListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        modeValue = getArguments().getString(MODE);
+        modeValue = getArguments().getString(Extras.MODE);
 
         View view = inflater.inflate(R.layout.category_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.category_recycler_view);
@@ -59,23 +65,25 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void updateUI(){
-
+        initData();
         if (this.modeValue.equals("simple")) {
-            List categories = new ArrayList<Category>();
-            for (int i = 0; i < 10; i++) {
-                Category cat = new Category();
-                categories.add(cat);
-            }
             if (adapter == null) {
-                adapter = new CategoryAdapter(categories, this.modeValue);
+                adapter = new CategoryAdapter(this.modeValue);
                 recyclerView.setAdapter(adapter);
             } else {
                 adapter.notifyDataSetChanged();
             }
         }
-        else {
+    }
 
-        }
+    private void initData() {
+        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        categoryViewModel.getCategoryList().observe(this, new Observer<List<Category>>() {
+            @Override
+            public void onChanged(@Nullable List<Category> categories) {
+                adapter.setCategories(categories);
+            }
+        });
     }
 
     private class CategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -103,7 +111,7 @@ public class CategoryListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = CategoryActivity.newIntent(getActivity(), category.getCategoryId());
-            intent.putExtra(MODE, modeValue);
+            intent.putExtra(Extras.MODE, modeValue);
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -113,6 +121,11 @@ public class CategoryListFragment extends Fragment {
         private List<Category> categories;
 
         private String modeValue = null;
+
+        public CategoryAdapter(String mode) {
+            this.categories = new ArrayList<Category>();
+            this.modeValue = mode;
+        }
 
         public CategoryAdapter(List<Category> categories, String mode) {
             this.categories = categories;

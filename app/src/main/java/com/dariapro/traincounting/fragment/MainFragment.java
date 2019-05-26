@@ -13,17 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.MainActivity;
 
 public class MainFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
-
-    /**
-     * modes: random, simple
-     */
-    public static final String MODE = "com.dariapro.traincounting.mode";
 
     private String modeValue = null;
 
@@ -49,7 +45,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
-                intent.putExtra(MODE, "random");
+                intent.putExtra(Extras.MODE, "random");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -58,7 +54,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
-                intent.putExtra(MODE, "random");
+                intent.putExtra(Extras.MODE, "random");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -67,7 +63,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newCategoryIntent(getActivity());
-                intent.putExtra(MODE, "simple");
+                intent.putExtra(Extras.MODE, "simple");
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

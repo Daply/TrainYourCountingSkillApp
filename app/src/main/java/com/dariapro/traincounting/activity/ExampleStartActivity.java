@@ -9,7 +9,6 @@ import com.dariapro.traincounting.fragment.ExampleStartFragment;
 
 public class ExampleStartActivity extends SingleFragmentActivity {
 
-    public static final String EXTRA_CHOICE = "com.dariapro.traincounting.choice";
     public static final String MODE = "com.dariapro.traincounting.mode";
 
     @Override

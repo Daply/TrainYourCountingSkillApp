@@ -8,9 +8,6 @@ import com.dariapro.traincounting.fragment.MainFragment;
 
 public class MainActivity extends SingleFragmentActivity {
 
-    public static final String EXTRA_CHOICE = "com.dariapro.traincounting.choice";
-    public static final String MODE = "com.dariapro.traincounting.mode";
-
     @Override
     protected Fragment createFragment() {
         return new MainFragment();

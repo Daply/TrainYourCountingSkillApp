@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.ExamplePagerActivity;
 import com.dariapro.traincounting.activity.ProblemsPagerActivity;
@@ -22,8 +23,6 @@ import com.dariapro.traincounting.random.RandomExampleGenerator;
 public class ExampleFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
-    public static final String MODE = "com.dariapro.traincounting.mode";
-    private static final String ARG_EXAMPLE = "com.dariapro.traincounting.example";
 
     public String modeValue = null;
 
@@ -37,8 +36,8 @@ public class ExampleFragment extends Fragment {
 
     public static ExampleFragment newInstance(Question example, String mode) {
         Bundle args = new Bundle();
-        args.putSerializable(ARG_EXAMPLE, example);
-        args.putSerializable(MODE, mode);
+        args.putSerializable(Extras.ARG_EXAMPLE, example);
+        args.putSerializable(Extras.MODE, mode);
         ExampleFragment exampleFragment = new ExampleFragment();
         exampleFragment.setArguments(args);
         return exampleFragment;
@@ -53,7 +52,7 @@ public class ExampleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.modeValue = getArguments().getString(MODE);
+        this.modeValue = getArguments().getString(Extras.MODE);
 
         final View view = inflater.inflate(R.layout.example_item, container,false);
 
@@ -62,7 +61,7 @@ public class ExampleFragment extends Fragment {
             question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
         }
         else {
-            this.question = (Question) getArguments().getSerializable(ARG_EXAMPLE);
+            this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);
         }
 
         problemTask = view.findViewById(R.id.example_expression);

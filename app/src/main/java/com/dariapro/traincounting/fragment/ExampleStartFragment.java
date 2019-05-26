@@ -13,13 +13,13 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.ExampleStartActivity;
 
 public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     public static final int REQUEST_EVENT = 1;
-    public static final String MODE = "com.dariapro.traincounting.mode";
 
     private String modeValue;
 
@@ -38,7 +38,7 @@ public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarC
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        modeValue = getArguments().getString(MODE);
+        modeValue = getArguments().getString(Extras.MODE);
 
         View view = inflater.inflate(R.layout.example_start_fragment, container,false);
 
@@ -59,7 +59,7 @@ public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarC
             @Override
             public void onClick(View v) {
                 Intent intent = ExampleStartActivity.newExampleIntent(getActivity());
-                intent.putExtra(MODE, sendMode);
+                intent.putExtra(Extras.MODE, sendMode);
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

@@ -14,30 +14,30 @@ import com.dariapro.traincounting.entity.Question;
 import java.util.List;
 
 @Dao
-public interface QuestionDao {
+public interface LevelDao {
 
-    @Query("SELECT * FROM question")
-    LiveData<List<Question>> getAll();
+    @Query("SELECT * FROM level")
+    LiveData<List<Level>> getAll();
 
-    @Query("SELECT * FROM question WHERE questionId = :id")
-    Question getById(long id);
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Question question);
+    @Query("SELECT * FROM level WHERE levelId = :id")
+    Level getById(long id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Question... questions);
+    void insert(Level level);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(Level... levels);
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    void update(Question question);
+    void update(Level level);
 
     @Delete
-    void delete(Question question);
+    void delete(Level level);
 
-    @Query("DELETE FROM question")
+    @Query("DELETE FROM level")
     void deleteAll();
 
-    @Query("SELECT * FROM question WHERE questionLevelId=:levelId")
-    LiveData<List<Question>> findQuestionsForLevel(final long levelId);
+    @Query("SELECT * FROM level WHERE levelCategoryId=:categoryId")
+    LiveData<List<Level>> findLevelsForCategory(final long categoryId);
 
 }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.ProblemsListActivity;
 import com.dariapro.traincounting.entity.Question;
@@ -27,6 +28,9 @@ import java.util.List;
 public class ProblemListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
+
+    private String modeValue = null;
+    private long levelId;
 
     private RecyclerView recyclerView;
     private ExampleAdapter adapter;
@@ -42,6 +46,10 @@ public class ProblemListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        modeValue = getArguments().getString(Extras.MODE);
+        levelId = getArguments().getLong(Extras.EXTRA_LEVEL_ID);
+
         View view = inflater.inflate(R.layout.problem_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.example_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -70,7 +78,13 @@ public class ProblemListFragment extends Fragment {
 
     private void initData() {
         questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
-        questionViewModel.getQuestionList().observe(this, new Observer<List<Question>>() {
+//        questionViewModel.getQuestionList().observe(this, new Observer<List<Question>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Question> questions) {
+//                adapter.setQuestions(questions);
+//            }
+//        });
+        questionViewModel.getQuestionListByLevel(this.levelId).observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(@Nullable List<Question> questions) {
                 adapter.setQuestions(questions);

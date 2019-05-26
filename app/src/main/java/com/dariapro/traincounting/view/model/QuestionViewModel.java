@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.database.AppDatabase;
+import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
@@ -23,6 +24,11 @@ public class QuestionViewModel extends AndroidViewModel {
 
     public LiveData<List<Question>> getQuestionList() {
         return questionsLiveData;
+    }
+
+    public LiveData<List<Question>> getQuestionListByLevel(long levelId) {
+        LiveData<List<Question>> questionsLevelLiveData = this.questionDao.findQuestionsForLevel(levelId);
+        return questionsLevelLiveData;
     }
 
     public void insert(Question... questions) {

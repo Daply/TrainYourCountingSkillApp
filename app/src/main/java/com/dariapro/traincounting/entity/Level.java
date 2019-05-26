@@ -1,33 +1,52 @@
 package com.dariapro.traincounting.entity;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "level",
+        foreignKeys = @ForeignKey(entity = Category.class,
+        parentColumns = "categoryId",
+        childColumns = "levelCategoryId",
+        onDelete = CASCADE))
 public class Level {
-    private UUID levelId  = null;
+    @PrimaryKey(autoGenerate = true)
+    private long levelId;
+
+    private long levelCategoryId;
+
     private boolean passed = false;
+
     private String title = null;
-    private List<Question> examples = null;
 
     public Level() {
-        this.levelId = UUID.randomUUID();
         this.title = new String("Level"+this.levelId);
-        this.examples = new ArrayList<Question>();
     }
 
-    public Level(boolean passed, String title, List<Question> examples) {
-        this.passed = passed;
+    public Level(String title) {
         this.title = title;
-        this.examples = examples;
     }
 
-    public UUID getLevelId() {
+    public long getLevelId() {
         return levelId;
     }
 
-    public void setLevelId(UUID levelId) {
+    public void setLevelId(long levelId) {
         this.levelId = levelId;
+    }
+
+    public long getLevelCategoryId() {
+        return levelCategoryId;
+    }
+
+    public void setLevelCategoryId(long levelCategoryId) {
+        this.levelCategoryId = levelCategoryId;
     }
 
     public boolean isPassed() {
