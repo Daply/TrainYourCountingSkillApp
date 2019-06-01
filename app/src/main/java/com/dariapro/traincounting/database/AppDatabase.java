@@ -19,6 +19,10 @@ import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 @Database(entities = {Category.class, Level.class, Question.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
     private static AppDatabase INSTANCE;
@@ -43,6 +47,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                     new AppDatabase.PopulateDbAsync(INSTANCE).execute();
                                 }
                             })
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -59,6 +64,7 @@ public abstract class AppDatabase extends RoomDatabase{
         private final CategoryDao categoryDao;
         private final LevelDao levelDao;
         private final QuestionDao questionDao;
+
         public PopulateDbAsync(AppDatabase instance) {
             categoryDao = instance.categoryDao();
             levelDao = instance.levelDao();
@@ -72,39 +78,59 @@ public abstract class AppDatabase extends RoomDatabase{
             load();
             return null;
         }
+
         public void load() {
-            Category cat1 = new Category("Simple math");
-            categoryDao.insert(cat1);
-            Category cat2 = new Category("Middle math");
-            categoryDao.insert(cat2);
-            Category cat3 = new Category("Advanced math");
-            categoryDao.insert(cat3);
+            final long catId = categoryDao.insert(new Category("Simple math"));
+            Level lev1 = new Level("Level 1", catId);
+            final long lev1Id = levelDao.insert(lev1);
+            Question question1 = new Question("Question 1", "12 + 22 = ", "34", lev1Id);
+            questionDao.insert(question1);
+            Question question2 = new Question("Question 2", "45 + 32 = ", "77", lev1Id);
+            questionDao.insert(question2);
+            Question question3 = new Question("Question 3", "47 + 23 = ", "70", lev1Id);
+            questionDao.insert(question3);
+            Level lev2 = new Level("Level 2", catId);
+            final long lev2Id = levelDao.insert(lev2);
+            Question question4 = new Question("Question 1", "14 + 97 = ", "111", lev2Id);
+            questionDao.insert(question4);
+            Question question5 = new Question("Question 2", "65 + 39 = ", "104", lev2Id);
+            questionDao.insert(question5);
+            Question question6 = new Question("Question 3", "46 + 12 = ", "58", lev2Id);
+            questionDao.insert(question6);
+            Level lev3 = new Level("Level 3", catId);
+            final long lev3Id = levelDao.insert(lev3);
+            Question question7 = new Question("Question 1", "12 + 134 = ", "146", lev3Id);
+            questionDao.insert(question7);
+            Question question8 = new Question("Question 2", "45 + 26 = ", "71", lev3Id);
+            questionDao.insert(question8);
+            Question question9 = new Question("Question 3", "77 + 22 = ", "99", lev3Id);
+            questionDao.insert(question9);
 
-            List<Category> cats = categoryDao.getAll().getValue();
-            for (Category c: cats) {
-                Level lev1 = new Level("Level 1");
-                lev1.setLevelCategoryId(c.getCategoryId());
-                levelDao.insert(lev1);
-                Level lev2 = new Level("Level 2");
-                lev2.setLevelCategoryId(c.getCategoryId());
-                levelDao.insert(lev2);
-                Level lev3 = new Level("Level 3");
-                lev3.setLevelCategoryId(c.getCategoryId());
-                levelDao.insert(lev3);
-            }
-
-            List<Level> levels = levelDao.getAll().getValue();
-            for (Level l: levels) {
-                Question question1 = new Question("Question 1", "12 + 134 = ", "146");
-                question1.setQuestionLevelId(l.getLevelId());
-                questionDao.insert(question1);
-                Question question2 = new Question("Question 2", "118 + 4 = ", "122");
-                question2.setQuestionLevelId(l.getLevelId());
-                questionDao.insert(question2);
-                Question question3 = new Question("Question 3", "78 + 324 = ", "402");
-                question3.setQuestionLevelId(l.getLevelId());
-                questionDao.insert(question3);
-            }
+            final long catId1 = categoryDao.insert(new Category("Middle math"));
+            Level lev11 = new Level("Level 1", catId1);
+            final long lev11Id = levelDao.insert(lev11);
+            Question question11 = new Question("Question 1", "273 + 762 = ", "1035", lev11Id);
+            questionDao.insert(question11);
+            Question question12 = new Question("Question 2", "123 + 432 = ", "555", lev11Id);
+            questionDao.insert(question12);
+            Question question13 = new Question("Question 3", "242 + 356 = ", "598", lev11Id);
+            questionDao.insert(question13);
+            Level lev21 = new Level("Level 2", catId1);
+            final long lev21Id = levelDao.insert(lev21);
+            Question question21 = new Question("Question 1", "358 + 456 = ", "814", lev21Id);
+            questionDao.insert(question21);
+            Question question22 = new Question("Question 2", "423 + 321 = ", "744", lev21Id);
+            questionDao.insert(question22);
+            Question question23 = new Question("Question 3", "534 + 162 = ", "696", lev21Id);
+            questionDao.insert(question23);
+            Level lev31 = new Level("Level 3", catId1);
+            final long lev31Id = levelDao.insert(lev31);
+            Question question31 = new Question("Question 1", "545 + 653 = ", "1198", lev31Id);
+            questionDao.insert(question31);
+            Question question32 = new Question("Question 2", "664 + 523 = ", "1187", lev31Id);
+            questionDao.insert(question32);
+            Question question33 = new Question("Question 3", "784 + 534 = ", "1328", lev31Id);
+            questionDao.insert(question33);
         }
     }
 }

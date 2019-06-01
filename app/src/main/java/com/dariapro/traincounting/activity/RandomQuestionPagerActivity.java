@@ -9,14 +9,19 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
+import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.fragment.ExampleFragment;
+import com.dariapro.traincounting.fragment.QuestionFragment;
 
-public class ExamplePagerActivity extends FragmentActivity {
-
-    public static final String MODE = "com.dariapro.traincounting.mode";
+/**
+ * @author Pleshchankova Daria
+ *
+ */
+public class RandomQuestionPagerActivity extends FragmentActivity {
 
     private String modeValue = null;
+    private int level = 0;
+    private int time = 0;
 
     public static final String TAG = "exLogs";
     public static final int PAGE_COUNT = 10;
@@ -27,12 +32,14 @@ public class ExamplePagerActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        modeValue = getIntent().getExtras().getString(MODE);
+        modeValue = getIntent().getExtras().getString(Extras.MODE);
+        level = getIntent().getExtras().getInt(Extras.LEVEL_SEEKBAR_PROGRESS);
+        time = getIntent().getExtras().getInt(Extras.TIME_SEEKBAR_PROGRESS);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.example);
+        setContentView(R.layout.question);
 
-        pager = (ViewPager) findViewById(R.id.rand_ex_view_pager);
+        pager = (ViewPager) findViewById(R.id.rand_q_view_pager);
         pagerAdapter = new ExampleFragmentPagerAdapter(getSupportFragmentManager(), modeValue);
         pager.setAdapter(pagerAdapter);
 
@@ -66,8 +73,8 @@ public class ExamplePagerActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             Bundle bundle = new Bundle();
-            bundle.putString(MODE, this.mode);
-            Fragment fragment = new ExampleFragment();
+            bundle.putString(Extras.MODE, this.mode);
+            Fragment fragment = new QuestionFragment();
             fragment.setArguments(bundle);
             return fragment;
         }

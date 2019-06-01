@@ -17,6 +17,10 @@ import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.MainActivity;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class MainFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;

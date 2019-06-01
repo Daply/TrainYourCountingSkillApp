@@ -10,6 +10,10 @@ import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.fragment.CategoryFragment;
 import com.dariapro.traincounting.fragment.CategoryListFragment;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     protected abstract Fragment createFragment();

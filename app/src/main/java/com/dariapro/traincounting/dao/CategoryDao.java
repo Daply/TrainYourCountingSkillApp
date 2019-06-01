@@ -13,6 +13,10 @@ import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 @Dao
 public interface CategoryDao {
 
@@ -23,7 +27,7 @@ public interface CategoryDao {
     Category getById(long id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Category category);
+    long insert(Category category);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Category... categories);

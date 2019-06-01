@@ -14,6 +14,10 @@ import android.widget.TextView;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.entity.Category;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class CategoryFragment extends Fragment{
     private Category category = null;
     private TextView title = null;
@@ -21,7 +25,6 @@ public class CategoryFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.category = new Category();
     }
 
     @Nullable

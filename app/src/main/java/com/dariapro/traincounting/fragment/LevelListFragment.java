@@ -26,6 +26,10 @@ import com.dariapro.traincounting.view.model.QuestionViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class LevelListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
@@ -67,8 +71,6 @@ public class LevelListFragment extends Fragment {
     }
 
     private void updateUI(){
-        initData();
-
         if (this.modeValue.equals("simple")) {
             if (adapter == null) {
                 adapter = new LevelAdapter(this.modeValue);
@@ -76,17 +78,12 @@ public class LevelListFragment extends Fragment {
             } else {
                 adapter.notifyDataSetChanged();
             }
+            initData();
         }
     }
 
     private void initData() {
         levelViewModel = ViewModelProviders.of(this).get(LevelViewModel.class);
-//        levelViewModel.getLevelList().observe(this, new Observer<List<Level>>() {
-//            @Override
-//            public void onChanged(@Nullable List<Level> levels) {
-//                adapter.setLevels(levels);
-//            }
-//        });
         levelViewModel.getLevelListByCategory(this.categoryId).observe(this, new Observer<List<Level>>() {
             @Override
             public void onChanged(@Nullable List<Level> levels) {
@@ -156,6 +153,7 @@ public class LevelListFragment extends Fragment {
 
         public void setLevels(List<Level> levels){
             this.levels = levels;
+            notifyDataSetChanged();
         }
 
         @Override

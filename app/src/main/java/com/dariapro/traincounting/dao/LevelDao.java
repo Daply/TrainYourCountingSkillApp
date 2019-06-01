@@ -13,6 +13,10 @@ import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 @Dao
 public interface LevelDao {
 
@@ -23,7 +27,7 @@ public interface LevelDao {
     Level getById(long id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Level level);
+    long insert(Level level);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Level... levels);

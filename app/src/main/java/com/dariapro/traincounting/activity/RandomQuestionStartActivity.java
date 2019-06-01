@@ -6,29 +6,26 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.dariapro.traincounting.Extras;
-import com.dariapro.traincounting.fragment.LevelListFragment;
+import com.dariapro.traincounting.fragment.RandomQuestionStartFragment;
 
 /**
  * @author Pleshchankova Daria
  *
  */
-public class LevelListActivity extends SingleFragmentActivity  {
+public class RandomQuestionStartActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
         String value = getIntent().getExtras().getString(Extras.MODE);
-        long categoryId = getIntent().getExtras().getLong(Extras.EXTRA_CATEGORY_ID);
         Bundle bundle = new Bundle();
         bundle.putString(Extras.MODE, value);
-        bundle.putLong(Extras.EXTRA_CATEGORY_ID, categoryId);
-        Fragment fragment = new LevelListFragment();
+        Fragment fragment = new RandomQuestionStartFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    public static Intent newIntent(Context packegeContext, long levelId){
-        Intent intent = new Intent(packegeContext, QuestionListActivity.class);
-        intent.putExtra(Extras.EXTRA_LEVEL_ID, levelId);
+    public static Intent newQuestionIntent(Context packageContext){
+        Intent intent = new Intent(packageContext, RandomQuestionPagerActivity.class);
         return intent;
     }
 }

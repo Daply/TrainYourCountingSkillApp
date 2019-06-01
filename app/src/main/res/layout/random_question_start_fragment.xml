@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/random_example_start_fragment"
+    android:id="@+id/random_question_start_fragment"
     android:orientation="vertical">
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="50%"
+        android:text="50"
         android:textStyle="bold" />
 
     <TextView
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="50%"
+        android:text="50"
         android:textStyle="bold" />
 
     <Button

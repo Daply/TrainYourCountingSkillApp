@@ -19,25 +19,25 @@
             android:label="@string/app_name"
             android:parentActivityName=".activity.LevelListActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ProblemsListActivity"
+        <activity android:name="com.dariapro.traincounting.activity.QuestionListActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ProblemsListActivity">
+            android:parentActivityName=".activity.QuestionListActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ProblemsPagerActivity"
+        <activity android:name="com.dariapro.traincounting.activity.QuestionPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ProblemsPagerActivity">
+            android:parentActivityName=".activity.QuestionPagerActivity">
         </activity>
         <activity android:name="com.dariapro.traincounting.activity.CategoryActivity"
             android:label="@string/app_name"
             android:parentActivityName=".activity.CategoryActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ExampleStartActivity"
+        <activity android:name="com.dariapro.traincounting.activity.RandomQuestionStartActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ExamplePagerActivity">
+            android:parentActivityName=".activity.RandomQuestionPagerActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.ExamplePagerActivity"
+        <activity android:name="com.dariapro.traincounting.activity.RandomQuestionPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.ExamplePagerActivity">
+            android:parentActivityName=".activity.RandomQuestionPagerActivity">
         </activity>
     </application>
 

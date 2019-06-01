@@ -13,6 +13,10 @@ import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 @Dao
 public interface QuestionDao {
 

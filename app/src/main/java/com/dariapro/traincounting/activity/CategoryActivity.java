@@ -7,10 +7,11 @@ import android.support.v4.app.Fragment;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.fragment.CategoryListFragment;
-import com.dariapro.traincounting.fragment.ExampleStartFragment;
 
-import java.util.UUID;
-
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class CategoryActivity extends SingleFragmentActivity {
 
     @Override
@@ -23,8 +24,8 @@ public class CategoryActivity extends SingleFragmentActivity {
         return fragment;
     }
 
-    public static Intent newIntent(Context packegeContext, long categoryId){
-        Intent intent = new Intent(packegeContext, LevelListActivity.class);
+    public static Intent newIntent(Context packageContext, long categoryId){
+        Intent intent = new Intent(packageContext, LevelListActivity.class);
         intent.putExtra(Extras.EXTRA_CATEGORY_ID, categoryId);
         return intent;
     }

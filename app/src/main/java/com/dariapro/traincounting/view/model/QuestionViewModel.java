@@ -12,6 +12,10 @@ import com.dariapro.traincounting.entity.Question;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class QuestionViewModel extends AndroidViewModel {
     private QuestionDao questionDao;
     private LiveData<List<Question>> questionsLiveData;

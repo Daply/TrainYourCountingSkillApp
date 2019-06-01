@@ -1,27 +1,35 @@
 package com.dariapro.traincounting.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(tableName = "category")
+/**
+ * @author Pleshchankova Daria
+ *
+ */
+@Entity(tableName = "category",
+        indices = {@Index(value = "title", unique = true)})
 public class Category {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "categoryId")
     private long categoryId;
 
+    @ColumnInfo(name = "passed")
     private boolean passed = false;
 
+    @ColumnInfo(name = "title")
+    @NonNull
     private String title = null;
 
-    public Category() {
-        this.title = new String("Category");
-    }
-
-    public Category(String title) {
+    public Category(@NonNull String title) {
         this.title = title;
     }
 

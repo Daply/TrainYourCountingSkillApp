@@ -11,6 +11,10 @@ import com.dariapro.traincounting.entity.Category;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class CategoryViewModel extends AndroidViewModel {
     private CategoryDao categoryDao;
     private LiveData<List<Category>> categoriesLiveData;

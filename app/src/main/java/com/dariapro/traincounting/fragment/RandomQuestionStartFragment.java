@@ -15,9 +15,13 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.activity.ExampleStartActivity;
+import com.dariapro.traincounting.activity.RandomQuestionStartActivity;
 
-public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
+/**
+ * @author Pleshchankova Daria
+ *
+ */
+public class RandomQuestionStartFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     public static final int REQUEST_EVENT = 1;
 
@@ -40,7 +44,7 @@ public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarC
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         modeValue = getArguments().getString(Extras.MODE);
 
-        View view = inflater.inflate(R.layout.example_start_fragment, container,false);
+        View view = inflater.inflate(R.layout.random_question_start_fragment, container,false);
 
         levelSeekBar = view.findViewById(R.id.level_slider);
         levelSeekBar.setMax(100);
@@ -58,8 +62,10 @@ public class ExampleStartFragment extends Fragment implements SeekBar.OnSeekBarC
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = ExampleStartActivity.newExampleIntent(getActivity());
+                Intent intent = RandomQuestionStartActivity.newQuestionIntent(getActivity());
                 intent.putExtra(Extras.MODE, sendMode);
+                intent.putExtra(Extras.LEVEL_SEEKBAR_PROGRESS, levelSeekBar.getProgress());
+                intent.putExtra(Extras.TIME_SEEKBAR_PROGRESS, timeSeekBar.getProgress());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

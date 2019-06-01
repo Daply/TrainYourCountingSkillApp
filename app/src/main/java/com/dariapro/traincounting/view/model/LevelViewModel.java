@@ -11,6 +11,10 @@ import com.dariapro.traincounting.entity.Level;
 
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class LevelViewModel extends AndroidViewModel {
     private LevelDao levelDao;
     private LiveData<List<Level>> levelsLiveData;

@@ -15,12 +15,16 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.activity.ExamplePagerActivity;
-import com.dariapro.traincounting.activity.ProblemsPagerActivity;
+import com.dariapro.traincounting.activity.QuestionPagerActivity;
+import com.dariapro.traincounting.activity.RandomQuestionPagerActivity;
 import com.dariapro.traincounting.entity.Question;
-import com.dariapro.traincounting.random.RandomExampleGenerator;
+import com.dariapro.traincounting.random.RandomQuestionGenerator;
 
-public class ExampleFragment extends Fragment {
+/**
+ * @author Pleshchankova Daria
+ *
+ */
+public class QuestionFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
@@ -34,13 +38,13 @@ public class ExampleFragment extends Fragment {
 
     private Question question = null;
 
-    public static ExampleFragment newInstance(Question example, String mode) {
+    public static QuestionFragment newInstance(Question example, String mode) {
         Bundle args = new Bundle();
         args.putSerializable(Extras.ARG_EXAMPLE, example);
         args.putSerializable(Extras.MODE, mode);
-        ExampleFragment exampleFragment = new ExampleFragment();
-        exampleFragment.setArguments(args);
-        return exampleFragment;
+        QuestionFragment questionFragment = new QuestionFragment();
+        questionFragment.setArguments(args);
+        return questionFragment;
     }
 
     @Override
@@ -54,38 +58,38 @@ public class ExampleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.modeValue = getArguments().getString(Extras.MODE);
 
-        final View view = inflater.inflate(R.layout.example_item, container,false);
+        final View view = inflater.inflate(R.layout.question_item, container,false);
 
         if (this.modeValue.equals("random")) {
-            RandomExampleGenerator randomExampleGenerator = new RandomExampleGenerator();
-            question = randomExampleGenerator.generateTwoRandomNumbersExample(1, 1);
+            RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
+            question = randomQuestionGenerator.generateTwoRandomNumbersExample(1, 1);
         }
         else {
             this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);
         }
 
-        problemTask = view.findViewById(R.id.example_expression);
-        problemTask.setText(question.getExample());
-        answerField = view.findViewById(R.id.example_answer);
-        answerButton = view.findViewById(R.id.example_answer_button); //rand_example_answer_result
+        problemTask = view.findViewById(R.id.question_expression);
+        problemTask.setText(question.getQuestion());
+        answerField = view.findViewById(R.id.question_answer);
+        answerButton = view.findViewById(R.id.question_answer_button);
         answerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 answer = answerField.getText().toString();
                 if (answer.equals(question.getRightAnswer())) {
-                    correctAnswer = view.findViewById(R.id.example_answer_result);
+                    correctAnswer = view.findViewById(R.id.question_answer_result);
                     correctAnswer.setText("Correct");
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             if (modeValue.equals("random")) {
-                                ExamplePagerActivity activity = (ExamplePagerActivity) getActivity();
+                                RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
                                 int position = activity.getPager().getCurrentItem();
                                 activity.getPager().setCurrentItem(position + 1);
                             }
                             else if (modeValue.equals("simple")) {
-                                ProblemsPagerActivity activity = (ProblemsPagerActivity) getActivity();
+                                QuestionPagerActivity activity = (QuestionPagerActivity) getActivity();
                                 int position = activity.getPager().getCurrentItem();
                                 activity.getPager().setCurrentItem(position + 1);
                             }
@@ -93,7 +97,7 @@ public class ExampleFragment extends Fragment {
                     }, 500);
                 }
                 else {
-                    correctAnswer = view.findViewById(R.id.example_answer_result);
+                    correctAnswer = view.findViewById(R.id.question_answer_result);
                     correctAnswer.setText("Not correct");
                 }
             }

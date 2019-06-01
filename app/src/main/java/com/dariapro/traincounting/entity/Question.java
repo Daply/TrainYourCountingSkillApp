@@ -1,51 +1,62 @@
 package com.dariapro.traincounting.entity;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-import static android.arch.persistence.room.ForeignKey.CASCADE;
-
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 @Entity(tableName = "question",
         foreignKeys = @ForeignKey(entity = Level.class,
                 parentColumns = "levelId",
                 childColumns = "questionLevelId",
-                onDelete = CASCADE))
+                onDelete = ForeignKey.CASCADE),
+        indices = {@Index("title"), @Index("questionLevelId")})
 public class Question implements Serializable{
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "questionId")
     private long questionId;
 
+    @ColumnInfo(name = "questionLevelId")
     private long questionLevelId;
 
+    @ColumnInfo(name = "title")
+    @NonNull
     private String title = null;
 
-    private String example = null;
+    @ColumnInfo(name = "question")
+    @NonNull
+    private String question = null;
 
+    @ColumnInfo(name = "rightAnswer")
+    @NonNull
     private String rightAnswer = null;
 
-    public Question() {
-        this.questionId = UUID.randomUUID().getMostSignificantBits();
-        this.title = new String();
-        this.example = new String();
-        this.rightAnswer = new String();
-    }
+    @ColumnInfo(name = "passed")
+    private boolean passed = false;
 
-    public Question(String title, String example, String rightAnswer) {
+    @Ignore
+    public Question(String title, String question, String rightAnswer) {
         this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
-        this.example = example;
+        this.question = question;
         this.rightAnswer = rightAnswer;
-        this.questionLevelId = questionLevelId;
     }
 
-    public Question(String title, String example, String rightAnswer, long questionLevelId) {
+    public Question(String title, String question, String rightAnswer, long questionLevelId) {
         this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
-        this.example = example;
+        this.question = question;
         this.rightAnswer = rightAnswer;
         this.questionLevelId = questionLevelId;
     }
@@ -74,12 +85,12 @@ public class Question implements Serializable{
         this.title = title;
     }
 
-    public String getExample() {
-        return example;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setExample(String example) {
-        this.example = example;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public String getRightAnswer() {
@@ -88,5 +99,13 @@ public class Question implements Serializable{
 
     public void setRightAnswer(String rightAnswer) {
         this.rightAnswer = rightAnswer;
+    }
+
+    public boolean isPassed() {
+        return passed;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
     }
 }

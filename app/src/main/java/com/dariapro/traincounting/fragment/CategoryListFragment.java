@@ -26,6 +26,10 @@ import com.dariapro.traincounting.view.model.LevelViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class CategoryListFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
@@ -64,8 +68,7 @@ public class CategoryListFragment extends Fragment {
         menuInflater.inflate(R.menu.category_list_fragment, menu);
     }
 
-    private void updateUI(){
-        initData();
+    private void updateUI() {
         if (this.modeValue.equals("simple")) {
             if (adapter == null) {
                 adapter = new CategoryAdapter(this.modeValue);
@@ -74,6 +77,7 @@ public class CategoryListFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         }
+        initData();
     }
 
     private void initData() {
@@ -146,7 +150,13 @@ public class CategoryListFragment extends Fragment {
         }
 
         public void setCategories (List<Category> categories){
-            this.categories = categories;
+            if (categories == null) {
+                this.categories = new ArrayList<Category>();
+            }
+            else {
+                this.categories = categories;
+                notifyDataSetChanged();
+            }
         }
 
         @Override
