@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_fragmnt"
     android:orientation="vertical">
 
@@ -12,27 +13,59 @@
         android:layout_height="wrap_content"
         android:padding="4dp"
         android:text="@string/main_title"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
-    <Button
-        android:id="@+id/random_examples"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:text="@string/random_examples_title"/>
-
-    <Button
-        android:id="@+id/random_expressions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:text="@string/random_expressions_title"/>
-
-    <Button
-        android:id="@+id/solve_problems"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:text="@string/solve_problems_title"/>
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/buttons"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/random_examples"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:drawableLeft="@drawable/simp_math_cat_small"
+            android:text="@string/random_examples_title"
+            android:elevation="25dp"
+            android:height="120dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/random_expressions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:drawableLeft="@drawable/expr_cat_small"
+            android:text="@string/random_expressions_title"
+            android:elevation="25dp"
+            android:height="120dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/solve_problems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:drawableLeft="@drawable/prob_cat_small"
+            android:text="@string/solve_problems_title"
+            android:elevation="25dp"
+            android:height="120dp"
+            android:textSize="25sp"
+            android:textColor="@android:color/holo_blue_dark"/>
+    </LinearLayout>
 
 </LinearLayout>

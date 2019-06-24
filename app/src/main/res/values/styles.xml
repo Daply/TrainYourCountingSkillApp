@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--<style name="AppTheme" parent="Theme.MaterialComponents.*">-->
+        <!--&lt;!&ndash; Add attributes here &ndash;&gt;-->
+    <!--</style>-->
+
 </resources>
