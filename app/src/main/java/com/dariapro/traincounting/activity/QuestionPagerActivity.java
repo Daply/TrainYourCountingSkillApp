@@ -92,8 +92,12 @@ public class QuestionPagerActivity extends FragmentActivity {
         setItemPager();
     }
 
-    public ViewPager getPager() {
-        return viewPager;
+    public int getCurrentQuestion() {
+        return this.viewPager.getCurrentItem();
+    }
+
+    public void setCurrentQuestion(int position) {
+        this.viewPager.setCurrentItem(position);
     }
 
     private void initData() {

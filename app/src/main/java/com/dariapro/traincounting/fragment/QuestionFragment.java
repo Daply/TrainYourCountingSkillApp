@@ -85,13 +85,17 @@ public class QuestionFragment extends Fragment {
                         public void run() {
                             if (modeValue.equals("random")) {
                                 RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
-                                int position = activity.getPager().getCurrentItem();
-                                activity.getPager().setCurrentItem(position + 1);
+                                int position = activity.getCurrentQuestion();
+                                answerField.setText("");
+                                correctAnswer.setText("");
+                                activity.setCurrentQuestion(position + 1);
+                                activity.removePreviousQuestion();
                             }
                             else if (modeValue.equals("simple")) {
                                 QuestionPagerActivity activity = (QuestionPagerActivity) getActivity();
-                                int position = activity.getPager().getCurrentItem();
-                                activity.getPager().setCurrentItem(position + 1);
+                                answerField.setClickable(false);
+                                int position = activity.getCurrentQuestion();
+                                activity.setCurrentQuestion(position + 1);
                             }
                         }
                     }, 500);
