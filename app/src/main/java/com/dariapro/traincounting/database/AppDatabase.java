@@ -1,6 +1,5 @@
 package com.dariapro.traincounting.database;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -13,17 +12,17 @@ import android.util.Log;
 import com.dariapro.traincounting.dao.CategoryDao;
 import com.dariapro.traincounting.dao.LevelDao;
 import com.dariapro.traincounting.dao.QuestionDao;
+import com.dariapro.traincounting.dao.RecordDao;
 import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
-
-import java.util.List;
+import com.dariapro.traincounting.entity.Record;
 
 /**
  * @author Pleshchankova Daria
  *
  */
-@Database(entities = {Category.class, Level.class, Question.class}, version = 1)
+@Database(entities = {Category.class, Level.class, Question.class, Record.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase{
     private static AppDatabase INSTANCE;
     private static final String DB_NAME = "questions.db";
@@ -31,6 +30,7 @@ public abstract class AppDatabase extends RoomDatabase{
     public abstract CategoryDao categoryDao();
     public abstract LevelDao levelDao();
     public abstract QuestionDao questionDao();
+    public abstract RecordDao recordDao();
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -64,17 +64,20 @@ public abstract class AppDatabase extends RoomDatabase{
         private final CategoryDao categoryDao;
         private final LevelDao levelDao;
         private final QuestionDao questionDao;
+        private final RecordDao recordDao;
 
         public PopulateDbAsync(AppDatabase instance) {
             categoryDao = instance.categoryDao();
             levelDao = instance.levelDao();
             questionDao = instance.questionDao();
+            recordDao = instance.recordDao();
         }
         @Override
         protected Void doInBackground(Void... voids) {
             categoryDao.deleteAll();
             levelDao.deleteAll();
             questionDao.deleteAll();
+            recordDao.deleteAll();
             load();
             return null;
         }

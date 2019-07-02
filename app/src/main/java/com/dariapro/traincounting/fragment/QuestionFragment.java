@@ -1,5 +1,6 @@
 package com.dariapro.traincounting.fragment;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -17,8 +18,11 @@ import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.QuestionPagerActivity;
 import com.dariapro.traincounting.activity.RandomQuestionPagerActivity;
+import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.random.RandomQuestionGenerator;
+import com.dariapro.traincounting.view.model.QuestionViewModel;
+import com.dariapro.traincounting.view.model.RecordViewModel;
 
 /**
  * @author Pleshchankova Daria
@@ -86,14 +90,14 @@ public class QuestionFragment extends Fragment {
                             if (modeValue.equals("random")) {
                                 RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
                                 int position = activity.getCurrentQuestion();
-                                answerField.setText("");
-                                correctAnswer.setText("");
+                                clearFields();
                                 activity.setCurrentQuestion(position + 1);
                                 activity.removePreviousQuestion();
                             }
                             else if (modeValue.equals("simple")) {
                                 QuestionPagerActivity activity = (QuestionPagerActivity) getActivity();
-                                answerField.setClickable(false);
+                                answerField.setEnabled(false);
+                                setQuestionPassed(question);
                                 int position = activity.getCurrentQuestion();
                                 activity.setCurrentQuestion(position + 1);
                             }
@@ -107,6 +111,18 @@ public class QuestionFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void setQuestionPassed(Question question) {
+        question.setPassed(true);
+        QuestionViewModel questionViewModel = ViewModelProviders
+                .of(this).get(QuestionViewModel.class);
+        questionViewModel.update(question);
+    }
+
+    public void clearFields() {
+        answerField.setText("");
+        correctAnswer.setText("");
     }
 
     @Override

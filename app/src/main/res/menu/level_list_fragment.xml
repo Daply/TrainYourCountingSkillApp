@@ -8,9 +8,4 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/set"
         app:showAsAction="ifRoom|withText"/>
-    <item
-        android:id="@+id/menu_item_clock"
-        android:icon="@android:drawable/ic_lock_idle_alarm"
-        android:title="@string/set"
-        app:showAsAction="ifRoom|withText"/>
     </menu>

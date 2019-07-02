@@ -1,7 +1,10 @@
 package com.dariapro.traincounting.activity;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,12 +12,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
+import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.entity.Record;
 import com.dariapro.traincounting.fragment.QuestionFragment;
+import com.dariapro.traincounting.view.model.QuestionViewModel;
+import com.dariapro.traincounting.view.model.RecordViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,17 +38,31 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     private int time = 0;
 
     public static final String TAG = "exLogs";
-    public static int PAGE_COUNT = 10;
 
     private TextView timerView;
     private CountDownTimer timer;
-    long milliseconds = 60000;
+    private long milliseconds = 60000;
+
+    private TextView scoreView;
+    private TextView bestScoreView;
+    private int countNumberOfAnsweredQuestions = 0;
 
     private ViewPager pager = null;
     private QuestionFragmentPagerAdapter pagerAdapter = null;
 
+    private RecordViewModel recordViewModel;
+    private Record currentRecord;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.question, menu);
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        initData();
 
         modeValue = getIntent().getExtras().getString(Extras.MODE);
         level = getIntent().getExtras().getInt(Extras.LEVEL_SEEKBAR_PROGRESS);
@@ -57,17 +79,35 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         pager.setAdapter(pagerAdapter);
     }
 
+    private void initData() {
+        final List<Record> currentRecords = new ArrayList<Record>();
+        recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
+        recordViewModel.getRecordList().observe(this, new Observer<List<Record>>() {
+            @Override
+            public void onChanged(@Nullable List<Record> records) {
+                setCurrentRecord(records);
+            }
+        });
+    }
+
+    private void setCurrentRecord(List<Record> records) {
+        List<Record> currentRecords = new ArrayList<Record>(records);
+        if (!currentRecords.isEmpty()) {
+            this.currentRecord = currentRecords.get(0);
+        }
+    }
+
     public void startTimer() {
         timer = new CountDownTimer(milliseconds, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 milliseconds = millisUntilFinished;
-                updateTimer();
+                updateTimer(false);
             }
 
             @Override
             public void onFinish() {
-
+                updateTimer(true);
             }
         }.start();
     }
@@ -76,9 +116,12 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         timer.cancel();
     }
 
-    public void updateTimer() {
+    public void updateTimer(boolean finish) {
         int minutes = (int) (milliseconds / 60000);
         int seconds = (int) (milliseconds % 60000 / 1000);
+        if (finish) {
+            seconds = 0;
+        }
         String minutesStr = String.valueOf(minutes);
         String secondsStr = String.valueOf(seconds);
         if (minutes < 10) {
@@ -89,8 +132,29 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         }
         String timerViewText = minutesStr + ":" + secondsStr;
         timerView.setText(timerViewText);
-        if (minutes == 0 && seconds == 0) {
-            stopTimer();
+        if (finish) {
+            setScoreView();
+        }
+    }
+
+    public void setScoreView() {
+        setContentView(R.layout.score);
+        scoreView = findViewById(R.id.scoreView);
+        scoreView.setText("Your score is " + this.countNumberOfAnsweredQuestions +
+                          " questions in 1 minute");
+        bestScoreView = findViewById(R.id.bestScoreView);
+        if (this.currentRecord != null) {
+            bestScoreView.setText("Best score is " +
+                                   this.currentRecord.getNumberOfQuestions() +
+                                  " questions in " + this.currentRecord.getTime());
+        }
+        else {
+            recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
+            Record newRecord = new Record();
+            newRecord.setNumberOfQuestions(this.countNumberOfAnsweredQuestions);
+            newRecord.setTime(1);
+            recordViewModel.insert(newRecord);
+            bestScoreView.setText("You added new Best Score!");
         }
     }
 
@@ -104,6 +168,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     public void removePreviousQuestion() {
         int position = pager.getCurrentItem();
+        this.countNumberOfAnsweredQuestions++;
         pagerAdapter.notifyDataSetChanged();
         pagerAdapter.notifyChangeInPosition(position);
     }
