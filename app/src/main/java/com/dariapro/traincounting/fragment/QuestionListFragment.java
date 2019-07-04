@@ -49,9 +49,7 @@ public class QuestionListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        modeValue = getArguments().getString(Extras.MODE);
-        levelId = getArguments().getLong(Extras.EXTRA_LEVEL_ID);
+        getExtras();
 
         View view = inflater.inflate(R.layout.question_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.question_recycler_view);
@@ -66,6 +64,11 @@ public class QuestionListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu, menuInflater);
         menuInflater.inflate(R.menu.problem_list_fragment, menu);
+    }
+
+    private void getExtras() {
+        modeValue = getArguments().getString(Extras.MODE);
+        levelId = getArguments().getLong(Extras.EXTRA_LEVEL_ID);
     }
 
     private void updateUI(){

@@ -32,7 +32,8 @@ public class QuestionFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
-    public String modeValue = null;
+    private String modeValue = null;
+    private int level = 0;
 
     private TextView problemTask;
     private EditText answerField;
@@ -60,17 +61,9 @@ public class QuestionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.modeValue = getArguments().getString(Extras.MODE);
+        getExtras();
 
         final View view = inflater.inflate(R.layout.question_item, container,false);
-
-        if (this.modeValue.equals("random")) {
-            RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
-            question = randomQuestionGenerator.generateTwoRandomNumbersExample(1, 1);
-        }
-        else {
-            this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);
-        }
 
         problemTask = view.findViewById(R.id.question_expression);
         problemTask.setText(question.getQuestion());
@@ -111,6 +104,18 @@ public class QuestionFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void getExtras() {
+        this.modeValue = getArguments().getString(Extras.MODE);
+        if (this.modeValue.equals("random")) {
+            this.level = getArguments().getInt(Extras.LEVEL_EXTRA);
+            RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
+            question = randomQuestionGenerator.generateTwoRandomNumbersExample(level);
+        }
+        else {
+            this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);
+        }
     }
 
     public void setQuestionPassed(Question question) {

@@ -26,6 +26,9 @@ public interface RecordDao {
     @Query("SELECT * FROM record WHERE recordId = :id")
     Record getById(long id);
 
+    @Query("SELECT * FROM record WHERE level = :level")
+    Record getByLevel(int level);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Record record);
 

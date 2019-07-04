@@ -50,8 +50,7 @@ public class CategoryListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        modeValue = getArguments().getString(Extras.MODE);
+        getExtras();
 
         View view = inflater.inflate(R.layout.category_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.category_recycler_view);
@@ -66,6 +65,10 @@ public class CategoryListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu,menuInflater);
         menuInflater.inflate(R.menu.category_list_fragment, menu);
+    }
+
+    private void getExtras() {
+        modeValue = getArguments().getString(Extras.MODE);
     }
 
     private void updateUI() {

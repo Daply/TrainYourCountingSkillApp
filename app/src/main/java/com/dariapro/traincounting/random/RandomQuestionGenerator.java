@@ -16,25 +16,25 @@ public class RandomQuestionGenerator {
     public RandomQuestionGenerator() {
     }
 
-    public Question generateTwoRandomNumbersExample(int level, int operatorSpecified) {
+    public Question generateTwoRandomNumbersExample(int level) {
         Random random = new Random();
-        int oper = operatorSpecified;
+        int operatorSpecified = 1;
         if (operatorSpecified == -1)
-            oper = random.nextInt(4);
+            operatorSpecified = random.nextInt(4);
         int firstNumber = random.nextInt((int) Math.pow(10, level));
         int secondNumber = random.nextInt((int) Math.pow(10, level));
         int answer = 0;
-        if (oper == 1)
+        if (operatorSpecified == 1)
             answer = firstNumber + secondNumber;
-        if (oper == 2)
+        if (operatorSpecified == 2)
             answer = firstNumber - secondNumber;
-        if (oper == 3)
+        if (operatorSpecified == 3)
             answer = firstNumber * secondNumber;
-        if (oper == 4)
+        if (operatorSpecified == 4)
             answer = firstNumber / secondNumber;
 
         Question question = new Question("", firstNumber + " " +
-                operators[oper-1] + " " +
+                operators[operatorSpecified-1] + " " +
                 secondNumber, String.valueOf(answer));
         return question;
     }

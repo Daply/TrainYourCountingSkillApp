@@ -1,5 +1,7 @@
 package com.dariapro.traincounting;
 
+import java.util.Map;
+
 /**
  * @author Pleshchankova Daria
  *
@@ -12,6 +14,7 @@ public class Extras {
     public static final String EXTRA_QUESTION_ID = "com.dariapro.traincounting.question_id";
     public static final String ARG_EXAMPLE = "com.dariapro.traincounting.question";
 
-    public static final String LEVEL_SEEKBAR_PROGRESS = "com.dariapro.traincounting.level";
-    public static final String TIME_SEEKBAR_PROGRESS = "com.dariapro.traincounting.time";
+    public static final String LEVEL_EXTRA = "com.dariapro.traincounting.level";
+    public static final String TIME_EXTRA = "com.dariapro.traincounting.time";
+
 }

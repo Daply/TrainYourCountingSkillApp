@@ -11,17 +11,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.entity.Record;
 import com.dariapro.traincounting.fragment.QuestionFragment;
-import com.dariapro.traincounting.view.model.QuestionViewModel;
 import com.dariapro.traincounting.view.model.RecordViewModel;
 
 import java.util.ArrayList;
@@ -36,8 +32,6 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     private String modeValue = null;
     private int level = 0;
     private int time = 0;
-
-    public static final String TAG = "exLogs";
 
     private TextView timerView;
     private CountDownTimer timer;
@@ -61,12 +55,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        getExtras();
         initData();
-
-        modeValue = getIntent().getExtras().getString(Extras.MODE);
-        level = getIntent().getExtras().getInt(Extras.LEVEL_SEEKBAR_PROGRESS);
-        time = getIntent().getExtras().getInt(Extras.TIME_SEEKBAR_PROGRESS);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question);
@@ -75,26 +65,21 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         startTimer();
 
         pager = (ViewPager) findViewById(R.id.rand_q_view_pager);
-        pagerAdapter = new QuestionFragmentPagerAdapter(getSupportFragmentManager(), modeValue);
+        pagerAdapter = new QuestionFragmentPagerAdapter(getSupportFragmentManager(),
+                                                        level, modeValue);
         pager.setAdapter(pagerAdapter);
     }
 
-    private void initData() {
-        final List<Record> currentRecords = new ArrayList<Record>();
-        recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
-        recordViewModel.getRecordList().observe(this, new Observer<List<Record>>() {
-            @Override
-            public void onChanged(@Nullable List<Record> records) {
-                setCurrentRecord(records);
-            }
-        });
+    private void getExtras() {
+        modeValue = getIntent().getExtras().getString(Extras.MODE);
+        level = getIntent().getExtras().getInt(Extras.LEVEL_EXTRA);
+        time = getIntent().getExtras().getInt(Extras.TIME_EXTRA);
+        milliseconds = time * 60000;
     }
 
-    private void setCurrentRecord(List<Record> records) {
-        List<Record> currentRecords = new ArrayList<Record>(records);
-        if (!currentRecords.isEmpty()) {
-            this.currentRecord = currentRecords.get(0);
-        }
+    private void initData() {
+        recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
+        this.currentRecord = recordViewModel.getRecordListByLevel(this.level);
     }
 
     public void startTimer() {
@@ -141,20 +126,30 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         setContentView(R.layout.score);
         scoreView = findViewById(R.id.scoreView);
         scoreView.setText("Your score is " + this.countNumberOfAnsweredQuestions +
-                          " questions in 1 minute");
+                          " questions in " + this.time + " minute(s)");
         bestScoreView = findViewById(R.id.bestScoreView);
         if (this.currentRecord != null) {
-            bestScoreView.setText("Best score is " +
-                                   this.currentRecord.getNumberOfQuestions() +
-                                  " questions in " + this.currentRecord.getTime());
+            double bestCoefficient = (double) this.currentRecord.getNumberOfQuestions()/
+                    (double) this.currentRecord.getTime();
+            double currentCoefficient = (double) this.countNumberOfAnsweredQuestions/
+                    (double) this.time;
+            if (bestCoefficient > currentCoefficient) {
+                bestScoreView.setText("Best score is " +
+                        this.currentRecord.getNumberOfQuestions() +
+                        " questions in " + this.currentRecord.getTime() + " minute(s)");
+            }
+            else {
+                bestScoreView.setText("New Best Score!");
+            }
         }
         else {
             recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
             Record newRecord = new Record();
             newRecord.setNumberOfQuestions(this.countNumberOfAnsweredQuestions);
-            newRecord.setTime(1);
+            newRecord.setTime(this.time);
+            newRecord.setLevel(this.level);
             recordViewModel.insert(newRecord);
-            bestScoreView.setText("You added new Best Score!");
+            bestScoreView.setText("New Best Score!");
         }
     }
 
@@ -175,11 +170,13 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     private class QuestionFragmentPagerAdapter extends FragmentPagerAdapter {
 
+        private int level;
         private String modeValue = null;
         private long baseId = 0;
 
-        public QuestionFragmentPagerAdapter(FragmentManager fm, String modeValue) {
+        public QuestionFragmentPagerAdapter(FragmentManager fm, int level, String modeValue) {
             super(fm);
+            this.level = level;
             this.modeValue = modeValue;
         }
 
@@ -187,6 +184,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         public Fragment getItem(int position) {
             Bundle bundle = new Bundle();
             bundle.putString(Extras.MODE, this.modeValue);
+            bundle.putInt(Extras.LEVEL_EXTRA, this.level);
             Fragment fragment = new QuestionFragment();
             fragment.setArguments(bundle);
             return fragment;
@@ -194,13 +192,11 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
         @Override
         public int getItemPosition(Object object) {
-            // refresh all fragments when data set changed
             return PagerAdapter.POSITION_NONE;
         }
 
         @Override
         public long getItemId(int position) {
-            // give an ID different from position when position has been changed
             return baseId + position;
         }
 
@@ -210,7 +206,6 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         }
 
         public void notifyChangeInPosition(int n) {
-            // shift the ID returned by getItemId outside the range of all previous fragments
             baseId += getCount() + n;
         }
     }

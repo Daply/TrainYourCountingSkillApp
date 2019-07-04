@@ -37,8 +37,7 @@ public class QuestionPagerActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        modeValue = getIntent().getExtras().getString(Extras.MODE);
-        levelId = getIntent().getExtras().getLong(Extras.EXTRA_LEVEL_ID);
+        getExtras();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_pager);
@@ -72,6 +71,11 @@ public class QuestionPagerActivity extends FragmentActivity {
             }
         });
         setItemPager();
+    }
+
+    private void getExtras() {
+        modeValue = getIntent().getExtras().getString(Extras.MODE);
+        levelId = getIntent().getExtras().getLong(Extras.EXTRA_LEVEL_ID);
     }
 
     public void setItemPager() {

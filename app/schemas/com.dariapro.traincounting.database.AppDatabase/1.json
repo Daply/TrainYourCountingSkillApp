@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "be4cc9b0a8910f6359867b33470efcf4",
+    "identityHash": "effceaeea918d6abac0cfd9b4b7a7c9d",
     "entities": [
       {
         "tableName": "category",
@@ -193,11 +193,17 @@
       },
       {
         "tableName": "record",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recordId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `numberOfQuestions` INTEGER NOT NULL, `time` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`recordId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `level` INTEGER NOT NULL, `numberOfQuestions` INTEGER NOT NULL, `time` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "recordId",
             "columnName": "recordId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -226,7 +232,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"be4cc9b0a8910f6359867b33470efcf4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"effceaeea918d6abac0cfd9b4b7a7c9d\")"
     ]
   }
 }

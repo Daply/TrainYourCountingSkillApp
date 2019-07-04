@@ -21,21 +21,27 @@ public class Record implements Serializable {
     @ColumnInfo(name = "recordId")
     private long recordId;
 
+    @ColumnInfo(name = "level")
+    @NonNull
+    private int level = 0;
+
     @ColumnInfo(name = "numberOfQuestions")
     @NonNull
     private int numberOfQuestions = 0;
 
     @ColumnInfo(name = "time")
     @NonNull
-    private long time = 0;
+    private int time = 0;
 
     public Record() {
+        this.level = 0;
         this.numberOfQuestions = 0;
         this.time = 0;
     }
 
     @Ignore
-    public Record(int numberOfQuestions, long time) {
+    public Record(int level, int numberOfQuestions, int time) {
+        this.level = level;
         this.numberOfQuestions = numberOfQuestions;
         this.time = time;
     }
@@ -48,19 +54,30 @@ public class Record implements Serializable {
         this.recordId = recordId;
     }
 
+    @NonNull
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(@NonNull int level) {
+        this.level = level;
+    }
+
+    @NonNull
     public int getNumberOfQuestions() {
         return numberOfQuestions;
     }
 
-    public void setNumberOfQuestions(int numberOfQuestions) {
+    public void setNumberOfQuestions(@NonNull int numberOfQuestions) {
         this.numberOfQuestions = numberOfQuestions;
     }
 
-    public long getTime() {
+    @NonNull
+    public int getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(@NonNull int time) {
         this.time = time;
     }
 }

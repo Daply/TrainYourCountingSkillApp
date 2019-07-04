@@ -9,29 +9,41 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.RandomQuestionStartActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Pleshchankova Daria
  *
  */
-public class RandomQuestionStartFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
+public class RandomQuestionStartFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
     private String modeValue;
 
-    private SeekBar levelSeekBar;
-    private SeekBar timeSeekBar;
+    private Spinner levelSpinner;
+    private List<String> levels;
+    private Map<Integer, Integer> levelsMap;
+    private int chosenLevel = 0;
+
+    private Spinner timeSpinner;
+    private List<String> time;
+    private Map<Integer, Integer> timeMap;
+    private int chosenTime = 0;
+
     private Button start;
-    private TextView levelSet;
-    private TextView timeSet;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,19 +54,48 @@ public class RandomQuestionStartFragment extends Fragment implements SeekBar.OnS
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        modeValue = getArguments().getString(Extras.MODE);
+        init();
+        getExtras();
 
         View view = inflater.inflate(R.layout.random_question_start_fragment, container,false);
 
-        levelSeekBar = view.findViewById(R.id.level_slider);
-        levelSeekBar.setMax(100);
-        levelSeekBar.setProgress(50);
-        levelSeekBar.setOnSeekBarChangeListener(this);
+        ArrayAdapter<String> levelsAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, levels);
+        levelsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        timeSeekBar = view.findViewById(R.id.time_slider);
-        timeSeekBar.setMax(100);
-        timeSeekBar.setProgress(50);
-        timeSeekBar.setOnSeekBarChangeListener(this);
+        levelSpinner = (Spinner) view.findViewById(R.id.level_spinner);
+        levelSpinner.setAdapter(levelsAdapter);
+        levelSpinner.setPrompt("Levels");
+        levelSpinner.setSelection(0);
+        levelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                chosenLevel = levelsMap.get(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        ArrayAdapter<String> timeAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_item, time);
+        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        timeSpinner = (Spinner) view.findViewById(R.id.time_spinner);
+        timeSpinner.setAdapter(timeAdapter);
+        timeSpinner.setPrompt("Time");
+        timeSpinner.setSelection(0);
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                chosenTime = timeMap.get(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
 
         start = view.findViewById(R.id.start_randoms);
 
@@ -64,14 +105,12 @@ public class RandomQuestionStartFragment extends Fragment implements SeekBar.OnS
             public void onClick(View v) {
                 Intent intent = RandomQuestionStartActivity.newQuestionIntent(getActivity());
                 intent.putExtra(Extras.MODE, sendMode);
-                intent.putExtra(Extras.LEVEL_SEEKBAR_PROGRESS, levelSeekBar.getProgress());
-                intent.putExtra(Extras.TIME_SEEKBAR_PROGRESS, timeSeekBar.getProgress());
+                levelSpinner.getSelectedItem();
+                intent.putExtra(Extras.LEVEL_EXTRA, chosenLevel);
+                intent.putExtra(Extras.TIME_EXTRA, chosenTime);
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
-
-        levelSet = view.findViewById(R.id.level_set);
-        timeSet = view.findViewById(R.id.time_set);
 
         return view;
     }
@@ -82,27 +121,37 @@ public class RandomQuestionStartFragment extends Fragment implements SeekBar.OnS
         menuInflater.inflate(R.menu.main_fragment, menu);
     }
 
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        switch (seekBar.getId()) {
+    public void init() {
+        levels = new ArrayList<>();
+        levels.add("Level 1");
+        levels.add("Level 2");
+        levels.add("Level 3");
+        levels.add("Level 4");
+        levels.add("Level 5");
 
-            case R.id.level_slider:
-                levelSet.setText("" + progress);
-                break;
+        levelsMap = new HashMap<>();
+        levelsMap.put(0, 1);
+        levelsMap.put(1, 2);
+        levelsMap.put(2, 3);
+        levelsMap.put(3, 4);
+        levelsMap.put(4, 5);
 
-            case R.id.time_slider:
-                timeSet.setText("" + progress + "Minutes");
-                break;
-        }
+        time = new ArrayList<>();
+        time.add("1 minute");
+        time.add("5 minutes");
+        time.add("10 minutes");
+        time.add("15 minutes");
+        time.add("20 minutes");
+
+        timeMap = new HashMap<>();
+        timeMap.put(0, 1);
+        timeMap.put(1, 5);
+        timeMap.put(2, 10);
+        timeMap.put(3, 15);
+        timeMap.put(4, 20);
     }
 
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
+    private void getExtras() {
+        modeValue = getArguments().getString(Extras.MODE);
     }
 }

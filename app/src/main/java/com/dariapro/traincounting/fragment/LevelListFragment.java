@@ -52,8 +52,7 @@ public class LevelListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.modeValue = getArguments().getString(Extras.MODE);
-        this.categoryId = getArguments().getLong(Extras.EXTRA_CATEGORY_ID);
+        getExtras();
 
         View view = inflater.inflate(R.layout.level_list_fragment, container,false);
         recyclerView = view.findViewById(R.id.level_recycler_view);
@@ -68,6 +67,11 @@ public class LevelListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu,menuInflater);
         menuInflater.inflate(R.menu.level_list_fragment, menu);
+    }
+
+    private void getExtras() {
+        this.modeValue = getArguments().getString(Extras.MODE);
+        this.categoryId = getArguments().getLong(Extras.EXTRA_CATEGORY_ID);
     }
 
     private void updateUI(){

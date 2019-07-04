@@ -14,25 +14,11 @@
         android:text="@string/level_title"
         android:textStyle="bold" />
 
-    <SeekBar android:paddingTop="20dip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:max="19"
-        android:progress="0"
-        android:secondaryProgress="0"
-        android:id="@+id/level_slider"
-        android:progressDrawable="@drawable/progress"
-        android:thumb="@drawable/thumb"/>
-
-    <TextView
-        android:id="@+id/level_set"
+    <Spinner
+        android:id="@+id/level_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="50"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+    </Spinner>
 
     <TextView
         android:id="@+id/time_title"
@@ -42,31 +28,38 @@
         android:text="@string/time_title"
         android:textStyle="bold" />
 
-    <SeekBar android:paddingTop="20dip"
+    <RelativeLayout android:id="@+id/spinnersLayout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:max="19"
-        android:progress="0"
-        android:secondaryProgress="0"
-        android:id="@+id/time_slider"
-        android:progressDrawable="@drawable/progress"
-        android:thumb="@drawable/thumb"/>
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/time_set"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="50"
-        android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/time_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
 
-    <Button
-        android:id="@+id/start_randoms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:text="@string/start_randoms"/>
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/randButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/start_randoms"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:icon="@android:drawable/ic_media_play"
+            android:text="Start"
+            android:elevation="20dp"
+            android:height="60dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
