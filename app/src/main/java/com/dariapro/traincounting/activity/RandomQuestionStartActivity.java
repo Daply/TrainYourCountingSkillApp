@@ -17,8 +17,10 @@ public class RandomQuestionStartActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
         String value = getIntent().getExtras().getString(Extras.MODE);
+        boolean expression = getIntent().getExtras().getBoolean(Extras.EXPRESSION_EXTRA);
         Bundle bundle = new Bundle();
         bundle.putString(Extras.MODE, value);
+        bundle.putBoolean(Extras.EXPRESSION_EXTRA, expression);
         Fragment fragment = new RandomQuestionStartFragment();
         fragment.setArguments(bundle);
         return fragment;

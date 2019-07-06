@@ -4,26 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/question"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/pattern">
 
-        <TextView android:id="@+id/question_expression"
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/question_expression"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1 + 1 = "
-            style="?android:listSeparatorTextViewStyle"/>
-        <EditText android:id="@+id/question_answer"
+            android:layout_margin="20dp"
+            android:text="1 + 1 = " />
+        <EditText
+            style="@style/AppEditTextStyle"
+            android:id="@+id/question_answer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:inputType="number"
+            android:textColor="#000"
+            android:layout_margin="10dp"
             android:hint="answer"/>
-        <Button android:id="@+id/question_answer_button"
+        <Button
+            android:theme="@style/AppButtonStyle"
+            android:id="@+id/question_answer_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:text="Answer" />
-        <EditText android:id="@+id/question_answer_result"
+
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/question_answer_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#00CF91"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
             android:text=""/>
 
 </LinearLayout>

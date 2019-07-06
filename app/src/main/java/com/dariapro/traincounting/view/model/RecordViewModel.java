@@ -29,8 +29,8 @@ public class RecordViewModel extends AndroidViewModel {
         return recordLiveData;
     }
 
-    public Record getRecordListByLevel(int level) {
-        return recordDao.getByLevel(level);
+    public Record getRecordByLevelAndType(int level, int type) {
+        return recordDao.getByLevelAndType(level, type);
     }
 
     public void insert(Record... records) {

@@ -4,33 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/random_question_start_fragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/pattern">
 
     <TextView
+        android:theme="@style/AppTextViewStyle"
         android:id="@+id/level_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/level_title"
-        android:textStyle="bold" />
+        android:text="@string/level_title" />
 
-    <Spinner
-        android:id="@+id/level_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </Spinner>
+    <RelativeLayout android:id="@+id/level_spinner_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <Spinner
+            android:id="@+id/level_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:splitMotionEvents="true">
+        </Spinner>
+
+    </RelativeLayout>
 
     <TextView
+        android:theme="@style/AppTextViewStyle"
         android:id="@+id/time_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/time_title"
-        android:textStyle="bold" />
+        android:text="@string/time_title" />
 
-    <RelativeLayout android:id="@+id/spinnersLayout"
+    <RelativeLayout android:id="@+id/time_spinner_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <Spinner
@@ -41,21 +53,83 @@
 
     </RelativeLayout>
 
-    <RelativeLayout android:id="@+id/randButtonLayout"
+    <TextView
+        android:theme="@style/AppTextViewStyle"
+        android:id="@+id/operators_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/operators_title" />
+
+    <LinearLayout android:id="@+id/operators_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal">
+
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/plus_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="25sp" />
+        <CheckBox
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/minus_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="15sp" />
+        <CheckBox
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/multiply_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textSize="15sp" />
+        <CheckBox
+            android:id="@+id/multiply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:theme="@style/AppTextViewStyle"
+            android:id="@+id/divide_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="15sp" />
+        <CheckBox
+            android:id="@+id/divide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <RelativeLayout android:id="@+id/rand_button_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <Button
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:theme="@style/AppButtonStyle"
             android:id="@+id/start_randoms"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:icon="@android:drawable/ic_media_play"
             android:text="Start"
-            android:elevation="20dp"
             android:height="60dp"
             android:textSize="15sp"
             android:textColor="@android:color/holo_blue_dark"/>

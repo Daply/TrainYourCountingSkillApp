@@ -33,6 +33,13 @@ public class Record implements Serializable {
     @NonNull
     private int time = 0;
 
+    /**
+     * type: 0 - question, 1 - expression
+     */
+    @ColumnInfo(name = "type")
+    @NonNull
+    private int type = 0;
+
     public Record() {
         this.level = 0;
         this.numberOfQuestions = 0;
@@ -79,5 +86,14 @@ public class Record implements Serializable {
 
     public void setTime(@NonNull int time) {
         this.time = time;
+    }
+
+    @NonNull
+    public int getType() {
+        return type;
+    }
+
+    public void setType(@NonNull int type) {
+        this.type = type;
     }
 }

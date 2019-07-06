@@ -4,25 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/main_fragmnt">
+    android:id="@+id/main_fragment"
+    android:background="@drawable/pattern">
 
     <TextView
-        android:id="@+id/scoreView"
-        style="?android:listSeparatorTextViewStyle"
+        android:theme="@style/AppTextViewStyle"
+        android:id="@+id/score_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="30dp"
         android:text=""
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/bestScoreView"
-        style="?android:listSeparatorTextViewStyle"
+        android:theme="@style/AppTextViewStyle"
+        android:id="@+id/best_score_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text=""

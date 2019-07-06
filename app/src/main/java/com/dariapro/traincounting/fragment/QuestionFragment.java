@@ -34,6 +34,12 @@ public class QuestionFragment extends Fragment {
 
     private String modeValue = null;
     private int level = 0;
+    private boolean expression = false;
+
+    private boolean plusOperator = false;
+    private boolean minusOperator = false;
+    private boolean multiplyOperator = false;
+    private boolean divideOperator = false;
 
     private TextView problemTask;
     private EditText answerField;
@@ -108,10 +114,24 @@ public class QuestionFragment extends Fragment {
 
     private void getExtras() {
         this.modeValue = getArguments().getString(Extras.MODE);
+        this.expression = getArguments().getBoolean(Extras.EXPRESSION_EXTRA);
         if (this.modeValue.equals("random")) {
             this.level = getArguments().getInt(Extras.LEVEL_EXTRA);
             RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
-            question = randomQuestionGenerator.generateTwoRandomNumbersExample(level);
+            if (expression) {
+                question = randomQuestionGenerator.generateRandomExpression(level);
+            }
+            else {
+                this.plusOperator = getArguments().getBoolean(Extras.PLUS_EXTRA);
+                this.minusOperator = getArguments().getBoolean(Extras.MINUS_EXTRA);
+                this.multiplyOperator = getArguments().getBoolean(Extras.MULTIPLY_EXTRA);
+                this.divideOperator = getArguments().getBoolean(Extras.DIVIDE_EXTRA);
+                question = randomQuestionGenerator.generateTwoRandomNumbersExample(level,
+                                                                                    plusOperator,
+                                                                                    minusOperator,
+                                                                                    multiplyOperator,
+                                                                                    divideOperator);
+            }
         }
         else {
             this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);

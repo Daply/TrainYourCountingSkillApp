@@ -8,8 +8,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--<style name="AppTheme" parent="Theme.MaterialComponents.*">-->
-        <!--&lt;!&ndash; Add attributes here &ndash;&gt;-->
-    <!--</style>-->
+    <style name="AppTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="AppButtonStyle" parent="android:Widget.Button">
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="AppEditTextStyle" parent="android:Widget.EditText">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:background">@android:drawable/editbox_background_normal</item>
+        <item name="android:textSize">15sp</item>
+    </style>
 
 </resources>

@@ -5,19 +5,10 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:theme="@style/AppTextViewStyle"
         android:id="@+id/question_item_level_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/category_title"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/question_item_level_passed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="Passed"
-        android:textStyle="bold" />
+        android:text="@string/category_title" />
 
 </RelativeLayout>

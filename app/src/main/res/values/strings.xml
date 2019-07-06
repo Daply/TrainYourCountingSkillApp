@@ -8,6 +8,9 @@
     <string name="category_title">TrainCounting</string>
 
     <string name="start_randoms">Start</string>
+
+    <!-- Titles -->
     <string name="level_title">Level</string>
     <string name="time_title">Time</string>
+    <string name="operators_title">Operators (+ by default)</string>
 </resources>

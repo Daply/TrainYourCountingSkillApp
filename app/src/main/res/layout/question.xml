@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/main_fragmnt">
+    android:id="@+id/main_fragment"
+    android:background="@drawable/pattern">
 
     <TextView
+        android:theme="@style/AppTextViewStyle"
         android:id="@+id/timer"
-        style="?android:listSeparatorTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

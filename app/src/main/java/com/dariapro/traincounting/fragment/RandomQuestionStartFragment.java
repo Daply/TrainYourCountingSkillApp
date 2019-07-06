@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.dariapro.traincounting.Extras;
@@ -32,6 +33,7 @@ public class RandomQuestionStartFragment extends Fragment {
     public static final int REQUEST_EVENT = 1;
 
     private String modeValue;
+    private boolean expression;
 
     private Spinner levelSpinner;
     private List<String> levels;
@@ -42,6 +44,11 @@ public class RandomQuestionStartFragment extends Fragment {
     private List<String> time;
     private Map<Integer, Integer> timeMap;
     private int chosenTime = 0;
+
+    private CheckBox plusCheckBox;
+    private CheckBox minusCheckBox;
+    private CheckBox multiplyCheckBox;
+    private CheckBox divideCheckBox;
 
     private Button start;
 
@@ -97,6 +104,15 @@ public class RandomQuestionStartFragment extends Fragment {
             }
         });
 
+        plusCheckBox = view.findViewById(R.id.plus);
+        minusCheckBox = view.findViewById(R.id.minus);
+        multiplyCheckBox = view.findViewById(R.id.multiply);
+        divideCheckBox = view.findViewById(R.id.divide);
+        if (expression) {
+            view.findViewById(R.id.operators_title).setVisibility(View.GONE);
+            view.findViewById(R.id.operators_layout).setVisibility(View.GONE);
+        }
+
         start = view.findViewById(R.id.start_randoms);
 
         final String sendMode = modeValue;
@@ -105,9 +121,13 @@ public class RandomQuestionStartFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = RandomQuestionStartActivity.newQuestionIntent(getActivity());
                 intent.putExtra(Extras.MODE, sendMode);
-                levelSpinner.getSelectedItem();
+                intent.putExtra(Extras.EXPRESSION_EXTRA, expression);
                 intent.putExtra(Extras.LEVEL_EXTRA, chosenLevel);
                 intent.putExtra(Extras.TIME_EXTRA, chosenTime);
+                intent.putExtra(Extras.PLUS_EXTRA, plusCheckBox.isChecked());
+                intent.putExtra(Extras.MINUS_EXTRA, minusCheckBox.isChecked());
+                intent.putExtra(Extras.MULTIPLY_EXTRA, multiplyCheckBox.isChecked());
+                intent.putExtra(Extras.DIVIDE_EXTRA, divideCheckBox.isChecked());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -153,5 +173,6 @@ public class RandomQuestionStartFragment extends Fragment {
 
     private void getExtras() {
         modeValue = getArguments().getString(Extras.MODE);
+        expression = getArguments().getBoolean(Extras.EXPRESSION_EXTRA);
     }
 }

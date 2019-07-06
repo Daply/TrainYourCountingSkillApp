@@ -50,6 +50,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
                 intent.putExtra(Extras.MODE, "random");
+                intent.putExtra(Extras.EXPRESSION_EXTRA, false);
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -59,6 +60,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
                 intent.putExtra(Extras.MODE, "random");
+                intent.putExtra(Extras.EXPRESSION_EXTRA, true);
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

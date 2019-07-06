@@ -4,26 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_fragmnt"
-    android:orientation="vertical">
+    android:id="@+id/main_fragment"
+    android:orientation="vertical"
+    android:background="@drawable/pattern">
 
     <TextView
+        android:theme="@style/AppTextViewStyle"
         android:id="@+id/main_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
         android:text="@string/main_title"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:fontFamily="sans-serif-thin"
-        android:textSize="30sp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textSize="30sp" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/buttons"
         android:orientation="vertical"
         android:gravity="center"
@@ -31,41 +26,32 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
         <Button
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:theme="@style/AppButtonStyle"
             android:id="@+id/random_examples"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:drawableLeft="@drawable/simp_math_cat_small"
+            android:drawableLeft="@drawable/calculations"
             android:text="@string/random_examples_title"
-            android:elevation="25dp"
             android:height="120dp"
-            android:textSize="25sp"
-            android:textColor="@android:color/holo_blue_dark"/>
+            android:textSize="25sp" />
         <Button
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:theme="@style/AppButtonStyle"
             android:id="@+id/random_expressions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:drawableLeft="@drawable/expr_cat_small"
+            android:drawableLeft="@drawable/formula_128"
             android:text="@string/random_expressions_title"
-            android:elevation="25dp"
             android:height="120dp"
-            android:textSize="25sp"
-            android:textColor="@android:color/holo_blue_dark"/>
+            android:textSize="25sp" />
         <Button
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:theme="@style/AppButtonStyle"
             android:id="@+id/solve_problems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:drawableLeft="@drawable/prob_cat_small"
+            android:drawableLeft="@drawable/problem"
             android:text="@string/solve_problems_title"
-            android:elevation="25dp"
             android:height="120dp"
-            android:textSize="25sp"
-            android:textColor="@android:color/holo_blue_dark"/>
+            android:textSize="25sp" />
     </LinearLayout>
 
 </LinearLayout>
