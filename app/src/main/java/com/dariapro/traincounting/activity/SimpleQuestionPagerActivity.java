@@ -23,7 +23,7 @@ import java.util.List;
  * @author Pleshchankova Daria
  *
  */
-public class QuestionPagerActivity extends FragmentActivity {
+public class SimpleQuestionPagerActivity extends FragmentActivity {
 
     private ViewPager viewPager;
 
@@ -101,6 +101,9 @@ public class QuestionPagerActivity extends FragmentActivity {
     }
 
     public void setCurrentQuestion(int position) {
+        if (position < questions.size()) {
+            currentQuestionId = questions.get(position).getQuestionId();
+        }
         this.viewPager.setCurrentItem(position);
     }
 

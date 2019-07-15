@@ -192,9 +192,12 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     public void removePreviousQuestion() {
         int position = pager.getCurrentItem();
-        this.countNumberOfAnsweredQuestions++;
         pagerAdapter.notifyDataSetChanged();
         pagerAdapter.notifyChangeInPosition(position);
+    }
+
+    public void increaseScore() {
+        this.countNumberOfAnsweredQuestions++;
     }
 
     private class QuestionFragmentPagerAdapter extends FragmentPagerAdapter {

@@ -34,6 +34,10 @@ public class LevelViewModel extends AndroidViewModel {
         return levelsCatLiveData;
     }
 
+    public Level getLevelById(long id) {
+        return levelDao.getById(id);
+    }
+
     public void insert(Level... levels) {
         levelDao.insert(levels);
     }

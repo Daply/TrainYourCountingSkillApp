@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
@@ -100,19 +101,24 @@ public class CategoryListFragment extends Fragment {
         private String modeValue = null;
 
         public TextView titleTextView;
+        public ImageView passedImageView;
 
         public CategoryHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
             titleTextView = itemView.findViewById(R.id.list_item_category_title);
-
+            passedImageView = itemView.findViewById(R.id.list_item_category_passed);
+            passedImageView.setVisibility(View.GONE);
             this.modeValue = mode;
         }
 
         public void bindEvent(Category cat){
             category = cat;
             titleTextView.setText(cat.getTitle());
+            if (category.isPassed()) {
+                passedImageView.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override

@@ -88,6 +88,10 @@ public class Record implements Serializable {
         this.time = time;
     }
 
+    /**
+     * Type: question - 0, expression - 1
+     * @return
+     */
     @NonNull
     public int getType() {
         return type;

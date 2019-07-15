@@ -13,4 +13,18 @@
     <string name="level_title">Level</string>
     <string name="time_title">Time</string>
     <string name="operators_title">Operators (+ by default)</string>
+
+    <!-- Operators -->
+    <string name="plus_operator">+</string>
+    <string name="minus_operator">-</string>
+    <string name="multiply_operator">*</string>
+    <string name="divide_operator">/</string>
+
+    <!-- Button titles -->
+    <string name="start_button">Start</string>
+    <string name="answer_button">Answer</string>
+    <string name="skip_button">Skip</string>
+
+    <!-- Hint -->
+    <string name="answer_hint">answer</string>
 </resources>

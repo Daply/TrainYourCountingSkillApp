@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="1 + 1 = " />
+            android:gravity="center" />
         <EditText
             style="@style/AppEditTextStyle"
             android:id="@+id/question_answer"
@@ -22,7 +22,7 @@
             android:inputType="number"
             android:textColor="#000"
             android:layout_margin="10dp"
-            android:hint="answer"/>
+            android:hint="@string/answer_hint"/>
         <Button
             android:theme="@style/AppButtonStyle"
             android:id="@+id/question_answer_button"
@@ -30,17 +30,25 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="Answer" />
+            android:text="@string/answer_button" />
+
+        <Button
+            android:theme="@style/AppButtonStyle"
+            android:id="@+id/skip_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/skip_button" />
 
         <TextView
-            android:theme="@style/AppTextViewStyle"
+            style="@style/AppTextViewStyle"
             android:id="@+id/question_answer_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#00CF91"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text=""/>
+            android:gravity="center" />
 
 </LinearLayout>

@@ -16,13 +16,11 @@ import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
-import com.dariapro.traincounting.activity.QuestionPagerActivity;
+import com.dariapro.traincounting.activity.SimpleQuestionPagerActivity;
 import com.dariapro.traincounting.activity.RandomQuestionPagerActivity;
-import com.dariapro.traincounting.dao.QuestionDao;
 import com.dariapro.traincounting.entity.Question;
 import com.dariapro.traincounting.random.RandomQuestionGenerator;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
-import com.dariapro.traincounting.view.model.RecordViewModel;
 
 /**
  * @author Pleshchankova Daria
@@ -45,13 +43,14 @@ public class QuestionFragment extends Fragment {
     private EditText answerField;
     private String answer = null;
     private Button answerButton;
+    private Button skipButton;
     private TextView correctAnswer;
 
     private Question question = null;
 
-    public static QuestionFragment newInstance(Question example, String mode) {
+    public static QuestionFragment newInstance(Question question, String mode) {
         Bundle args = new Bundle();
-        args.putSerializable(Extras.ARG_EXAMPLE, example);
+        args.putSerializable(Extras.ARG_QUESTION, question);
         args.putSerializable(Extras.MODE, mode);
         QuestionFragment questionFragment = new QuestionFragment();
         questionFragment.setArguments(args);
@@ -87,18 +86,10 @@ public class QuestionFragment extends Fragment {
                         @Override
                         public void run() {
                             if (modeValue.equals("random")) {
-                                RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
-                                int position = activity.getCurrentQuestion();
-                                clearFields();
-                                activity.setCurrentQuestion(position + 1);
-                                activity.removePreviousQuestion();
+                                shiftRandomQuestion(true);
                             }
                             else if (modeValue.equals("simple")) {
-                                QuestionPagerActivity activity = (QuestionPagerActivity) getActivity();
-                                answerField.setEnabled(false);
-                                setQuestionPassed(question);
-                                int position = activity.getCurrentQuestion();
-                                activity.setCurrentQuestion(position + 1);
+                                shiftSimpleQuestion();
                             }
                         }
                     }, 500);
@@ -109,6 +100,18 @@ public class QuestionFragment extends Fragment {
                 }
             }
         });
+        skipButton = view.findViewById(R.id.skip_button);
+        if (modeValue.equals("simple")) {
+            skipButton.setVisibility(View.GONE);
+        }
+        if (modeValue.equals("random")) {
+            skipButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    shiftRandomQuestion(false);
+                }
+            });
+        }
         return view;
     }
 
@@ -126,15 +129,12 @@ public class QuestionFragment extends Fragment {
                 this.minusOperator = getArguments().getBoolean(Extras.MINUS_EXTRA);
                 this.multiplyOperator = getArguments().getBoolean(Extras.MULTIPLY_EXTRA);
                 this.divideOperator = getArguments().getBoolean(Extras.DIVIDE_EXTRA);
-                question = randomQuestionGenerator.generateTwoRandomNumbersExample(level,
-                                                                                    plusOperator,
-                                                                                    minusOperator,
-                                                                                    multiplyOperator,
-                                                                                    divideOperator);
+                question = randomQuestionGenerator.generateQuestion(level, plusOperator, minusOperator,
+                                                                    multiplyOperator, divideOperator);
             }
         }
         else {
-            this.question = (Question) getArguments().getSerializable(Extras.ARG_EXAMPLE);
+            this.question = (Question) getArguments().getSerializable(Extras.ARG_QUESTION);
         }
     }
 
@@ -148,6 +148,25 @@ public class QuestionFragment extends Fragment {
     public void clearFields() {
         answerField.setText("");
         correctAnswer.setText("");
+    }
+
+    public void shiftRandomQuestion(boolean increaseScore) {
+        RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
+        int position = activity.getCurrentQuestion();
+        activity.setCurrentQuestion(position + 1);
+        activity.removePreviousQuestion();
+        if (increaseScore) {
+            clearFields();
+            activity.increaseScore();
+        }
+    }
+
+    public void shiftSimpleQuestion() {
+        SimpleQuestionPagerActivity activity = (SimpleQuestionPagerActivity) getActivity();
+        answerField.setEnabled(false);
+        setQuestionPassed(question);
+        int position = activity.getCurrentQuestion();
+        activity.setCurrentQuestion(position + 1);
     }
 
     @Override

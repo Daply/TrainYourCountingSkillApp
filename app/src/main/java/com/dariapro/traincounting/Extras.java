@@ -12,7 +12,7 @@ public class Extras {
     public static final String EXTRA_CATEGORY_ID = "com.dariapro.traincounting.category_id";
     public static final String EXTRA_LEVEL_ID = "com.dariapro.traincounting.level_id";
     public static final String EXTRA_QUESTION_ID = "com.dariapro.traincounting.question_id";
-    public static final String ARG_EXAMPLE = "com.dariapro.traincounting.question";
+    public static final String ARG_QUESTION = "com.dariapro.traincounting.question";
 
     public static final String EXPRESSION_EXTRA = "com.dariapro.traincounting.expression";
 

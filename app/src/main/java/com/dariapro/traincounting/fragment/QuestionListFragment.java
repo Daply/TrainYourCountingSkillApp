@@ -13,12 +13,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.QuestionListActivity;
+import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.view.model.LevelViewModel;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
 
 import java.util.ArrayList;
@@ -39,6 +42,8 @@ public class QuestionListFragment extends Fragment {
     private ExampleAdapter adapter;
 
     private QuestionViewModel questionViewModel;
+    private int numberOfAllQuestions = 0;
+    private int numberOfPassedQuestions = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,22 +97,36 @@ public class QuestionListFragment extends Fragment {
         });
     }
 
+    private void updateLevel() {
+        LevelViewModel levelViewModel = ViewModelProviders
+                .of(this).get(LevelViewModel.class);
+        Level currentLevel = levelViewModel.getLevelById(levelId);
+        currentLevel.setPassed(true);
+        levelViewModel.update(currentLevel);
+    }
+
     private class ExampleHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private Question question;
 
         public TextView titleTextView;
+        public ImageView passedImageView;
 
         public ExampleHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
             titleTextView = itemView.findViewById(R.id.question_item_level_title);
+            passedImageView = itemView.findViewById(R.id.list_item_question_passed);
+            passedImageView.setVisibility(View.GONE);
         }
 
         public void bindEvent(Question ex){
             question = ex;
             titleTextView.setText(ex.getTitle());
+            if (question.isPassed()) {
+                passedImageView.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -121,14 +140,14 @@ public class QuestionListFragment extends Fragment {
 
     private class ExampleAdapter extends RecyclerView.Adapter<ExampleHolder>{
 
-        private List<Question> examples;
+        private List<Question> questions;
 
         public ExampleAdapter() {
-            examples = new ArrayList<Question>();
+            questions = new ArrayList<Question>();
         }
 
-        public ExampleAdapter(List<Question> examples) {
-            this.examples = examples;
+        public ExampleAdapter(List<Question> questions) {
+            this.questions = questions;
         }
 
         @Override
@@ -140,21 +159,24 @@ public class QuestionListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ExampleHolder holder, int position) {
-            Question example = examples.get(position);
-            holder.bindEvent(example);
+            Question question = questions.get(position);
+            holder.bindEvent(question);
         }
 
-        public void setQuestions(List<Question> examples){
-            this.examples = examples;
+        public void setQuestions(List<Question> questions){
+            this.questions = questions;
             notifyDataSetChanged();
+            numberOfAllQuestions = this.questions.size();
+            numberOfPassedQuestions = questionViewModel.getPassedQuestionListByLevel(levelId);
+            if (numberOfAllQuestions == numberOfPassedQuestions) {
+                updateLevel();
+            }
         }
 
         @Override
         public int getItemCount() {
-            return examples.size();
+            return questions.size();
         }
     }
-
-
 
 }

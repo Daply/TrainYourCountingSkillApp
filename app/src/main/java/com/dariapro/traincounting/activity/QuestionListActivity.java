@@ -27,7 +27,7 @@ public class QuestionListActivity extends SingleFragmentActivity{
     }
 
     public static Intent newIntent(Context packageContext, long questionId){
-        Intent intent = new Intent(packageContext, QuestionPagerActivity.class);
+        Intent intent = new Intent(packageContext, SimpleQuestionPagerActivity.class);
         intent.putExtra(Extras.EXTRA_QUESTION_ID, questionId);
         return intent;
     }

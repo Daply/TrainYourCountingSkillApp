@@ -44,4 +44,7 @@ public interface QuestionDao {
     @Query("SELECT * FROM question WHERE questionLevelId=:levelId")
     LiveData<List<Question>> findQuestionsForLevel(final long levelId);
 
+    @Query("SELECT COUNT(questionId) FROM question WHERE questionLevelId=:levelId AND passed=1")
+    int findPassedQuestionsForLevel(final long levelId);
+
 }

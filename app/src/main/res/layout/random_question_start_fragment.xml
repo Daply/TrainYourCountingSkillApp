@@ -12,9 +12,11 @@
         android:id="@+id/level_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/level_title" />
 
-    <RelativeLayout android:id="@+id/level_spinner_layout"
+    <RelativeLayout
+        android:id="@+id/level_spinner_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="10dp"
@@ -25,42 +27,66 @@
             android:id="@+id/level_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:splitMotionEvents="true">
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown">
         </Spinner>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/drop_32" />
 
     </RelativeLayout>
 
     <TextView
-        android:theme="@style/AppTextViewStyle"
+        style="@style/AppTextViewStyle"
         android:id="@+id/time_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/time_title" />
 
-    <RelativeLayout android:id="@+id/time_spinner_layout"
+    <RelativeLayout
+        android:id="@+id/time_spinner_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="10dp"
-        android:layout_gravity="center"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/time_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown">
         </Spinner>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/drop_32" />
 
     </RelativeLayout>
 
     <TextView
-        android:theme="@style/AppTextViewStyle"
+        style="@style/AppTextViewStyle"
         android:id="@+id/operators_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/operators_title" />
 
-    <LinearLayout android:id="@+id/operators_layout"
+    <LinearLayout
+        android:id="@+id/operators_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="10dp"
@@ -69,56 +95,61 @@
         android:orientation="horizontal">
 
         <TextView
-            android:theme="@style/AppTextViewStyle"
+            style="@style/AppTextViewStyle"
             android:id="@+id/plus_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
+            android:text="@string/plus_operator"
             android:textSize="25sp" />
         <CheckBox
             android:id="@+id/plus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"/>
 
         <TextView
-            android:theme="@style/AppTextViewStyle"
+            style="@style/AppTextViewStyle"
             android:id="@+id/minus_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
+            android:text="@string/minus_operator"
             android:textSize="15sp" />
         <CheckBox
             android:id="@+id/minus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"/>
 
         <TextView
-            android:theme="@style/AppTextViewStyle"
+            style="@style/AppTextViewStyle"
             android:id="@+id/multiply_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*"
+            android:text="@string/multiply_operator"
             android:textSize="15sp" />
         <CheckBox
             android:id="@+id/multiply"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"/>
 
         <TextView
-            android:theme="@style/AppTextViewStyle"
+            style="@style/AppTextViewStyle"
             android:id="@+id/divide_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/"
+            android:text="@string/divide_operator"
             android:textSize="15sp" />
         <CheckBox
             android:id="@+id/divide"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"/>
 
     </LinearLayout>
 
-    <RelativeLayout android:id="@+id/rand_button_layout"
+    <RelativeLayout
+        android:id="@+id/rand_button_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         xmlns:android="http://schemas.android.com/apk/res/android">
@@ -129,7 +160,7 @@
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
+            android:text="@string/start_button"
             android:height="60dp"
             android:textSize="15sp"
             android:textColor="@android:color/holo_blue_dark"/>

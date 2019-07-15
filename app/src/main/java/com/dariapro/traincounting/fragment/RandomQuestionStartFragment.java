@@ -67,8 +67,8 @@ public class RandomQuestionStartFragment extends Fragment {
         View view = inflater.inflate(R.layout.random_question_start_fragment, container,false);
 
         ArrayAdapter<String> levelsAdapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, levels);
-        levelsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.layout.spinner_item, levels);
+        levelsAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         levelSpinner = (Spinner) view.findViewById(R.id.level_spinner);
         levelSpinner.setAdapter(levelsAdapter);
@@ -86,8 +86,8 @@ public class RandomQuestionStartFragment extends Fragment {
         });
 
         ArrayAdapter<String> timeAdapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, time);
-        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.layout.spinner_item, time);
+        timeAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
         timeSpinner = (Spinner) view.findViewById(R.id.time_spinner);
         timeSpinner.setAdapter(timeAdapter);

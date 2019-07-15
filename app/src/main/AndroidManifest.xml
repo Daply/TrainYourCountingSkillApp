@@ -23,9 +23,9 @@
             android:label="@string/app_name"
             android:parentActivityName=".activity.QuestionListActivity">
         </activity>
-        <activity android:name="com.dariapro.traincounting.activity.QuestionPagerActivity"
+        <activity android:name="com.dariapro.traincounting.activity.SimpleQuestionPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.QuestionPagerActivity">
+            android:parentActivityName=".activity.SimpleQuestionPagerActivity">
         </activity>
         <activity android:name="com.dariapro.traincounting.activity.CategoryActivity"
             android:label="@string/app_name"

@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.Extras;
@@ -103,12 +104,15 @@ public class LevelListFragment extends Fragment {
         private String modeValue = null;
 
         public TextView titleTextView;
+        public ImageView passedImageView;
 
         public LevelHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
             titleTextView = itemView.findViewById(R.id.list_item_level_title);
+            passedImageView = itemView.findViewById(R.id.list_item_level_passed);
+            passedImageView.setVisibility(View.GONE);
 
             this.modeValue = mode;
         }
@@ -116,6 +120,9 @@ public class LevelListFragment extends Fragment {
         public void bindEvent(Level lev){
             level = lev;
             titleTextView.setText(lev.getTitle());
+            if (level.isPassed()) {
+                passedImageView.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
