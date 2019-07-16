@@ -23,6 +23,9 @@ public interface LevelDao {
     @Query("SELECT * FROM level")
     LiveData<List<Level>> getAll();
 
+    @Query("SELECT * FROM level ORDER BY levelNumber")
+    LiveData<List<Level>> getAllSorted();
+
     @Query("SELECT * FROM level WHERE levelId = :id")
     Level getById(long id);
 
@@ -43,5 +46,11 @@ public interface LevelDao {
 
     @Query("SELECT * FROM level WHERE levelCategoryId=:categoryId")
     LiveData<List<Level>> findLevelsForCategory(final long categoryId);
+
+    @Query("SELECT * FROM level WHERE levelCategoryId=:categoryId ORDER BY levelNumber")
+    LiveData<List<Level>> findLevelsForCategorySorted(final long categoryId);
+
+    @Query("SELECT COUNT(levelId) FROM level WHERE levelCategoryId=:categoryId AND passed=1")
+    int findPassedLevelsForCategory(final long categoryId);
 
 }

@@ -28,10 +28,14 @@ public class Question implements Serializable{
     private long questionId;
 
     @ColumnInfo(name = "questionLevelId")
+    @NonNull
     private long questionLevelId;
 
-    @ColumnInfo(name = "title")
+    @ColumnInfo(name = "questionNumber")
     @NonNull
+    private long questionNumber;
+
+    @ColumnInfo(name = "title")
     private String title = null;
 
     @ColumnInfo(name = "question")
@@ -75,6 +79,15 @@ public class Question implements Serializable{
 
     public void setQuestionLevelId(long questionLevelId) {
         this.questionLevelId = questionLevelId;
+    }
+
+    @NonNull
+    public long getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void setQuestionNumber(@NonNull long questionNumber) {
+        this.questionNumber = questionNumber;
     }
 
     public String getTitle() {

@@ -22,6 +22,10 @@ public class Category {
     @ColumnInfo(name = "categoryId")
     private long categoryId;
 
+    @ColumnInfo(name = "categoryNumber")
+    @NonNull
+    private long categoryNumber = 0;
+
     @ColumnInfo(name = "passed")
     private boolean passed = false;
 
@@ -39,6 +43,15 @@ public class Category {
 
     public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    @NonNull
+    public long getCategoryNumber() {
+        return categoryNumber;
+    }
+
+    public void setCategoryNumber(@NonNull long categoryNumber) {
+        this.categoryNumber = categoryNumber;
     }
 
     public boolean isPassed() {

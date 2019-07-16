@@ -33,11 +33,14 @@ public class Level {
     @NonNull
     private long levelCategoryId;
 
+    @ColumnInfo(name = "levelNumber")
+    @NonNull
+    private long levelNumber;
+
     @ColumnInfo(name = "passed")
     private boolean passed = false;
 
     @ColumnInfo(name = "title")
-    @NonNull
     private String title = null;
 
     public Level(@NonNull String title, @NonNull long levelCategoryId) {
@@ -59,6 +62,15 @@ public class Level {
 
     public void setLevelCategoryId(long levelCategoryId) {
         this.levelCategoryId = levelCategoryId;
+    }
+
+    @NonNull
+    public long getLevelNumber() {
+        return levelNumber;
+    }
+
+    public void setLevelNumber(@NonNull long levelNumber) {
+        this.levelNumber = levelNumber;
     }
 
     public boolean isPassed() {

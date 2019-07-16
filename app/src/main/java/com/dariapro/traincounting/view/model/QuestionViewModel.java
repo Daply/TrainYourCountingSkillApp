@@ -35,6 +35,11 @@ public class QuestionViewModel extends AndroidViewModel {
         return questionsLevelLiveData;
     }
 
+    public LiveData<List<Question>> getQuestionListByLevelSorted(long levelId) {
+        LiveData<List<Question>> questionsLevelLiveData = this.questionDao.findQuestionsForLevelSorted(levelId);
+        return questionsLevelLiveData;
+    }
+
     public int getPassedQuestionListByLevel(long levelId) {
         int numberOfPassedQuestions = this.questionDao.findPassedQuestionsForLevel(levelId);
         return numberOfPassedQuestions;

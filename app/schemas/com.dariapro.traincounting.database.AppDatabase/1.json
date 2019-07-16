@@ -2,15 +2,21 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9bc3bdfacaf66e89409c3670f8c9dd9c",
+    "identityHash": "c013e417fe31126e85fd6fd6916c26e4",
     "entities": [
       {
         "tableName": "category",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`categoryId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `passed` INTEGER NOT NULL, `title` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`categoryId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `categoryNumber` INTEGER NOT NULL, `passed` INTEGER NOT NULL, `title` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "categoryId",
             "columnName": "categoryId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoryNumber",
+            "columnName": "categoryNumber",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -47,7 +53,7 @@
       },
       {
         "tableName": "level",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`levelId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `levelCategoryId` INTEGER NOT NULL, `passed` INTEGER NOT NULL, `title` TEXT NOT NULL, FOREIGN KEY(`levelCategoryId`) REFERENCES `category`(`categoryId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`levelId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `levelCategoryId` INTEGER NOT NULL, `levelNumber` INTEGER NOT NULL, `passed` INTEGER NOT NULL, `title` TEXT, FOREIGN KEY(`levelCategoryId`) REFERENCES `category`(`categoryId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "levelId",
@@ -62,6 +68,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "levelNumber",
+            "columnName": "levelNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
             "fieldPath": "passed",
             "columnName": "passed",
             "affinity": "INTEGER",
@@ -71,7 +83,7 @@
             "fieldPath": "title",
             "columnName": "title",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -114,7 +126,7 @@
       },
       {
         "tableName": "question",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`questionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `questionLevelId` INTEGER NOT NULL, `title` TEXT NOT NULL, `question` TEXT NOT NULL, `rightAnswer` TEXT NOT NULL, `passed` INTEGER NOT NULL, FOREIGN KEY(`questionLevelId`) REFERENCES `level`(`levelId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`questionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `questionLevelId` INTEGER NOT NULL, `questionNumber` INTEGER NOT NULL, `title` TEXT, `question` TEXT NOT NULL, `rightAnswer` TEXT NOT NULL, `passed` INTEGER NOT NULL, FOREIGN KEY(`questionLevelId`) REFERENCES `level`(`levelId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "questionId",
@@ -129,10 +141,16 @@
             "notNull": true
           },
           {
+            "fieldPath": "questionNumber",
+            "columnName": "questionNumber",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
             "fieldPath": "title",
             "columnName": "title",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "question",
@@ -238,7 +256,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9bc3bdfacaf66e89409c3670f8c9dd9c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c013e417fe31126e85fd6fd6916c26e4\")"
     ]
   }
 }

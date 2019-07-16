@@ -89,7 +89,7 @@ public class QuestionListFragment extends Fragment {
 
     private void initData() {
         questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
-        questionViewModel.getQuestionListByLevel(this.levelId).observe(this, new Observer<List<Question>>() {
+        questionViewModel.getQuestionListByLevelSorted(this.levelId).observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(@Nullable List<Question> questions) {
                 adapter.setQuestions(questions);

@@ -19,8 +19,10 @@ import android.widget.TextView;
 import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.LevelListActivity;
+import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.view.model.CategoryViewModel;
 import com.dariapro.traincounting.view.model.LevelViewModel;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
 
@@ -43,6 +45,8 @@ public class LevelListFragment extends Fragment {
     private LevelAdapter adapter;
 
     private LevelViewModel levelViewModel;
+    private int numberOfAllLevels = 0;
+    private int numberOfPassedLevels = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +99,14 @@ public class LevelListFragment extends Fragment {
                 adapter.setLevels(levels);
             }
         });
+    }
+
+    private void updateCategory() {
+        CategoryViewModel categoryViewModel = ViewModelProviders
+                .of(this).get(CategoryViewModel.class);
+        Category currentCategory = categoryViewModel.getCategoryById(categoryId);
+        currentCategory.setPassed(true);
+        categoryViewModel.update(currentCategory);
     }
 
     private class LevelHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -165,6 +177,11 @@ public class LevelListFragment extends Fragment {
         public void setLevels(List<Level> levels){
             this.levels = levels;
             notifyDataSetChanged();
+            numberOfAllLevels = this.levels.size();
+            numberOfPassedLevels = levelViewModel.getPassedLevelListByCategory(categoryId);
+            if (numberOfAllLevels == numberOfPassedLevels) {
+                updateCategory();
+            }
         }
 
         @Override

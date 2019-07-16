@@ -25,6 +25,10 @@ public class CategoryViewModel extends AndroidViewModel {
         categoriesLiveData = categoryDao.getAll();
     }
 
+    public Category getCategoryById(long id) {
+        return categoryDao.getById(id);
+    }
+
     public LiveData<List<Category>> getCategoryList() {
         return categoriesLiveData;
     }
