@@ -22,22 +22,18 @@ public class Record implements Serializable {
     private long recordId;
 
     @ColumnInfo(name = "level")
-    @NonNull
-    private int level = 0;
+    private int level;
 
     @ColumnInfo(name = "numberOfQuestions")
-    @NonNull
-    private int numberOfQuestions = 0;
+    private int numberOfQuestions;
 
     @ColumnInfo(name = "time")
-    @NonNull
-    private int time = 0;
+    private int time;
 
     /**
      * type: 0 - question, 1 - expression
      */
     @ColumnInfo(name = "type")
-    @NonNull
     private int type = 0;
 
     public Record() {
@@ -61,43 +57,39 @@ public class Record implements Serializable {
         this.recordId = recordId;
     }
 
-    @NonNull
     public int getLevel() {
         return level;
     }
 
-    public void setLevel(@NonNull int level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
-    @NonNull
     public int getNumberOfQuestions() {
         return numberOfQuestions;
     }
 
-    public void setNumberOfQuestions(@NonNull int numberOfQuestions) {
+    public void setNumberOfQuestions(int numberOfQuestions) {
         this.numberOfQuestions = numberOfQuestions;
     }
 
-    @NonNull
     public int getTime() {
         return time;
     }
 
-    public void setTime(@NonNull int time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
     /**
      * Type: question - 0, expression - 1
-     * @return
+     * @return type
      */
-    @NonNull
     public int getType() {
         return type;
     }
 
-    public void setType(@NonNull int type) {
+    public void setType(int type) {
         this.type = type;
     }
 }

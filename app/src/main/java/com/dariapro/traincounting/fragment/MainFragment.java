@@ -2,20 +2,22 @@ package com.dariapro.traincounting.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.MainActivity;
+import com.dariapro.traincounting.activity.ScoresActivity;
+import com.dariapro.traincounting.entity.Mode;
+import com.dariapro.traincounting.entity.QuestionType;
 
 /**
  * @author Pleshchankova Daria
@@ -25,11 +27,29 @@ public class MainFragment extends Fragment {
 
     public static final int REQUEST_EVENT = 1;
 
-    private String modeValue = null;
+    private Button randomExamplesButton = null;
+    private Button randomExpressionsButton = null;
+    private Button solveProblemsButton = null;
 
-    private Button randomExamplesButton;
-    private Button randomExpressionsButton;
-    private Button solveProblemsButton;
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menuInflater.inflate(R.menu.main_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.scores:
+                Intent intent = new Intent(getContext(), ScoresActivity.class);
+                this.startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +59,8 @@ public class MainFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment, container,false);
         randomExamplesButton = view.findViewById(R.id.random_examples);
         randomExpressionsButton = view.findViewById(R.id.random_expressions);
@@ -49,8 +70,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
-                intent.putExtra(Extras.MODE, "random");
-                intent.putExtra(Extras.EXPRESSION_EXTRA, false);
+                intent.putExtra(getContext().getString(R.string.MODE), Mode.RANDOM.name());
+                intent.putExtra(getContext().getString(R.string.QUESTION_TYPE),
+                        QuestionType.QUESTION.name());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -59,8 +81,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newExampleIntent(getActivity());
-                intent.putExtra(Extras.MODE, "random");
-                intent.putExtra(Extras.EXPRESSION_EXTRA, true);
+                intent.putExtra(getContext().getString(R.string.MODE), Mode.RANDOM.name());
+                intent.putExtra(getContext().getString(R.string.QUESTION_TYPE),
+                        QuestionType.EXPRESSION.name());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
@@ -69,17 +92,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = MainActivity.newCategoryIntent(getActivity());
-                intent.putExtra(Extras.MODE, "simple");
+                intent.putExtra(getContext().getString(R.string.MODE), Mode.SIMPLE.name());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });
         return view;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-        super.onCreateOptionsMenu(menu, menuInflater);
-        menuInflater.inflate(R.menu.main_fragment, menu);
     }
 
 }

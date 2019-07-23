@@ -4,10 +4,12 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,15 +18,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.LevelListActivity;
 import com.dariapro.traincounting.entity.Category;
 import com.dariapro.traincounting.entity.Level;
-import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.entity.Mode;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.view.model.CategoryViewModel;
 import com.dariapro.traincounting.view.model.LevelViewModel;
-import com.dariapro.traincounting.view.model.QuestionViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,6 @@ public class LevelListFragment extends Fragment {
     private LevelAdapter adapter;
 
     private LevelViewModel levelViewModel;
-    private int numberOfAllLevels = 0;
-    private int numberOfPassedLevels = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +55,8 @@ public class LevelListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         getExtras();
 
         View view = inflater.inflate(R.layout.level_list_fragment, container,false);
@@ -75,12 +75,32 @@ public class LevelListFragment extends Fragment {
     }
 
     private void getExtras() {
-        this.modeValue = getArguments().getString(Extras.MODE);
-        this.categoryId = getArguments().getLong(Extras.EXTRA_CATEGORY_ID);
+        Bundle args = getArguments();
+        if (args != null) {
+            try {
+                this.modeValue = args.getString(getContext().getString(R.string.MODE));
+                if (modeValue == null){
+                    throw new ExtraIsNullException("Extra " + getContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+                this.categoryId = args.getLong(getContext().getString(R.string.EXTRA_CATEGORY_ID));
+                if (categoryId == 0){
+                    throw new ExtraIsNullException("Extra " +
+                            getContext().getString(R.string.EXTRA_CATEGORY_ID) +
+                            " is equal 0 in " + getClass().getName());
+                }
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getContext().getString(R.string.TAG),
+                        getContext().getString(R.string.MODE) + " or " +
+                                getContext().getString(R.string.EXTRA_CATEGORY_ID) +
+                                " didn't passed");
+            }
+        }
     }
 
     private void updateUI(){
-        if (this.modeValue.equals("simple")) {
+        if (this.modeValue.equals(Mode.SIMPLE.name())) {
             if (adapter == null) {
                 adapter = new LevelAdapter(this.modeValue);
                 recyclerView.setAdapter(adapter);
@@ -93,7 +113,8 @@ public class LevelListFragment extends Fragment {
 
     private void initData() {
         levelViewModel = ViewModelProviders.of(this).get(LevelViewModel.class);
-        levelViewModel.getLevelListByCategory(this.categoryId).observe(this, new Observer<List<Level>>() {
+        levelViewModel.getLevelListByCategory(this.categoryId)
+                      .observe(this, new Observer<List<Level>>() {
             @Override
             public void onChanged(@Nullable List<Level> levels) {
                 adapter.setLevels(levels);
@@ -113,12 +134,12 @@ public class LevelListFragment extends Fragment {
 
         private Level level;
 
-        private String modeValue = null;
+        private String modeValue;
 
-        public TextView titleTextView;
-        public ImageView passedImageView;
+        private TextView titleTextView;
+        private ImageView passedImageView;
 
-        public LevelHolder(View itemView, String mode) {
+        private LevelHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -129,18 +150,18 @@ public class LevelListFragment extends Fragment {
             this.modeValue = mode;
         }
 
-        public void bindEvent(Level lev){
-            level = lev;
-            titleTextView.setText(lev.getTitle());
-            if (level.isPassed()) {
+        public void bindEvent(Level level){
+            this.level = level;
+            titleTextView.setText(this.level.getTitle());
+            if (this.level.isPassed()) {
                 passedImageView.setVisibility(View.VISIBLE);
             }
         }
 
         @Override
-        public void onClick(View v) { ;
+        public void onClick(View v) {
             Intent intent = LevelListActivity.newIntent(getActivity(), level.getLevelId());
-            intent.putExtra(Extras.MODE, this.modeValue);
+            intent.putExtra(getContext().getString(R.string.MODE), this.modeValue);
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -149,27 +170,23 @@ public class LevelListFragment extends Fragment {
 
         private List<Level> levels;
 
-        private String modeValue = null;
+        private String modeValue;
 
-        public LevelAdapter(String mode) {
-            this.levels = new ArrayList<Level>();
+        private LevelAdapter(String mode) {
+            this.levels = new ArrayList<>();
             this.modeValue = mode;
         }
 
-        public LevelAdapter(List<Level> levels, String mode) {
-            this.levels = levels;
-            this.modeValue = mode;
-        }
-
+        @NonNull
         @Override
-        public LevelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public LevelHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.level_item_list, parent, false);
             return new LevelHolder(view, this.modeValue);
         }
 
         @Override
-        public void onBindViewHolder(LevelHolder holder, int position) {
+        public void onBindViewHolder(@NonNull LevelHolder holder, int position) {
             Level level = levels.get(position);
             holder.bindEvent(level);
         }
@@ -177,8 +194,8 @@ public class LevelListFragment extends Fragment {
         public void setLevels(List<Level> levels){
             this.levels = levels;
             notifyDataSetChanged();
-            numberOfAllLevels = this.levels.size();
-            numberOfPassedLevels = levelViewModel.getPassedLevelListByCategory(categoryId);
+            int numberOfAllLevels = this.levels.size();
+            int numberOfPassedLevels = levelViewModel.getPassedLevelListByCategory(categoryId);
             if (numberOfAllLevels == numberOfPassedLevels) {
                 updateCategory();
             }

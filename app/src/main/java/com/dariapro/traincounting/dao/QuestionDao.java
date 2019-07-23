@@ -23,9 +23,6 @@ public interface QuestionDao {
     @Query("SELECT * FROM question")
     LiveData<List<Question>> getAll();
 
-    @Query("SELECT * FROM question ORDER BY questionNumber")
-    LiveData<List<Question>> getAllSorted();
-
     @Query("SELECT * FROM question WHERE questionId = :id")
     Question getById(long id);
 

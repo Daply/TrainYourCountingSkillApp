@@ -1,27 +1,25 @@
 package com.dariapro.traincounting.activity;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
+import com.dariapro.traincounting.entity.QuestionType;
 import com.dariapro.traincounting.entity.Record;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.fragment.QuestionFragment;
 import com.dariapro.traincounting.view.model.RecordViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Pleshchankova Daria
@@ -29,8 +27,11 @@ import java.util.List;
  */
 public class RandomQuestionPagerActivity extends FragmentActivity {
 
+    private final long SECOND = 1000;
+    private final long MINUTE = 60000;
+
     private String modeValue = null;
-    private boolean expression = false;
+    private QuestionType questionType = null;
 
     private int level = 0;
     private int time = 0;
@@ -40,19 +41,17 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     private boolean multiplyOperator = false;
     private boolean divideOperator = false;
 
-    private TextView timerView;
-    private CountDownTimer timer;
+    private TextView timerView = null;
+    private CountDownTimer timer = null;
     private long milliseconds = 0;
 
-    private TextView scoreView;
-    private TextView bestScoreView;
     private int countNumberOfAnsweredQuestions = 0;
 
-    private ViewPager pager = null;
+    private ViewPager viewPager = null;
     private QuestionFragmentPagerAdapter pagerAdapter = null;
 
-    private RecordViewModel recordViewModel;
-    private Record currentRecord;
+    private RecordViewModel recordViewModel = null;
+    private Record currentRecord = null;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -71,42 +70,65 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         timerView = findViewById(R.id.timer);
         startTimer();
 
-        pager = (ViewPager) findViewById(R.id.rand_q_view_pager);
+        viewPager = findViewById(R.id.rand_q_view_pager);
         pagerAdapter = new QuestionFragmentPagerAdapter(getSupportFragmentManager(),
                                                         level,
                                                         modeValue,
-                                                        expression,
+                                                        questionType,
                                                         plusOperator,
                                                         minusOperator,
                                                         multiplyOperator,
                                                         divideOperator);
-        pager.setAdapter(pagerAdapter);
+        viewPager.setAdapter(pagerAdapter);
     }
 
     private void getExtras() {
-        modeValue = getIntent().getExtras().getString(Extras.MODE);
-        expression = getIntent().getExtras().getBoolean(Extras.EXPRESSION_EXTRA);
-        level = getIntent().getExtras().getInt(Extras.LEVEL_EXTRA);
-        time = getIntent().getExtras().getInt(Extras.TIME_EXTRA);
-        milliseconds = time * 60000;
-        plusOperator = getIntent().getExtras().getBoolean(Extras.PLUS_EXTRA);
-        minusOperator = getIntent().getExtras().getBoolean(Extras.MINUS_EXTRA);
-        multiplyOperator = getIntent().getExtras().getBoolean(Extras.MULTIPLY_EXTRA);
-        divideOperator = getIntent().getExtras().getBoolean(Extras.DIVIDE_EXTRA);
+        Bundle args = getIntent().getExtras();
+        if (args != null) {
+            try {
+                modeValue = args.getString(getApplicationContext().getString(R.string.MODE));
+                if (modeValue == null){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+                questionType = QuestionType.valueOf(args.getString(getApplicationContext()
+                        .getString(R.string.QUESTION_TYPE)));
+                level = args.getInt(getApplicationContext().getString(R.string.LEVEL_EXTRA));
+                if (level == 0){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.LEVEL_EXTRA) +
+                            " is equal 0 in " + getClass().getName());
+                }
+                time = args.getInt(getApplicationContext().getString(R.string.TIME_EXTRA));
+                if (level == 0){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.TIME_EXTRA) +
+                            " is equal 0 in " + getClass().getName());
+                }
+                milliseconds = time * MINUTE;
+                plusOperator = args.getBoolean(getApplicationContext().getString(R.string.PLUS_EXTRA));
+                minusOperator = args.getBoolean(getApplicationContext().getString(R.string.MINUS_EXTRA));
+                multiplyOperator = args.getBoolean(getApplicationContext().getString(R.string.MULTIPLY_EXTRA));
+                divideOperator = args.getBoolean(getApplicationContext().getString(R.string.DIVIDE_EXTRA));
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getApplicationContext().getString(R.string.TAG),
+                        getApplicationContext().getString(R.string.MODE) + " or " +
+                                getApplicationContext().getString(R.string.LEVEL_EXTRA) + " or " +
+                                getApplicationContext().getString(R.string.TIME_EXTRA) +
+                                " didn't passed");
+            }
+        }
     }
 
     private void initData() {
         recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
-        if (expression) {
-            this.currentRecord = recordViewModel.getRecordByLevelAndType(this.level, 1);
-        }
-        else {
-            this.currentRecord = recordViewModel.getRecordByLevelAndType(this.level, 0);
-        }
+        this.currentRecord = recordViewModel.getRecordByLevelAndType(this.level, questionType.ordinal());
     }
 
     public void startTimer() {
-        timer = new CountDownTimer(milliseconds, 1000) {
+        timer = new CountDownTimer(milliseconds, SECOND) {
             @Override
             public void onTick(long millisUntilFinished) {
                 milliseconds = millisUntilFinished;
@@ -125,8 +147,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     }
 
     public void updateTimer(boolean finish) {
-        int minutes = (int) (milliseconds / 60000);
-        int seconds = (int) (milliseconds % 60000 / 1000);
+        int minutes = (int) (milliseconds / MINUTE);
+        int seconds = (int) (milliseconds % MINUTE / SECOND);
         if (finish) {
             seconds = 0;
         }
@@ -147,22 +169,24 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     public void setScoreView() {
         setContentView(R.layout.score);
-        scoreView = findViewById(R.id.score_view);
-        scoreView.setText("Your score is " + this.countNumberOfAnsweredQuestions +
-                          " questions in " + this.time + " minute(s)");
-        bestScoreView = findViewById(R.id.best_score_view);
+        TextView scoreView = findViewById(R.id.score_view);
+        String currentScore = "Your score is " + this.countNumberOfAnsweredQuestions +
+                " questions in " + this.time + " minute(s)";
+        scoreView.setText(currentScore);
+        TextView bestScoreView = findViewById(R.id.best_score_view);
         if (this.currentRecord != null) {
             double bestCoefficient = (double) this.currentRecord.getNumberOfQuestions()/
                     (double) this.currentRecord.getTime();
             double currentCoefficient = (double) this.countNumberOfAnsweredQuestions/
                     (double) this.time;
             if (bestCoefficient > currentCoefficient) {
-                bestScoreView.setText("Best score is " +
+                String bestScore = "Best score is " +
                         this.currentRecord.getNumberOfQuestions() +
-                        " questions in " + this.currentRecord.getTime() + " minute(s)");
+                        " questions in " + this.currentRecord.getTime() + " minute(s)";
+                bestScoreView.setText(bestScore);
             }
             else {
-                bestScoreView.setText("New Best Score!");
+                bestScoreView.setText(getApplicationContext().getString(R.string.NEW_BEST_SCORE));
             }
         }
         else {
@@ -171,27 +195,22 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
             newRecord.setNumberOfQuestions(this.countNumberOfAnsweredQuestions);
             newRecord.setTime(this.time);
             newRecord.setLevel(this.level);
-            if (expression) {
-                newRecord.setType(1);
-            }
-            else {
-                newRecord.setType(0);
-            }
+            newRecord.setType(questionType.ordinal());
             recordViewModel.insert(newRecord);
-            bestScoreView.setText("New Best Score!");
+            bestScoreView.setText(getApplicationContext().getString(R.string.NEW_BEST_SCORE));
         }
     }
 
     public int getCurrentQuestion() {
-        return this.pager.getCurrentItem();
+        return this.viewPager.getCurrentItem();
     }
 
     public void setCurrentQuestion(int position) {
-        this.pager.setCurrentItem(position);
+        this.viewPager.setCurrentItem(position);
     }
 
     public void removePreviousQuestion() {
-        int position = pager.getCurrentItem();
+        int position = viewPager.getCurrentItem();
         pagerAdapter.notifyDataSetChanged();
         pagerAdapter.notifyChangeInPosition(position);
     }
@@ -203,19 +222,20 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     private class QuestionFragmentPagerAdapter extends FragmentPagerAdapter {
 
         private int level;
-        private String modeValue = null;
-        private boolean expression = false;
+        private String modeValue;
+        private QuestionType questionType;
 
-        private boolean plus = false;
-        private boolean minus = false;
-        private boolean multiply = false;
-        private boolean divide = false;
+        private boolean plus;
+        private boolean minus;
+        private boolean multiply;
+        private boolean divide;
 
         private long baseId = 0;
 
-        public QuestionFragmentPagerAdapter(FragmentManager fm, int level,
+        private QuestionFragmentPagerAdapter(FragmentManager fm,
+                                            int level,
                                             String modeValue,
-                                            boolean expression,
+                                            QuestionType questionType,
                                             boolean plus,
                                             boolean minus,
                                             boolean multiply,
@@ -223,7 +243,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
             super(fm);
             this.level = level;
             this.modeValue = modeValue;
-            this.expression = expression;
+            this.questionType = questionType;
             this.plus = plus;
             this.minus = minus;
             this.multiply = multiply;
@@ -233,20 +253,21 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             Bundle bundle = new Bundle();
-            bundle.putString(Extras.MODE, this.modeValue);
-            bundle.putInt(Extras.LEVEL_EXTRA, this.level);
-            bundle.putBoolean(Extras.EXPRESSION_EXTRA, expression);
-            bundle.putBoolean(Extras.PLUS_EXTRA, plus);
-            bundle.putBoolean(Extras.MINUS_EXTRA, minus);
-            bundle.putBoolean(Extras.MULTIPLY_EXTRA, multiply);
-            bundle.putBoolean(Extras.DIVIDE_EXTRA, divide);
+            bundle.putString(getApplicationContext().getString(R.string.MODE), this.modeValue);
+            bundle.putInt(getApplicationContext().getString(R.string.LEVEL_EXTRA), this.level);
+            bundle.putString(getApplicationContext().getString(R.string.QUESTION_TYPE),
+                                                                     questionType.name());
+            bundle.putBoolean(getApplicationContext().getString(R.string.PLUS_EXTRA), plus);
+            bundle.putBoolean(getApplicationContext().getString(R.string.MINUS_EXTRA), minus);
+            bundle.putBoolean(getApplicationContext().getString(R.string.MULTIPLY_EXTRA), multiply);
+            bundle.putBoolean(getApplicationContext().getString(R.string.DIVIDE_EXTRA), divide);
             Fragment fragment = new QuestionFragment();
             fragment.setArguments(bundle);
             return fragment;
         }
 
         @Override
-        public int getItemPosition(Object object) {
+        public int getItemPosition(@NonNull Object object) {
             return PagerAdapter.POSITION_NONE;
         }
 
@@ -260,7 +281,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
             return 1;
         }
 
-        public void notifyChangeInPosition(int n) {
+        private void notifyChangeInPosition(int n) {
             baseId += getCount() + n;
         }
     }

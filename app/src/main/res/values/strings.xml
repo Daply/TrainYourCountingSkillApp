@@ -1,18 +1,25 @@
 <resources>
     <string name="app_name">TrainCounting</string>
-    <string name="main_title">Train Your Counting Skills</string>
-    <string name="random_examples_title">Random examples</string>
-    <string name="random_expressions_title">Random expressions</string>
-    <string name="solve_problems_title">Solve problems</string>
-    <string name="set">TrainCounting</string>
-    <string name="category_title">TrainCounting</string>
 
+    <!-- Main screen -->
+    <string name="main_title">Train your counting skills</string>
+    <string name="random_examples_title">Math examples</string>
+    <string name="random_expressions_title">Math expressions</string>
+    <string name="solve_problems_title">Solve problems</string>
+
+    <string name="set">TrainCounting</string>
     <string name="start_randoms">Start</string>
 
     <!-- Titles -->
-    <string name="level_title">Level</string>
+    <string name="category_title">TrainCounting</string>
+    <string name="level_title">Difficulty</string>
     <string name="time_title">Time</string>
     <string name="operators_title">Operators (+ by default)</string>
+    <string name="math_questions_scores">Math questions scores</string>
+    <string name="math_expressions_scores">Math expressions scores</string>
+    <string name="score_level">Level</string>
+    <string name="score_time">Time</string>
+    <string name="score_number_of_questions">Number of answered questions</string>
 
     <!-- Operators -->
     <string name="plus_operator">+</string>
@@ -25,6 +32,50 @@
     <string name="answer_button">Answer</string>
     <string name="skip_button">Skip</string>
 
+    <string name="one_button">1</string>
+    <string name="two_button">2</string>
+    <string name="three_button">3</string>
+    <string name="four_button">4</string>
+    <string name="five_button">5</string>
+    <string name="six_button">6</string>
+    <string name="seven_button">7</string>
+    <string name="eight_button">8</string>
+    <string name="nine_button">9</string>
+    <string name="zero_button">0</string>
+    <string name="clear_all_button">C</string>
+    <string name="delete_button">Delete</string>
+
     <!-- Hint -->
     <string name="answer_hint">answer</string>
+
+    <!-- Extras -->
+    <string name="MODE">com.dariapro.traincounting.mode</string>
+    <string name="EXTRA_CATEGORY_ID">com.dariapro.traincounting.category_id</string>
+    <string name="EXTRA_LEVEL_ID">com.dariapro.traincounting.level_id</string>
+    <string name="EXTRA_QUESTION_ID">com.dariapro.traincounting.question_id</string>
+    <string name="ARG_QUESTION">com.dariapro.traincounting.question</string>
+    <string name="QUESTION_TYPE">com.dariapro.traincounting.question_type</string>
+    <string name="LEVEL_EXTRA">com.dariapro.traincounting.level</string>
+    <string name="TIME_EXTRA">com.dariapro.traincounting.time</string>
+    <string name="PLUS_EXTRA">com.dariapro.traincounting.plus</string>
+    <string name="MINUS_EXTRA">com.dariapro.traincounting.minus</string>
+    <string name="MULTIPLY_EXTRA">com.dariapro.traincounting.multiply</string>
+    <string name="DIVIDE_EXTRA">com.dariapro.traincounting.divide</string>
+
+    <!-- Answer -->
+    <string name="CORRECT">Correct!</string>
+    <string name="NOT_CORRECT">Not correct</string>
+
+    <!-- Score -->
+    <string name="NEW_BEST_SCORE">New Best Score!</string>
+    <string name="all_scores">All best scores</string>
+    <string name="no_scores">No scores for a while</string>
+
+    <!-- Spinners -->
+    <string name="level_spinner">Difficulty</string>
+    <string name="time_spinner">Time</string>
+
+    <!-- Log tag -->
+    <string name="TAG">appLogs</string>
+
 </resources>

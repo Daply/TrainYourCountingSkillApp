@@ -28,36 +28,39 @@ public class Question implements Serializable{
     private long questionId;
 
     @ColumnInfo(name = "questionLevelId")
-    @NonNull
     private long questionLevelId;
 
     @ColumnInfo(name = "questionNumber")
-    @NonNull
     private long questionNumber;
 
     @ColumnInfo(name = "title")
-    private String title = null;
+    private String title;
 
     @ColumnInfo(name = "question")
     @NonNull
-    private String question = null;
+    private String question;
 
     @ColumnInfo(name = "rightAnswer")
     @NonNull
-    private String rightAnswer = null;
+    private String rightAnswer;
 
     @ColumnInfo(name = "passed")
     private boolean passed = false;
 
     @Ignore
-    public Question(String title, String question, String rightAnswer) {
+    public Question(String title,
+                    @NonNull String question,
+                    @NonNull String rightAnswer) {
         this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
         this.question = question;
         this.rightAnswer = rightAnswer;
     }
 
-    public Question(String title, String question, String rightAnswer, long questionLevelId) {
+    public Question(String title,
+                    @NonNull String question,
+                    @NonNull String rightAnswer,
+                    long questionLevelId) {
         this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
         this.question = question;
@@ -81,12 +84,11 @@ public class Question implements Serializable{
         this.questionLevelId = questionLevelId;
     }
 
-    @NonNull
     public long getQuestionNumber() {
         return questionNumber;
     }
 
-    public void setQuestionNumber(@NonNull long questionNumber) {
+    public void setQuestionNumber(long questionNumber) {
         this.questionNumber = questionNumber;
     }
 
@@ -98,19 +100,21 @@ public class Question implements Serializable{
         this.title = title;
     }
 
+    @NonNull
     public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
+    public void setQuestion(@NonNull String question) {
         this.question = question;
     }
 
+    @NonNull
     public String getRightAnswer() {
         return rightAnswer;
     }
 
-    public void setRightAnswer(String rightAnswer) {
+    public void setRightAnswer(@NonNull String rightAnswer) {
         this.rightAnswer = rightAnswer;
     }
 

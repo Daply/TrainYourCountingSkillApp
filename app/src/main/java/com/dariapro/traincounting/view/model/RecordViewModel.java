@@ -29,6 +29,10 @@ public class RecordViewModel extends AndroidViewModel {
         return recordLiveData;
     }
 
+    public LiveData<List<Record>> getRecordByType(int type) {
+        return recordDao.getByType(type);
+    }
+
     public Record getRecordByLevelAndType(int level, int type) {
         return recordDao.getByLevelAndType(level, type);
     }

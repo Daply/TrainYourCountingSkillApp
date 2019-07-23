@@ -55,7 +55,7 @@ public abstract class AppDatabase extends RoomDatabase{
         return INSTANCE;
     }
 
-    public void clearDb() {
+    private void clearDb() {
         if (INSTANCE != null) {
             new AppDatabase.PopulateDbAsync(INSTANCE).execute();
         }
@@ -66,7 +66,7 @@ public abstract class AppDatabase extends RoomDatabase{
         private final QuestionDao questionDao;
         private final RecordDao recordDao;
 
-        public PopulateDbAsync(AppDatabase instance) {
+        private PopulateDbAsync(AppDatabase instance) {
             categoryDao = instance.categoryDao();
             levelDao = instance.levelDao();
             questionDao = instance.questionDao();
@@ -82,7 +82,7 @@ public abstract class AppDatabase extends RoomDatabase{
             return null;
         }
 
-        public void load() {
+        private void load() {
             final long catId = categoryDao.insert(new Category("Simple math"));
             Level lev1 = new Level("Level 1", catId);
             lev1.setLevelNumber(1);

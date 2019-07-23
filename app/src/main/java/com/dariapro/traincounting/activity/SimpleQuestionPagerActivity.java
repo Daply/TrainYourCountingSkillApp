@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.entity.QuestionType;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.fragment.QuestionFragment;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
 
@@ -25,15 +28,28 @@ import java.util.List;
  */
 public class SimpleQuestionPagerActivity extends FragmentActivity {
 
-    private ViewPager viewPager;
+    private ViewPager viewPager = null;
 
-    private QuestionViewModel questionViewModel;
-    private List<Question> questions;
+    private List<Question> questions = null;
 
+    private Question currentQuestion = null;
     private long currentQuestionId = 0;
 
     private String modeValue = null;
     private long levelId = 0;
+
+    protected Fragment createFragment() {
+        Bundle args = new Bundle();
+        if (modeValue != null) {
+            args.putString(getApplicationContext().getString(R.string.MODE), modeValue);
+        }
+        if (currentQuestion != null) {
+            args.putSerializable(getApplicationContext().getString(R.string.ARG_QUESTION), currentQuestion);
+        }
+        QuestionFragment questionFragment = new QuestionFragment();
+        questionFragment.setArguments(args);
+        return questionFragment;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,22 +60,15 @@ public class SimpleQuestionPagerActivity extends FragmentActivity {
 
         initData();
 
-        final long questionId = (long) getIntent().getSerializableExtra(Extras.EXTRA_QUESTION_ID);
-        currentQuestionId = questionId;
         viewPager = findViewById(R.id.activity_question_view_pager);
-        final FragmentManager fragmentManager = getSupportFragmentManager();
-         viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        viewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                if(questionId != 0 && !questions.isEmpty()){
-                    Question question = questions.get(position);
-                    return QuestionFragment.newInstance(question, modeValue);
+                if (questions != null && !questions.isEmpty()) {
+                    currentQuestion = questions.get(position);
                 }
-                Bundle bundle = new Bundle();
-                bundle.putString(Extras.MODE, modeValue);
-                Fragment questionFragment = new QuestionFragment();
-                questionFragment.setArguments(bundle);
-                return questionFragment;
+                return createFragment();
             }
 
             @Override
@@ -74,12 +83,43 @@ public class SimpleQuestionPagerActivity extends FragmentActivity {
     }
 
     private void getExtras() {
-        modeValue = getIntent().getExtras().getString(Extras.MODE);
-        levelId = getIntent().getExtras().getLong(Extras.EXTRA_LEVEL_ID);
+        Bundle args = getIntent().getExtras();
+        if (args != null) {
+            try {
+                modeValue = args.getString(getApplicationContext().getString(R.string.MODE));
+                if (modeValue == null){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+                levelId = args.getLong(getApplicationContext().getString(R.string.EXTRA_LEVEL_ID));
+                if (levelId == 0){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.EXTRA_LEVEL_ID) +
+                            " is equal 0 in " + getClass().getName());
+                }
+                currentQuestionId = args.getLong(getApplicationContext().getString(R.string.EXTRA_QUESTION_ID));
+                if (currentQuestionId == 0){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.EXTRA_QUESTION_ID) +
+                            " is equal 0 in " + getClass().getName());
+                }
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getApplicationContext().getString(R.string.TAG),
+                        getApplicationContext().getString(R.string.MODE) + " or " +
+                                getApplicationContext().getString(R.string.EXTRA_LEVEL_ID) + " or " +
+                                getApplicationContext().getString(R.string.EXTRA_QUESTION_ID) +
+                                " didn't passed");
+            }
+        }
     }
 
     public void setItemPager() {
-        viewPager.getAdapter().notifyDataSetChanged();
+        PagerAdapter adapter = viewPager.getAdapter();
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
         for (int i = 0; i < questions.size(); i++) {
             if (questions.get(i).getQuestionId() == currentQuestionId) {
                 viewPager.setCurrentItem(i);
@@ -109,8 +149,8 @@ public class SimpleQuestionPagerActivity extends FragmentActivity {
 
     private void initData() {
         this.questions = new ArrayList<>();
-        questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
-        questionViewModel.getQuestionListByLevel(levelId).observe(this, new Observer<List<Question>>() {
+        QuestionViewModel questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
+        questionViewModel.getQuestionListByLevelSorted(levelId).observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(@Nullable List<Question> questions) {
                 setQuestions(questions);

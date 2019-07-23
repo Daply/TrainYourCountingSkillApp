@@ -4,10 +4,12 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,11 +18,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.QuestionListActivity;
 import com.dariapro.traincounting.entity.Level;
 import com.dariapro.traincounting.entity.Question;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.view.model.LevelViewModel;
 import com.dariapro.traincounting.view.model.QuestionViewModel;
 
@@ -42,8 +44,12 @@ public class QuestionListFragment extends Fragment {
     private ExampleAdapter adapter;
 
     private QuestionViewModel questionViewModel;
-    private int numberOfAllQuestions = 0;
-    private int numberOfPassedQuestions = 0;
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menuInflater.inflate(R.menu.question_list_fragment, menu);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +59,8 @@ public class QuestionListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         getExtras();
 
         View view = inflater.inflate(R.layout.question_list_fragment, container,false);
@@ -65,15 +72,30 @@ public class QuestionListFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
-        super.onCreateOptionsMenu(menu, menuInflater);
-        menuInflater.inflate(R.menu.problem_list_fragment, menu);
-    }
-
     private void getExtras() {
-        modeValue = getArguments().getString(Extras.MODE);
-        levelId = getArguments().getLong(Extras.EXTRA_LEVEL_ID);
+        Bundle args = getArguments();
+        if (args != null) {
+            try {
+                this.modeValue = args.getString(getContext().getString(R.string.MODE));
+                if (modeValue == null) {
+                    throw new ExtraIsNullException("Extra " +
+                            getContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+                levelId = args.getLong(getContext().getString(R.string.EXTRA_LEVEL_ID));
+                if (levelId == 0) {
+                    throw new ExtraIsNullException("Extra " +
+                            getContext().getString(R.string.EXTRA_LEVEL_ID) +
+                            " is equal 0 in " + getClass().getName());
+                }
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getContext().getString(R.string.TAG),
+                        getContext().getString(R.string.MODE) + " or " +
+                                getContext().getString(R.string.EXTRA_LEVEL_ID) +
+                                " didn't passed");
+            }
+        }
     }
 
     private void updateUI(){
@@ -109,10 +131,10 @@ public class QuestionListFragment extends Fragment {
 
         private Question question;
 
-        public TextView titleTextView;
-        public ImageView passedImageView;
+        private TextView titleTextView;
+        private ImageView passedImageView;
 
-        public ExampleHolder(View itemView) {
+        private ExampleHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -121,19 +143,22 @@ public class QuestionListFragment extends Fragment {
             passedImageView.setVisibility(View.GONE);
         }
 
-        public void bindEvent(Question ex){
-            question = ex;
-            titleTextView.setText(ex.getTitle());
-            if (question.isPassed()) {
+        public void bindEvent(Question question){
+            if (question == null) {
+                return;
+            }
+            this.question = question;
+            titleTextView.setText(this.question.getTitle());
+            if (this.question.isPassed()) {
                 passedImageView.setVisibility(View.VISIBLE);
             }
         }
 
         @Override
-        public void onClick(View v) { ;
+        public void onClick(View v) {
             Intent intent = QuestionListActivity.newIntent(getActivity(), question.getQuestionId());
-            intent.putExtra(Extras.MODE, modeValue);
-            intent.putExtra(Extras.EXTRA_LEVEL_ID, levelId);
+            intent.putExtra(getContext().getString(R.string.MODE), modeValue);
+            intent.putExtra(getContext().getString(R.string.EXTRA_LEVEL_ID), levelId);
             startActivityForResult(intent, REQUEST_EVENT);
         }
     }
@@ -142,23 +167,20 @@ public class QuestionListFragment extends Fragment {
 
         private List<Question> questions;
 
-        public ExampleAdapter() {
-            questions = new ArrayList<Question>();
-        }
-
-        public ExampleAdapter(List<Question> questions) {
-            this.questions = questions;
+        private ExampleAdapter() {
+            questions = new ArrayList<>();
         }
 
         @Override
-        public ExampleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        @NonNull
+        public ExampleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.question_item_list, parent, false);
             return new ExampleHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(ExampleHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ExampleHolder holder, int position) {
             Question question = questions.get(position);
             holder.bindEvent(question);
         }
@@ -166,8 +188,8 @@ public class QuestionListFragment extends Fragment {
         public void setQuestions(List<Question> questions){
             this.questions = questions;
             notifyDataSetChanged();
-            numberOfAllQuestions = this.questions.size();
-            numberOfPassedQuestions = questionViewModel.getPassedQuestionListByLevel(levelId);
+            int numberOfAllQuestions = this.questions.size();
+            int numberOfPassedQuestions = questionViewModel.getPassedQuestionListByLevel(levelId);
             if (numberOfAllQuestions == numberOfPassedQuestions) {
                 updateLevel();
             }

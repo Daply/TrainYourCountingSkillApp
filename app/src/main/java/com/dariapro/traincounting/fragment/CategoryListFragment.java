@@ -4,10 +4,12 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,13 +18,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dariapro.traincounting.Extras;
 import com.dariapro.traincounting.R;
 import com.dariapro.traincounting.activity.CategoryActivity;
 import com.dariapro.traincounting.entity.Category;
-import com.dariapro.traincounting.entity.Level;
+import com.dariapro.traincounting.entity.Mode;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.view.model.CategoryViewModel;
-import com.dariapro.traincounting.view.model.LevelViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +38,8 @@ public class CategoryListFragment extends Fragment {
 
     private String modeValue = null;
 
-    private RecyclerView recyclerView;
-    private CategoryAdapter adapter;
-
-    private CategoryViewModel categoryViewModel;
+    private RecyclerView recyclerView = null;
+    private CategoryAdapter adapter = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +49,8 @@ public class CategoryListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         getExtras();
 
         View view = inflater.inflate(R.layout.category_list_fragment, container,false);
@@ -69,11 +69,26 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void getExtras() {
-        modeValue = getArguments().getString(Extras.MODE);
+        Bundle args = getArguments();
+        if (args != null) {
+            try {
+                modeValue = args.getString(getContext().getString(R.string.MODE));
+                if (modeValue == null){
+                    modeValue = Mode.RANDOM.name();
+                    throw new ExtraIsNullException("Extra " + getContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getContext().getString(R.string.TAG),
+                        getContext().getString(R.string.MODE) +
+                                " didn't passed");
+            }
+        }
     }
 
     private void updateUI() {
-        if (this.modeValue.equals("simple")) {
+        if (this.modeValue.equals(Mode.SIMPLE.name())) {
             if (adapter == null) {
                 adapter = new CategoryAdapter(this.modeValue);
                 recyclerView.setAdapter(adapter);
@@ -85,7 +100,7 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void initData() {
-        categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        CategoryViewModel categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         categoryViewModel.getCategoryList().observe(this, new Observer<List<Category>>() {
             @Override
             public void onChanged(@Nullable List<Category> categories) {
@@ -98,12 +113,12 @@ public class CategoryListFragment extends Fragment {
 
         private Category category;
 
-        private String modeValue = null;
+        private String modeValue;
 
-        public TextView titleTextView;
-        public ImageView passedImageView;
+        private TextView titleTextView;
+        private ImageView passedImageView;
 
-        public CategoryHolder(View itemView, String mode) {
+        private CategoryHolder(View itemView, String mode) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -113,10 +128,10 @@ public class CategoryListFragment extends Fragment {
             this.modeValue = mode;
         }
 
-        public void bindEvent(Category cat){
-            category = cat;
-            titleTextView.setText(cat.getTitle());
-            if (category.isPassed()) {
+        public void bindEvent(Category category){
+            this.category = category;
+            titleTextView.setText(this.category.getTitle());
+            if (this.category.isPassed()) {
                 passedImageView.setVisibility(View.VISIBLE);
             }
         }
@@ -124,7 +139,7 @@ public class CategoryListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = CategoryActivity.newIntent(getActivity(), category.getCategoryId());
-            intent.putExtra(Extras.MODE, modeValue);
+            intent.putExtra(getContext().getString(R.string.MODE), modeValue);
             startActivityForResult(intent,REQUEST_EVENT);
         }
     }
@@ -133,34 +148,30 @@ public class CategoryListFragment extends Fragment {
 
         private List<Category> categories;
 
-        private String modeValue = null;
+        private String modeValue;
 
-        public CategoryAdapter(String mode) {
-            this.categories = new ArrayList<Category>();
+        private CategoryAdapter(String mode) {
+            this.categories = new ArrayList<>();
             this.modeValue = mode;
         }
 
-        public CategoryAdapter(List<Category> categories, String mode) {
-            this.categories = categories;
-            this.modeValue = mode;
-        }
-
+        @NonNull
         @Override
-        public CategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.category_item_list, parent, false);
             return new CategoryHolder(view, this.modeValue);
         }
 
         @Override
-        public void onBindViewHolder(CategoryHolder holder, int position) {
+        public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
             Category category = categories.get(position);
             holder.bindEvent(category);
         }
 
         public void setCategories (List<Category> categories){
             if (categories == null) {
-                this.categories = new ArrayList<Category>();
+                this.categories = new ArrayList<>();
             }
             else {
                 this.categories = categories;

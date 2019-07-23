@@ -30,18 +30,15 @@ public class LevelViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Level>> getLevelListByCategory(long categoryId) {
-        LiveData<List<Level>> levelsCatLiveData = this.levelDao.findLevelsForCategory(categoryId);
-        return levelsCatLiveData;
+        return this.levelDao.findLevelsForCategory(categoryId);
     }
 
     public LiveData<List<Level>> getLevelListByCategorySorted(long categoryId) {
-        LiveData<List<Level>> levelsCatLiveData = this.levelDao.findLevelsForCategorySorted(categoryId);
-        return levelsCatLiveData;
+        return this.levelDao.findLevelsForCategorySorted(categoryId);
     }
 
     public int getPassedLevelListByCategory(long categoryId) {
-        int numberOfPassedLevels = this.levelDao.findPassedLevelsForCategory(categoryId);
-        return numberOfPassedLevels;
+        return this.levelDao.findPassedLevelsForCategory(categoryId);
     }
 
     public Level getLevelById(long id) {

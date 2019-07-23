@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
-import com.dariapro.traincounting.Extras;
+import com.dariapro.traincounting.R;
+import com.dariapro.traincounting.exception.ExtraIsNullException;
 import com.dariapro.traincounting.fragment.CategoryListFragment;
 
 /**
@@ -16,9 +18,24 @@ public class CategoryActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        String value = getIntent().getExtras().getString(Extras.MODE);
+        Bundle args = getIntent().getExtras();
+        String value = null;
+        if (args != null) {
+            try {
+                value = args.getString(getApplicationContext().getString(R.string.MODE));
+                if (value == null){
+                    throw new ExtraIsNullException("Extra " +
+                            getApplicationContext().getString(R.string.MODE) +
+                            " is null in " + getClass().getName());
+                }
+            }
+            catch (ExtraIsNullException e) {
+                Log.e(getApplicationContext().getString(R.string.TAG),
+                        getApplicationContext().getString(R.string.MODE) + " didn't passed");
+            }
+        }
         Bundle bundle = new Bundle();
-        bundle.putString(Extras.MODE, value);
+        bundle.putString(getApplicationContext().getString(R.string.MODE), value);
         Fragment fragment = new CategoryListFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -26,7 +43,7 @@ public class CategoryActivity extends SingleFragmentActivity {
 
     public static Intent newIntent(Context packageContext, long categoryId){
         Intent intent = new Intent(packageContext, LevelListActivity.class);
-        intent.putExtra(Extras.EXTRA_CATEGORY_ID, categoryId);
+        intent.putExtra(packageContext.getString(R.string.EXTRA_CATEGORY_ID), categoryId);
         return intent;
     }
 }

@@ -18,12 +18,10 @@ public class MainActivity extends SingleFragmentActivity {
     }
 
     public static Intent newExampleIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, RandomQuestionStartActivity.class);
-        return intent;
+        return new Intent(packageContext, RandomQuestionStartActivity.class);
     }
 
     public static Intent newCategoryIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, CategoryActivity.class);
-        return intent;
+        return new Intent(packageContext, CategoryActivity.class);
     }
 }

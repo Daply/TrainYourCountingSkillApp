@@ -26,6 +26,9 @@ public interface RecordDao {
     @Query("SELECT * FROM record WHERE recordId = :id")
     Record getById(long id);
 
+    @Query("SELECT * FROM record WHERE type = :type")
+    LiveData<List<Record>> getByType(int type);
+
     @Query("SELECT * FROM record WHERE level = :level AND type = :type")
     Record getByLevelAndType(int level, int type);
 

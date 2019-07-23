@@ -32,21 +32,21 @@
             android:id="@+id/random_examples"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/calculations"
+            android:drawableLeft="@drawable/math_questions"
             android:text="@string/random_examples_title" />
         <Button
             style="@style/AppMainButtonStyle"
             android:id="@+id/random_expressions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/expressions"
+            android:drawableLeft="@drawable/math_expressions"
             android:text="@string/random_expressions_title" />
         <Button
             style="@style/AppMainButtonStyle"
             android:id="@+id/solve_problems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/problem"
+            android:drawableLeft="@drawable/math_problems"
             android:text="@string/solve_problems_title" />
     </LinearLayout>
 

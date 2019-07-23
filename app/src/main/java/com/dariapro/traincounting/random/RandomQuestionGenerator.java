@@ -3,11 +3,8 @@ package com.dariapro.traincounting.random;
 import com.dariapro.traincounting.entity.Question;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.Stack;
 
 /**
  * @author Pleshchankova Daria
@@ -16,8 +13,6 @@ import java.util.Stack;
 public class RandomQuestionGenerator {
     private final String[] operators = {"+", "-", "*", "/"};
     private final String[] otherOperators = {"√"};
-
-    private Map<String, Integer> question = null;
 
     public RandomQuestionGenerator() {
     }
@@ -28,9 +23,9 @@ public class RandomQuestionGenerator {
         return generateTwoRandomNumbers(level, operatorSpecified);
     }
 
-    public int generateOperator(boolean plus, boolean minus,
+    private int generateOperator(boolean plus, boolean minus,
                                 boolean multiply, boolean divide) {
-        List<Integer> operatorsList = new ArrayList<Integer>();
+        List<Integer> operatorsList = new ArrayList<>();
         Random randomOperator = new Random();
         if (plus) {
             operatorsList.add(1);
@@ -48,11 +43,10 @@ public class RandomQuestionGenerator {
             operatorsList.add(1);
         }
         int index = randomOperator.nextInt(operatorsList.size());
-        int operatorSpecified = operatorsList.get(index);
-        return operatorSpecified;
+        return operatorsList.get(index);
     }
 
-    public Question generateTwoRandomNumbers(int level, int operatorSpecified) {
+    private Question generateTwoRandomNumbers(int level, int operatorSpecified) {
         Random numberRandom = new Random();
         int firstNumber = 0;
         while (firstNumber == 0) {
@@ -80,13 +74,12 @@ public class RandomQuestionGenerator {
             firstNumber = firstNumber * secondNumber;
         }
 
-        Question question = new Question("", firstNumber + " " +
+        return new Question("", firstNumber + " " +
                 operators[operatorSpecified-1] + " " +
                 secondNumber, String.valueOf(answer));
-        return question;
     }
 
-    public Question generateExpressionFromQuestionAndNumber(int level, int operatorSpecified,
+    private Question generateExpressionFromQuestionAndNumber(int level, int operatorSpecified,
                                                             Question question) {
         Random numberRandom = new Random();
         int secondNumber = 0;
@@ -116,7 +109,7 @@ public class RandomQuestionGenerator {
             secondNumber = secondNumber * questionAnswer;
         }
 
-        String questionExpression = new String();
+        String questionExpression;
         if (changePlaces) {
             questionExpression = secondNumber + " " + operators[operatorSpecified-1] +
                     " ( " + question.getQuestion() + " )";
@@ -126,8 +119,7 @@ public class RandomQuestionGenerator {
                     operators[operatorSpecified-1] + " " + secondNumber;
         }
 
-        Question newQuestion = new Question("", questionExpression, String.valueOf(answer));
-        return newQuestion;
+        return new Question("", questionExpression, String.valueOf(answer));
     }
 
     public Question generateRandomExpression(int level) {
@@ -136,14 +128,14 @@ public class RandomQuestionGenerator {
         int quantity = quantityRandom.nextInt(2) + 2;
 
         Question question = generateQuestion(level, true, true, true, true);
-        int operator = 0;
+        int operator;
         boolean plus = true;
         boolean minus = true;
         boolean multiply = true;
         boolean divide = true;
         for (int i = 0; i < quantity; i++) {
             if (Integer.parseInt(question.getRightAnswer()) == 0) {
-
+                divide = false;
             }
             operator = generateOperator(plus, minus, multiply, divide);
             question = generateExpressionFromQuestionAndNumber(level, operator, question);

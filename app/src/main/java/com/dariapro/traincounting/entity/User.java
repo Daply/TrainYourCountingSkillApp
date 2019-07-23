@@ -2,8 +2,8 @@ package com.dariapro.traincounting.entity;
 
 public class User {
 
-    private String name = null;
-    private Record randomQuestionsRecord = null;
+    private String name;
+    private Record randomQuestionsRecord;
 
     public User (){
         name = new String();

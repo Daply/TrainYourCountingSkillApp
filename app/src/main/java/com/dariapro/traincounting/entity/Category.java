@@ -23,7 +23,6 @@ public class Category {
     private long categoryId;
 
     @ColumnInfo(name = "categoryNumber")
-    @NonNull
     private long categoryNumber = 0;
 
     @ColumnInfo(name = "passed")
@@ -31,7 +30,7 @@ public class Category {
 
     @ColumnInfo(name = "title")
     @NonNull
-    private String title = null;
+    private String title;
 
     public Category(@NonNull String title) {
         this.title = title;
@@ -45,12 +44,11 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    @NonNull
     public long getCategoryNumber() {
         return categoryNumber;
     }
 
-    public void setCategoryNumber(@NonNull long categoryNumber) {
+    public void setCategoryNumber(long categoryNumber) {
         this.categoryNumber = categoryNumber;
     }
 
@@ -62,11 +60,12 @@ public class Category {
         this.passed = passed;
     }
 
+    @NonNull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NonNull String title) {
         this.title = title;
     }
 }
