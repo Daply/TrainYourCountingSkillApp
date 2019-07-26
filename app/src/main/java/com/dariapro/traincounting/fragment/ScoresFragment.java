@@ -3,10 +3,12 @@ package com.dariapro.traincounting.fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -94,6 +96,7 @@ public class ScoresFragment extends Fragment {
     private void updateView() {
         int countRows = 0;
         TableLayout scoresTable = view.findViewById(R.id.scores_layout);
+        scoresTable.setStretchAllColumns(true);
         if (recordsMathQuestions != null) {
             scoresTable.addView(createTitle(getContext()
                                 .getString(R.string.math_questions_scores)), countRows);
@@ -135,24 +138,28 @@ public class ScoresFragment extends Fragment {
     private TableRow createTitle(String text) {
         TableRow titleRow = new TableRow(getContext());
         TableRow.LayoutParams titleLayoutParams =
-                new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+                new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.WRAP_CONTENT, 3);
+        titleLayoutParams.span = 3;
         titleRow.setLayoutParams(titleLayoutParams);
-        titleRow.addView(createTextView(text, getResources().getColor(R.color.colorRose),
+        titleRow.addView(createTextView(text, getResources().getColor(R.color.colorWhite),
                          25f));
-        titleRow.setGravity(Gravity.CENTER);
+        titleRow.setGravity(Gravity.CENTER_HORIZONTAL);
         return titleRow;
     }
 
     private ImageView createIcon(int imageResource) {
         ImageView imageView = new ImageView(getContext());
         imageView.setImageResource(imageResource);
+        imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.cell_shape));
         return imageView;
     }
 
     private TableRow createTitleRow() {
         TableRow row = new TableRow(getContext());
         TableRow.LayoutParams layoutParams =
-                new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+                new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.WRAP_CONTENT);
         row.setLayoutParams(layoutParams);
         row.addView(createTextView(getContext().getString(R.string.score_level),
                 getResources().getColor(R.color.colorOcean), 20f));
@@ -167,11 +174,12 @@ public class ScoresFragment extends Fragment {
                 new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
         row.setLayoutParams(layoutParams);
         row.addView(createTextView(String.valueOf(record.getLevel()),
-                getResources().getColor(R.color.colorOcean), 20f));
+                getResources().getColor(R.color.colorWhite), 20f));
         row.addView(createTextView(String.valueOf(record.getTime()),
-                getResources().getColor(R.color.colorOcean), 20f));
+                getResources().getColor(R.color.colorWhite), 20f));
         row.addView(createTextView(String.valueOf(record.getNumberOfQuestions()),
-                getResources().getColor(R.color.colorOcean), 20f));
+                getResources().getColor(R.color.colorWhite), 20f));
+        row.setGravity(Gravity.CENTER_HORIZONTAL);
         return row;
     }
 
@@ -180,6 +188,8 @@ public class ScoresFragment extends Fragment {
         textView.setText(text);
         textView.setTextColor(color);
         textView.setTextSize(size);
+        textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        textView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.cell_shape));
         return textView;
     }
 
