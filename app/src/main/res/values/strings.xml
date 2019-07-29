@@ -15,8 +15,8 @@
     <string name="level_title">Difficulty</string>
     <string name="time_title">Time</string>
     <string name="operators_title">Operators (+ by default)</string>
-    <string name="math_questions_scores">Math questions scores</string>
-    <string name="math_expressions_scores">Math expressions scores</string>
+    <string name="math_questions_scores">Math questions best scores</string>
+    <string name="math_expressions_scores">Math expressions best scores</string>
     <string name="score_level">Level</string>
     <string name="score_time">Time</string>
     <string name="score_number_of_questions">Number of answered questions</string>

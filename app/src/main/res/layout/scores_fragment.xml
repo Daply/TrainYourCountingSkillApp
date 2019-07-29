@@ -18,17 +18,54 @@
         android:textSize="30sp" />
 
 
+    <TextView
+        style="@style/AppTextViewStyle"
+        android:id="@+id/questions_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/math_questions_scores"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
             <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/scores_layout"
+                android:id="@+id/questions_scores_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
 
             </TableLayout>
+
+    </ScrollView>
+
+    <TextView
+        style="@style/AppTextViewStyle"
+        android:id="@+id/expressions_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/math_expressions_scores"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/expressions_scores_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:shrinkColumns="*"
+            android:stretchColumns="*">
+
+        </TableLayout>
 
     </ScrollView>
 

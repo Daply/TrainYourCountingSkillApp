@@ -29,8 +29,14 @@ public interface RecordDao {
     @Query("SELECT * FROM record WHERE type = :type")
     LiveData<List<Record>> getByType(int type);
 
+    @Query("SELECT * FROM record WHERE type = :type ORDER BY level")
+    LiveData<List<Record>> getByTypeSortedByLevel(int type);
+
     @Query("SELECT * FROM record WHERE level = :level AND type = :type")
     Record getByLevelAndType(int level, int type);
+
+    @Query("SELECT * FROM record WHERE level = :level AND type = :type AND time = :time")
+    Record getRecordByLevelAndTypeAndTime(int level, int type, int time);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Record record);

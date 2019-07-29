@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dariapro.traincounting.R;
@@ -124,7 +127,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     private void initData() {
         recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
-        this.currentRecord = recordViewModel.getRecordByLevelAndType(this.level, questionType.ordinal());
+        this.currentRecord = recordViewModel
+                .getRecordByLevelAndTypeAndTime(this.level, questionType.ordinal(), this.time);
     }
 
     public void startTimer() {
@@ -173,32 +177,47 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         String currentScore = "Your score is " + this.countNumberOfAnsweredQuestions +
                 " questions in " + this.time + " minute(s)";
         scoreView.setText(currentScore);
+        // best scores layouts set visible or not depending on if user
+        // added new best score
         TextView bestScoreView = findViewById(R.id.best_score_view);
+        LinearLayout bestScoreLayout = findViewById(R.id.best_score_layout);
+        bestScoreLayout.setVisibility(View.GONE);
+        LinearLayout bestScoreCongratsLayout = findViewById(R.id.best_score_congrats_layout);
+        bestScoreCongratsLayout.setVisibility(View.GONE);
         if (this.currentRecord != null) {
-            double bestCoefficient = (double) this.currentRecord.getNumberOfQuestions()/
-                    (double) this.currentRecord.getTime();
-            double currentCoefficient = (double) this.countNumberOfAnsweredQuestions/
-                    (double) this.time;
-            if (bestCoefficient > currentCoefficient) {
+            if (this.currentRecord.getNumberOfQuestions() > this.countNumberOfAnsweredQuestions) {
                 String bestScore = "Best score is " +
                         this.currentRecord.getNumberOfQuestions() +
                         " questions in " + this.currentRecord.getTime() + " minute(s)";
+                bestScoreLayout.setVisibility(View.VISIBLE);
                 bestScoreView.setText(bestScore);
             }
             else {
-                bestScoreView.setText(getApplicationContext().getString(R.string.NEW_BEST_SCORE));
+                if (this.countNumberOfAnsweredQuestions > 0) {
+                    addNewRecord();
+                }
+                bestScoreCongratsLayout.setVisibility(View.VISIBLE);
             }
         }
         else {
-            recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
-            Record newRecord = new Record();
-            newRecord.setNumberOfQuestions(this.countNumberOfAnsweredQuestions);
-            newRecord.setTime(this.time);
-            newRecord.setLevel(this.level);
-            newRecord.setType(questionType.ordinal());
-            recordViewModel.insert(newRecord);
-            bestScoreView.setText(getApplicationContext().getString(R.string.NEW_BEST_SCORE));
+            if (this.countNumberOfAnsweredQuestions > 0) {
+                addNewRecord();
+            }
+            bestScoreCongratsLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void addNewRecord() {
+        recordViewModel = ViewModelProviders.of(this).get(RecordViewModel.class);
+        if (this.currentRecord != null) {
+            recordViewModel.delete(this.currentRecord);
+        }
+        Record newRecord = new Record();
+        newRecord.setNumberOfQuestions(this.countNumberOfAnsweredQuestions);
+        newRecord.setTime(this.time);
+        newRecord.setLevel(this.level);
+        newRecord.setType(questionType.ordinal());
+        recordViewModel.insert(newRecord);
     }
 
     public int getCurrentQuestion() {

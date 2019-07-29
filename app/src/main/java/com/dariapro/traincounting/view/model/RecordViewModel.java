@@ -29,12 +29,24 @@ public class RecordViewModel extends AndroidViewModel {
         return recordLiveData;
     }
 
-    public LiveData<List<Record>> getRecordByType(int type) {
+    public LiveData<List<Record>> getRecordsByType(int type) {
         return recordDao.getByType(type);
+    }
+
+    public LiveData<List<Record>> getRecordsByTypeSortedByLevel(int type) {
+        return recordDao.getByTypeSortedByLevel(type);
     }
 
     public Record getRecordByLevelAndType(int level, int type) {
         return recordDao.getByLevelAndType(level, type);
+    }
+
+    public Record getRecordByLevelAndTypeAndTime(int level, int type, int time) {
+        return recordDao.getRecordByLevelAndTypeAndTime(level, type, time);
+    }
+
+    public void delete(Record record) {
+        recordDao.delete(record);
     }
 
     public void insert(Record... records) {

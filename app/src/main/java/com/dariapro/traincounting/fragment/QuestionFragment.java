@@ -153,9 +153,9 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
                 Log.e(getContext().getString(R.string.TAG),
                         getContext().getString(R.string.MODE) + " didn't passed");
             }
-            QuestionType questionType = QuestionType.valueOf(args.getString(getContext()
-                                                    .getString(R.string.QUESTION_TYPE)));
             if (this.modeValue.equals(Mode.RANDOM.name())) {
+                QuestionType questionType = QuestionType.valueOf(args.getString(getContext()
+                        .getString(R.string.QUESTION_TYPE)));
                 int level = args.getInt(getContext().getString(R.string.LEVEL_EXTRA));
                 RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
                 if (questionType.equals(QuestionType.EXPRESSION)) {
