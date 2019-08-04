@@ -169,8 +169,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
                                                 .getString(R.string.MULTIPLY_EXTRA));
                     boolean divideOperator = args.getBoolean(getContext()
                                                 .getString(R.string.DIVIDE_EXTRA));
+                    boolean rootOperator = args.getBoolean(getContext()
+                                                .getString(R.string.ROOT_EXTRA));
                     question = randomQuestionGenerator.generateQuestion(level, plusOperator, minusOperator,
-                            multiplyOperator, divideOperator);
+                            multiplyOperator, divideOperator, rootOperator);
                 }
             }
             if (this.modeValue.equals(Mode.SIMPLE.name())) {

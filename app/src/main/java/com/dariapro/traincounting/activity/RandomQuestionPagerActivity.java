@@ -43,6 +43,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     private boolean minusOperator = false;
     private boolean multiplyOperator = false;
     private boolean divideOperator = false;
+    private boolean rootOperator = false;
 
     private TextView timerView = null;
     private CountDownTimer timer = null;
@@ -81,7 +82,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
                                                         plusOperator,
                                                         minusOperator,
                                                         multiplyOperator,
-                                                        divideOperator);
+                                                        divideOperator,
+                                                        rootOperator);
         viewPager.setAdapter(pagerAdapter);
     }
 
@@ -114,6 +116,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
                 minusOperator = args.getBoolean(getApplicationContext().getString(R.string.MINUS_EXTRA));
                 multiplyOperator = args.getBoolean(getApplicationContext().getString(R.string.MULTIPLY_EXTRA));
                 divideOperator = args.getBoolean(getApplicationContext().getString(R.string.DIVIDE_EXTRA));
+                rootOperator = args.getBoolean(getApplicationContext().getString(R.string.ROOT_EXTRA));
             }
             catch (ExtraIsNullException e) {
                 Log.e(getApplicationContext().getString(R.string.TAG),
@@ -248,6 +251,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         private boolean minus;
         private boolean multiply;
         private boolean divide;
+        private boolean root;
 
         private long baseId = 0;
 
@@ -258,7 +262,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
                                             boolean plus,
                                             boolean minus,
                                             boolean multiply,
-                                            boolean divide) {
+                                            boolean divide,
+                                             boolean root) {
             super(fm);
             this.level = level;
             this.modeValue = modeValue;
@@ -267,6 +272,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
             this.minus = minus;
             this.multiply = multiply;
             this.divide = divide;
+            this.root = root;
         }
 
         @Override
@@ -280,6 +286,7 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
             bundle.putBoolean(getApplicationContext().getString(R.string.MINUS_EXTRA), minus);
             bundle.putBoolean(getApplicationContext().getString(R.string.MULTIPLY_EXTRA), multiply);
             bundle.putBoolean(getApplicationContext().getString(R.string.DIVIDE_EXTRA), divide);
+            bundle.putBoolean(getApplicationContext().getString(R.string.ROOT_EXTRA), root);
             Fragment fragment = new QuestionFragment();
             fragment.setArguments(bundle);
             return fragment;

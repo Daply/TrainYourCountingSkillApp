@@ -26,6 +26,7 @@
     <string name="minus_operator">-</string>
     <string name="multiply_operator">*</string>
     <string name="divide_operator">/</string>
+    <string name="root_operator">√</string>
 
     <!-- Button titles -->
     <string name="start_button">Start</string>
@@ -49,6 +50,7 @@
     <string name="answer_hint">answer</string>
 
     <!-- Extras -->
+    <string name="PACKAGE">com.dariapro.traincounting</string>
     <string name="MODE">com.dariapro.traincounting.mode</string>
     <string name="EXTRA_CATEGORY_ID">com.dariapro.traincounting.category_id</string>
     <string name="EXTRA_LEVEL_ID">com.dariapro.traincounting.level_id</string>
@@ -61,6 +63,7 @@
     <string name="MINUS_EXTRA">com.dariapro.traincounting.minus</string>
     <string name="MULTIPLY_EXTRA">com.dariapro.traincounting.multiply</string>
     <string name="DIVIDE_EXTRA">com.dariapro.traincounting.divide</string>
+    <string name="ROOT_EXTRA">com.dariapro.traincounting.root</string>
 
     <!-- Answer -->
     <string name="CORRECT">Correct!</string>

@@ -53,7 +53,7 @@ public class RandomQuestionGenerator {
     }
 
     public Question generateQuestion(int level, boolean plus, boolean minus,
-                                     boolean multiply, boolean divide) {
+                                     boolean multiply, boolean divide, boolean root) {
         int operatorSpecified = generateOperator(plus, minus, multiply, divide);
         int firstNumber = generateRandomNumber(level);
         int secondNumber = generateRandomNumber(level);
@@ -76,8 +76,12 @@ public class RandomQuestionGenerator {
             firstNumber = firstNumber * secondNumber;
         }
 
-        int addRootToFirstNumber = new Random().nextInt(2);
-        int addRootToSecondNumber = new Random().nextInt(2);
+        int addRootToFirstNumber = 0;
+        int addRootToSecondNumber = 0;
+        if (root) {
+            addRootToFirstNumber = new Random().nextInt(2);
+            addRootToSecondNumber = new Random().nextInt(2);
+        }
         String firstNumberStr = null;
         if (addRootToFirstNumber == 1) {
             firstNumber = firstNumber * firstNumber;
@@ -144,7 +148,7 @@ public class RandomQuestionGenerator {
         Random quantityRandom = new Random();
         int quantity = quantityRandom.nextInt(2) + 2;
 
-        Question question = generateQuestion(level, true, true, true, true);
+        Question question = generateQuestion(level, true, true, true, true, true);
         boolean plus = true;
         boolean minus = true;
         boolean multiply = true;

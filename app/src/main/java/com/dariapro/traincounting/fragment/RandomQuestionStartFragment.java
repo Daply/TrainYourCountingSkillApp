@@ -47,6 +47,7 @@ public class RandomQuestionStartFragment extends Fragment {
     private CheckBox minusCheckBox = null;
     private CheckBox multiplyCheckBox = null;
     private CheckBox divideCheckBox = null;
+    private CheckBox rootCheckBox = null;
     private Button start = null;
 
     @Override
@@ -117,6 +118,7 @@ public class RandomQuestionStartFragment extends Fragment {
         minusCheckBox = view.findViewById(R.id.minus);
         multiplyCheckBox = view.findViewById(R.id.multiply);
         divideCheckBox = view.findViewById(R.id.divide);
+        rootCheckBox = view.findViewById(R.id.root);
         if (questionType.equals(QuestionType.EXPRESSION)) {
             view.findViewById(R.id.operators_title).setVisibility(View.GONE);
             view.findViewById(R.id.operators_layout).setVisibility(View.GONE);
@@ -137,6 +139,7 @@ public class RandomQuestionStartFragment extends Fragment {
                 intent.putExtra(getContext().getString(R.string.MINUS_EXTRA), minusCheckBox.isChecked());
                 intent.putExtra(getContext().getString(R.string.MULTIPLY_EXTRA), multiplyCheckBox.isChecked());
                 intent.putExtra(getContext().getString(R.string.DIVIDE_EXTRA), divideCheckBox.isChecked());
+                intent.putExtra(getContext().getString(R.string.ROOT_EXTRA), rootCheckBox.isChecked());
                 startActivityForResult(intent, REQUEST_EVENT);
             }
         });

@@ -146,6 +146,19 @@
             android:layout_height="wrap_content"
             android:buttonTint="@android:color/white"/>
 
+        <TextView
+            style="@style/AppTextViewStyle"
+            android:id="@+id/root_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/root_operator"
+            android:textSize="15sp" />
+        <CheckBox
+            android:id="@+id/root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@android:color/white"/>
+
     </LinearLayout>
 
     <RelativeLayout

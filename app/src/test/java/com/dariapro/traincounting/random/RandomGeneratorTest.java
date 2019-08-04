@@ -99,7 +99,7 @@ public class RandomGeneratorTest {
         RandomQuestionGenerator randQuestGen = new RandomQuestionGenerator();
         QuestionParser questionParser = new QuestionParser();
         Question question = randQuestGen
-                .generateQuestion(1, true, true, true, true);
+                .generateQuestion(1, true, true, true, true, true);
         String answer = question.getRightAnswer();
         String rightAnswer = questionParser.parseQuestion(question);
         boolean isRight = answer.contentEquals(rightAnswer);
@@ -112,7 +112,7 @@ public class RandomGeneratorTest {
         RandomQuestionGenerator randQuestGen = new RandomQuestionGenerator();
         QuestionParser questionParser = new QuestionParser();
         Question question = randQuestGen
-                .generateQuestion(1, true, true, true, true);
+                .generateQuestion(1, true, true, true, true, true);
         Question expression = randQuestGen
                 .generateExpressionFromQuestionAndNumber(1, true, true,
                         true, true, question);
