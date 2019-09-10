@@ -44,6 +44,10 @@ public class Question implements Serializable{
     @NonNull
     private String rightAnswer;
 
+    @ColumnInfo(name = "solution")
+    @NonNull
+    private String solution;
+
     @ColumnInfo(name = "passed")
     private boolean passed = false;
 
@@ -55,16 +59,21 @@ public class Question implements Serializable{
         this.title = title;
         this.question = question;
         this.rightAnswer = rightAnswer;
+        this.solution = new String();
     }
 
     public Question(String title,
                     @NonNull String question,
                     @NonNull String rightAnswer,
+                    String solution,
+                    long questionNumber,
                     long questionLevelId) {
         this.questionId = UUID.randomUUID().getMostSignificantBits();
         this.title = title;
         this.question = question;
         this.rightAnswer = rightAnswer;
+        this.solution = solution;
+        this.questionNumber = questionNumber;
         this.questionLevelId = questionLevelId;
     }
 
@@ -116,6 +125,15 @@ public class Question implements Serializable{
 
     public void setRightAnswer(@NonNull String rightAnswer) {
         this.rightAnswer = rightAnswer;
+    }
+
+    @NonNull
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(@NonNull String solution) {
+        this.solution = solution;
     }
 
     public boolean isPassed() {

@@ -32,8 +32,9 @@ public class Category {
     @NonNull
     private String title;
 
-    public Category(@NonNull String title) {
+    public Category(@NonNull String title, long categoryNumber) {
         this.title = title;
+        this.categoryNumber = categoryNumber;
     }
 
     public long getCategoryId() {

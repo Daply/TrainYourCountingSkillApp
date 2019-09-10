@@ -41,7 +41,7 @@ public class QuestionListFragment extends Fragment {
     private long levelId;
 
     private RecyclerView recyclerView;
-    private ExampleAdapter adapter;
+    private QuestionAdapter adapter;
 
     private QuestionViewModel questionViewModel;
 
@@ -100,7 +100,7 @@ public class QuestionListFragment extends Fragment {
 
     private void updateUI(){
         if(adapter == null){
-            adapter = new ExampleAdapter();
+            adapter = new QuestionAdapter();
             recyclerView.setAdapter(adapter);
         }
         else{
@@ -127,14 +127,14 @@ public class QuestionListFragment extends Fragment {
         levelViewModel.update(currentLevel);
     }
 
-    private class ExampleHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class QuestionHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private Question question;
 
         private TextView titleTextView;
         private ImageView passedImageView;
 
-        private ExampleHolder(View itemView) {
+        private QuestionHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -163,24 +163,24 @@ public class QuestionListFragment extends Fragment {
         }
     }
 
-    private class ExampleAdapter extends RecyclerView.Adapter<ExampleHolder>{
+    private class QuestionAdapter extends RecyclerView.Adapter<QuestionHolder>{
 
         private List<Question> questions;
 
-        private ExampleAdapter() {
+        private QuestionAdapter() {
             questions = new ArrayList<>();
         }
 
         @Override
         @NonNull
-        public ExampleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public QuestionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
             View view = inflater.inflate(R.layout.question_item_list, parent, false);
-            return new ExampleHolder(view);
+            return new QuestionHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ExampleHolder holder, int position) {
+        public void onBindViewHolder(@NonNull QuestionHolder holder, int position) {
             Question question = questions.get(position);
             holder.bindEvent(question);
         }

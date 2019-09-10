@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c013e417fe31126e85fd6fd6916c26e4",
+    "identityHash": "541bf9c22d36aaa93276f6bb95eba70f",
     "entities": [
       {
         "tableName": "category",
@@ -126,7 +126,7 @@
       },
       {
         "tableName": "question",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`questionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `questionLevelId` INTEGER NOT NULL, `questionNumber` INTEGER NOT NULL, `title` TEXT, `question` TEXT NOT NULL, `rightAnswer` TEXT NOT NULL, `passed` INTEGER NOT NULL, FOREIGN KEY(`questionLevelId`) REFERENCES `level`(`levelId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`questionId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `questionLevelId` INTEGER NOT NULL, `questionNumber` INTEGER NOT NULL, `title` TEXT, `question` TEXT NOT NULL, `rightAnswer` TEXT NOT NULL, `solution` TEXT NOT NULL, `passed` INTEGER NOT NULL, FOREIGN KEY(`questionLevelId`) REFERENCES `level`(`levelId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "questionId",
@@ -161,6 +161,12 @@
           {
             "fieldPath": "rightAnswer",
             "columnName": "rightAnswer",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "solution",
+            "columnName": "solution",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -256,7 +262,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c013e417fe31126e85fd6fd6916c26e4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"541bf9c22d36aaa93276f6bb95eba70f\")"
     ]
   }
 }

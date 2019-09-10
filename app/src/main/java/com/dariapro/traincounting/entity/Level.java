@@ -41,8 +41,9 @@ public class Level {
     @ColumnInfo(name = "title")
     private String title;
 
-    public Level(@NonNull String title, long levelCategoryId) {
+    public Level(@NonNull String title, long levelNumber, long levelCategoryId) {
         this.title = title;
+        this.levelNumber = levelNumber;
         this.levelCategoryId = levelCategoryId;
     }
 
