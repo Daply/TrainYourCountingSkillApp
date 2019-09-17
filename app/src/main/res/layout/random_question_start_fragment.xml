@@ -38,7 +38,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/drop_32" />
+            android:src="@drawable/drop_32" />
 
     </RelativeLayout>
 
@@ -73,7 +73,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/drop_32" />
+            android:src="@drawable/drop_32" />
 
     </RelativeLayout>
 
@@ -168,13 +168,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <Button
-            android:theme="@style/AppButtonStyle"
+            style="@style/AppButtonStyle"
             android:id="@+id/start_randoms"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/start_button"
-            android:height="60dp"
+            android:height="50dp"
             android:textSize="15sp"
             android:textColor="@android:color/holo_blue_dark"/>
 

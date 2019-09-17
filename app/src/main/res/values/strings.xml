@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrainCounting</string>
+    <string name="app_name">TrainYourCountingSkills</string>
 
     <!-- Main screen -->
     <string name="main_title">Train your counting skills</string>
@@ -80,5 +80,5 @@
 
     <!-- Log tag -->
     <string name="TAG">appLogs</string>
-
+    <string name="see_answer_button">See answer</string>
 </resources>

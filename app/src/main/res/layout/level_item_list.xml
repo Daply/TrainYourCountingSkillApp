@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/passed_32" />
+            android:src="@drawable/passed_32" />
 
     </RelativeLayout>
 
