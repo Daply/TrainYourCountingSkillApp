@@ -2,9 +2,6 @@ package com.dariapro.trainyourcountingskills.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +15,10 @@ import com.dariapro.trainyourcountingskills.activity.MainActivity;
 import com.dariapro.trainyourcountingskills.activity.ScoresActivity;
 import com.dariapro.trainyourcountingskills.entity.Mode;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * @author Pleshchankova Daria

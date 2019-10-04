@@ -2,9 +2,10 @@ package com.dariapro.trainyourcountingskills.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 
 import com.dariapro.trainyourcountingskills.fragment.MainFragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @author Pleshchankova Daria

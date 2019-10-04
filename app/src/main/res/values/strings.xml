@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrainYourCountingSkills</string>
+    <string name="app_name">Train your counting skills</string>
 
     <!-- Main screen -->
     <string name="main_title">Train your counting skills</string>
@@ -44,7 +44,7 @@
     <string name="nine_button">9</string>
     <string name="zero_button">0</string>
     <string name="clear_all_button">C</string>
-    <string name="delete_button">Delete</string>
+    <string name="delete_button">Del</string>
 
     <!-- Hint -->
     <string name="answer_hint">answer</string>
@@ -69,7 +69,15 @@
     <string name="CORRECT">Correct!</string>
     <string name="NOT_CORRECT">Not correct</string>
 
+    <!-- Score result headers-->
+    <string name="your_score">Your score is</string>
+    <string name="your_best_score">Your best score is</string>
+    <string name="score_questions">questions in</string>
+    <string name="score_time_scale">minute(s)</string>
+
     <!-- Score -->
+    <string name="questions_scores">Questions</string>
+    <string name="expressions_scores">Expressions</string>
     <string name="NEW_BEST_SCORE">New Best Score!</string>
     <string name="all_scores">All best scores</string>
     <string name="no_scores">No scores for a while</string>
@@ -77,6 +85,10 @@
     <!-- Spinners -->
     <string name="level_spinner">Difficulty</string>
     <string name="time_spinner">Time</string>
+
+    <!-- Answers -->
+    <string name="solution_title">Solution</string>
+    <string name="answer_title">Answer</string>
 
     <!-- Log tag -->
     <string name="TAG">appLogs</string>

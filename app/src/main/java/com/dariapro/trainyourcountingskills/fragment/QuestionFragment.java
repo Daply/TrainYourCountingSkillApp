@@ -1,13 +1,10 @@
 package com.dariapro.trainyourcountingskills.fragment;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
@@ -29,9 +27,17 @@ import com.dariapro.trainyourcountingskills.entity.QuestionType;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
 import com.dariapro.trainyourcountingskills.random.RandomQuestionGenerator;
 import com.dariapro.trainyourcountingskills.viewmodel.QuestionViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 /**
  * @author Pleshchankova Daria
@@ -51,7 +57,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
     private Button getAnswerButton = null;
     private EditText answerField = null;
     private String answer = null;
-    private TextView correctAnswer = null;
 
     private Button oneButton = null;
     private Button twoButton = null;
@@ -64,7 +69,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
     private Button nineButton = null;
     private Button zeroButton = null;
     private Button clearAllButton = null;
-    private Button deleteButton = null;
+    private ImageButton deleteButton = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,12 +100,12 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         answerField.setFocusable(false);
         answerButton = view.findViewById(R.id.question_answer_button);
         answerButton.setOnClickListener(new View.OnClickListener(){
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 answer = answerField.getText().toString();
                 if (answer.equals(question.getRightAnswer())) {
-                    correctAnswer = view.findViewById(R.id.question_answer_result);
-                    correctAnswer.setText(getContext().getString(R.string.CORRECT));
+                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.colorGreen));
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -115,8 +120,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
                     }, 500);
                 }
                 else {
-                    correctAnswer = view.findViewById(R.id.question_answer_result);
-                    correctAnswer.setText(getContext().getString(R.string.NOT_CORRECT));
+                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.colorRed));
                 }
             }
         });
@@ -230,7 +234,6 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
 
     public void clearFields() {
         answerField.setText(new String());
-        correctAnswer.setText(new String());
     }
 
     public void shiftRandomQuestion(boolean skip) {
@@ -313,9 +316,11 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
 
     public void cutText() {
         String text = answerField.getText().toString();
-        text = text.substring(0, text.length()-1);
-        answerField.setText(text);
-        answerField.moveCursorToVisibleOffset();
+        if (text.length() > 0) {
+            text = text.substring(0, text.length() - 1);
+            answerField.setText(text);
+            answerField.moveCursorToVisibleOffset();
+        }
     }
 
     public void switchToAnswerActivity() {

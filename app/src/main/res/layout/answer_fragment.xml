@@ -1,36 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/question"
-    android:orientation="vertical"
-    android:background="@drawable/pattern">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/answer"
+    android:orientation="vertical">
 
-        <TextView
-            android:theme="@style/AppTextViewStyle"
-            android:id="@+id/question_title"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:gravity="center" />
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="@dimen/mtrl_card_spacing"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            android:minHeight="300dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true">
 
-        <TextView
-            android:theme="@style/AppTextViewStyle"
-            android:id="@+id/question_solution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:gravity="center" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
 
-        <TextView
-            style="@style/AppTextViewStyle"
-            android:id="@+id/question_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#00feb2"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:gravity="center" />
+                <TextView
+                    android:theme="@style/AppTextViewStyle"
+                    android:id="@+id/question_answer_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/answer_title"/>
 
-</LinearLayout>
+                <TextView
+                    style="@style/AppTextViewStyle"
+                    android:id="@+id/question_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreen"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:theme="@style/AppTextViewStyle"
+                    android:id="@+id/question_solution_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/solution_title"/>
+
+                <TextView
+                    android:id="@+id/question_solution"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:scrollbars="vertical"
+                    android:minLines="1"
+                    android:maxLines="17"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

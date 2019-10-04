@@ -11,6 +11,10 @@ import java.util.Random;
  *
  */
 public class RandomQuestionGenerator {
+
+    private final int MIN_LEVEL = 1;
+    private final int MAX_LEVEL = 3;
+
     private final String[] operators = {"+", "-", "*", "/"};
     private final String[] otherOperators = {"√"};
 
@@ -41,7 +45,7 @@ public class RandomQuestionGenerator {
     }
 
     public int generateRandomNumber(int level) {
-        if (level <= 0 || level > 5) {
+        if (level < MIN_LEVEL || level > MAX_LEVEL) {
             level = 1;
         }
         Random numberRandom = new Random();
@@ -84,16 +88,28 @@ public class RandomQuestionGenerator {
         }
         String firstNumberStr = null;
         if (addRootToFirstNumber == 1) {
-            firstNumber = firstNumber * firstNumber;
-            firstNumberStr = otherOperators[0] + firstNumber;
+            int square = firstNumber * firstNumber;
+            if (square > 0) {
+                firstNumber = square;
+                firstNumberStr = otherOperators[0] + firstNumber;
+            }
+            else {
+                firstNumberStr = String.valueOf(firstNumber);
+            }
         }
         else {
             firstNumberStr = String.valueOf(firstNumber);
         }
         String secondNumberStr = null;
         if (addRootToSecondNumber == 1) {
-            secondNumber = secondNumber * secondNumber;
-            secondNumberStr = otherOperators[0] + secondNumber;
+            int square = secondNumber * secondNumber;
+            if (square > 0) {
+                secondNumber = square;
+                secondNumberStr = otherOperators[0] + secondNumber;
+            }
+            else {
+                secondNumberStr = String.valueOf(secondNumber);
+            }
         }
         else {
             secondNumberStr = String.valueOf(secondNumber);

@@ -1,15 +1,9 @@
 package com.dariapro.trainyourcountingskills.activity;
 
-import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -17,17 +11,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
+import com.dariapro.trainyourcountingskills.dialog.ResultDialog;
+import com.dariapro.trainyourcountingskills.entity.Mode;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
 import com.dariapro.trainyourcountingskills.entity.Record;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
 import com.dariapro.trainyourcountingskills.fragment.QuestionFragment;
 import com.dariapro.trainyourcountingskills.viewmodel.RecordViewModel;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 /**
  * @author Pleshchankova Daria
  *
  */
 public class RandomQuestionPagerActivity extends FragmentActivity {
+
+    public static final int REQUEST_EVENT = 1;
 
     private final long SECOND = 1000;
     private final long MINUTE = 60000;
@@ -52,6 +60,8 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
 
     private ViewPager viewPager = null;
     private QuestionFragmentPagerAdapter pagerAdapter = null;
+
+    private AlertDialog resultDialog = null;
 
     private RecordViewModel recordViewModel = null;
     private Record currentRecord = null;
@@ -176,35 +186,51 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
     public void setScoreView() {
         setContentView(R.layout.score);
         TextView scoreView = findViewById(R.id.score_view);
-        String currentScore = "Your score is " + this.countNumberOfAnsweredQuestions +
-                " questions in " + this.time + " minute(s)";
+        String currentScore = getApplicationContext()
+                .getResources()
+                .getString(R.string.your_score) +
+                " " + this.countNumberOfAnsweredQuestions + " " +
+                getApplicationContext()
+                        .getResources()
+                        .getString(R.string.score_questions) +
+                " " + this.time + " " +
+                getApplicationContext()
+                        .getResources()
+                        .getString(R.string.score_time_scale);
         scoreView.setText(currentScore);
-        // best scores layouts set visible or not depending on if user
-        // added new best score
         TextView bestScoreView = findViewById(R.id.best_score_view);
-        LinearLayout bestScoreLayout = findViewById(R.id.best_score_layout);
-        bestScoreLayout.setVisibility(View.GONE);
-        LinearLayout bestScoreCongratsLayout = findViewById(R.id.best_score_congrats_layout);
-        bestScoreCongratsLayout.setVisibility(View.GONE);
+        bestScoreView.setVisibility(View.GONE);
         if (this.currentRecord != null) {
             if (this.currentRecord.getNumberOfQuestions() > this.countNumberOfAnsweredQuestions) {
-                String bestScore = "Best score is " +
-                        this.currentRecord.getNumberOfQuestions() +
-                        " questions in " + this.currentRecord.getTime() + " minute(s)";
-                bestScoreLayout.setVisibility(View.VISIBLE);
+                String bestScore = getApplicationContext()
+                        .getResources()
+                        .getString(R.string.your_best_score) +
+                        " " + this.currentRecord.getNumberOfQuestions() + " " +
+                        getApplicationContext()
+                                .getResources()
+                                .getString(R.string.score_questions) +
+                        " " + this.currentRecord.getTime() + " " +
+                        getApplicationContext()
+                                .getResources()
+                                .getString(R.string.score_time_scale);
+                bestScoreView.setVisibility(View.VISIBLE);
                 bestScoreView.setText(bestScore);
             }
             else {
                 if (this.countNumberOfAnsweredQuestions > 0) {
+                    ResultDialog congratsDialog =
+                            new ResultDialog(RandomQuestionPagerActivity.this);
+                    congratsDialog.show();
                     addNewRecord();
-                    bestScoreCongratsLayout.setVisibility(View.VISIBLE);
                 }
             }
         }
         else {
             if (this.countNumberOfAnsweredQuestions > 0) {
+                ResultDialog resultDialog =
+                        new ResultDialog(RandomQuestionPagerActivity.this);
+                resultDialog.show();
                 addNewRecord();
-                bestScoreCongratsLayout.setVisibility(View.VISIBLE);
             }
         }
     }

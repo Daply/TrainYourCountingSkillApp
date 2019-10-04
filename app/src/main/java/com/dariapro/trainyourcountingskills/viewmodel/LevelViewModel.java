@@ -1,15 +1,16 @@
 package com.dariapro.trainyourcountingskills.viewmodel;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.support.annotation.NonNull;
 
 import com.dariapro.trainyourcountingskills.dao.LevelDao;
 import com.dariapro.trainyourcountingskills.database.AppDatabase;
 import com.dariapro.trainyourcountingskills.entity.Level;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 /**
  * @author Pleshchankova Daria

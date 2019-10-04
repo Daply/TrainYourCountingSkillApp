@@ -1,9 +1,7 @@
 package com.dariapro.trainyourcountingskills.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +13,10 @@ import android.widget.TextView;
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.entity.Question;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * @author Pleshchankova Daria
@@ -51,6 +53,7 @@ public class AnswerFragment extends Fragment {
 
         questionSolution = view.findViewById(R.id.question_solution);
         questionSolution.setText(question.getSolution());
+        questionSolution.setMovementMethod(new ScrollingMovementMethod());
         questionAnswer = view.findViewById(R.id.question_answer);
         questionAnswer.setText(question.getRightAnswer());
 

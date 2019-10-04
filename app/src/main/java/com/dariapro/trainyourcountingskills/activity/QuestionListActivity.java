@@ -3,12 +3,13 @@ package com.dariapro.trainyourcountingskills.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
 import com.dariapro.trainyourcountingskills.fragment.QuestionListFragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @author Pleshchankova Daria

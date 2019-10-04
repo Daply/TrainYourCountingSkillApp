@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/random_question_start_fragment"
-    android:orientation="vertical"
-    android:background="@drawable/pattern">
+    android:orientation="vertical">
 
     <TextView
         android:theme="@style/AppTextViewStyle"
         android:id="@+id/level_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:text="@string/level_title" />
+        android:text="@string/level_title"
+        android:drawableLeft="@drawable/star_32_corners"/>
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/darker_gray"/>
 
     <RelativeLayout
         android:id="@+id/level_spinner_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:layout_gravity="center"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -45,16 +53,24 @@
     <TextView
         style="@style/AppTextViewStyle"
         android:id="@+id/time_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:text="@string/time_title" />
+        android:text="@string/time_title"
+        android:drawableLeft="@drawable/time_32_corners"/>
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/darker_gray"/>
 
     <RelativeLayout
         android:id="@+id/time_spinner_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal">
 
@@ -100,12 +116,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/plus_operator"
-            android:textSize="25sp" />
+            android:textSize="35sp" />
         <CheckBox
             android:id="@+id/plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@android:color/white"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:background="?android:attr/listChoiceIndicatorMultiple"/>
 
         <TextView
             style="@style/AppTextViewStyle"
@@ -113,12 +130,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/minus_operator"
-            android:textSize="15sp" />
+            android:textSize="35sp" />
         <CheckBox
             android:id="@+id/minus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@android:color/white"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:background="?android:attr/listChoiceIndicatorMultiple"/>
 
         <TextView
             style="@style/AppTextViewStyle"
@@ -126,12 +144,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/multiply_operator"
-            android:textSize="15sp" />
+            android:textSize="35sp" />
         <CheckBox
             android:id="@+id/multiply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@android:color/white"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:background="?android:attr/listChoiceIndicatorMultiple"/>
 
         <TextView
             style="@style/AppTextViewStyle"
@@ -139,12 +158,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/divide_operator"
-            android:textSize="15sp" />
+            android:textSize="35sp" />
         <CheckBox
             android:id="@+id/divide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@android:color/white"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:background="?android:attr/listChoiceIndicatorMultiple"/>
 
         <TextView
             style="@style/AppTextViewStyle"
@@ -152,12 +172,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/root_operator"
-            android:textSize="15sp" />
+            android:textSize="35sp" />
         <CheckBox
             android:id="@+id/root"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@android:color/white"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:button="@null"
+            android:background="?android:attr/listChoiceIndicatorMultiple"/>
 
     </LinearLayout>
 
@@ -168,14 +189,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <Button
-            style="@style/AppButtonStyle"
+            style="@style/AppMainButtonStyle"
             android:id="@+id/start_randoms"
             android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/start_button"
-            android:height="50dp"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textColor="@android:color/holo_blue_dark"/>
 
     </RelativeLayout>

@@ -1,77 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/question"
-    android:orientation="vertical"
-    android:background="@drawable/pattern">
+    android:orientation="vertical">
 
-    <!--<ScrollView-->
-        <!--android:id="@+id/SCROLLER_ID"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:scrollbars="vertical"-->
-        <!--android:fillViewport="true">-->
-        <TextView
-            android:theme="@style/AppTextViewStyle"
-            android:id="@+id/question_expression"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="5dp"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:scrollbars="vertical"
-            android:minLines="1"
-            android:maxLines="7"
-            android:layout_weight="1"/>
-        <EditText
-            style="@style/AppEditTextStyle"
-            android:id="@+id/question_answer"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="number"
-            android:textColor="#000"
-            android:layout_margin="20dp"
-            android:hint="@string/answer_hint"/>
-        <Button
-            style="@style/AppButtonStyle"
-            android:id="@+id/question_answer_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/answer_button" />
+            android:minHeight="80dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="8dp"
+            app:contentPadding="5dp"
+            app:cardCornerRadius="3dp"
+            app:cardUseCompatPadding="true">
+            <TextView
+                android:id="@+id/question_expression"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:scrollbars="vertical"
+                android:minLines="1"
+                android:maxLines="5"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="20sp"/>
 
-        <Button
-            style="@style/AppButtonStyle"
-            android:id="@+id/skip_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/skip_button" />
+        </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            style="@style/AppButtonStyle"
-            android:id="@+id/see_answer_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/see_answer_button" />
+    </LinearLayout>
 
-        <TextView
-            style="@style/AppTextViewStyle"
-            android:id="@+id/question_answer_result"
-            android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#00feb2"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            android:gravity="center" />
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <EditText
+                style="@style/AppEditTextStyle"
+                android:id="@+id/question_answer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:textColor="#000"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/answer_hint"/>
+
+            <Button
+                style="@style/AppMainButtonStyle"
+                android:id="@+id/question_answer_button"
+                android:layout_width="fill_parent"
+                android:textSize="18sp"
+                android:text="@string/answer_button" />
+            <Button
+                style="@style/AppMainButtonStyle"
+                android:id="@+id/skip_button"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="2dp"
+                android:textSize="18sp"
+                android:text="@string/skip_button" />
+            <Button
+                style="@style/AppMainButtonStyle"
+                android:id="@+id/see_answer_button"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="2dp"
+                android:textSize="18sp"
+                android:text="@string/see_answer_button" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -84,62 +105,64 @@
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/one_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/one_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/two_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/two_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/three_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/three_button" />
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:weightSum="3">
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/four_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/four_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/five_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/five_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/six_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/six_button" />
         </LinearLayout>
@@ -148,33 +171,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:weightSum="3">
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/seven_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/seven_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/eight_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/eight_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/nine_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/nine_button" />
         </LinearLayout>
@@ -183,34 +206,37 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:weightSum="3">
-                <Button
+                <ImageButton
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/delete_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
-                    android:text="@string/delete_button" />
+                    android:src="@drawable/input_delete_32"/>
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/zero_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/zero_button" />
                 <Button
                     style="@style/NumbersButtonStyle"
                     android:id="@+id/clear_all_button"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
                     android:layout_weight="1"
                     android:text="@string/clear_all_button" />
         </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout >

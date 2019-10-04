@@ -1,1455 +1,1455 @@
 {"categories": [
-       {
-			"title": "Simple math",
-			"categoryNumber": "1",
-			"levels": [
-			   {
-				  "title": "Level 1",
-				  "levelNumber": "1",
-				  "questions": [
-				      {
-					    "title": "Question 1",
+	{
+		"title": "Simple math",
+		"categoryNumber": "1",
+		"levels": [
+			{
+				"title": "Level 1",
+				"levelNumber": "1",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "Suzy and Lilly bought a pack of candies. Suzy ate 5 candies and Lilly ate 6 candies more than Suzy. In the pack there was left only 4 candies. How many candies there were in the pack before girls started eat it?",
 						"answer": "20",
 						"solution": "5+6=11 candies ate Lilly, 5+11+4=20 candies were in the pack -> the answer is 20",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "John has 11 dinosaurs in his collection. Santa Klaus gifted him 5 more dinosaurs for Christmas then parents and friends gifted him 9 dinosaurs more than Santa Klaus for Birthday. How many dinosaurs John has now?",
 						"answer": "30",
 						"solution": "5+9=14 dinosaurs parents gifted to John, 11+5+14=30 dinosaurs John has now -> the answer is 30",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "Elon likes to read books. For the march he read 23 books, for April he read 12 book less than for march and for May he read 8 books more than for April. How many books Elon read for spring?",
 						"answer": "53",
 						"solution": "23-12=11 books Elon read for April, 11+8=19 books Elon read for May, 23+11+19=53 books read Elon for spring -> the answer is 53",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "Aisha got 8 dollars from Tooth Fairy, she already got 23 dollars. She bought a doll for 15 dollars. How much money in dollars is she left?",
 						"answer": "16",
 						"solution": "8+23=31 dollars Aisha got after the Tooth Fairy present, 31-15=16 dollars Aisha left after buying a doll -> the answer is 16",
-                        "questionNumber": "4"						
-					  },
-				      {
-					    "title": "Question 5",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "Tony counted leaves on the tree. On the one side of the tree there were 17 leaves more than on the other one and on the other side there were 28 leaves. How many leaves there were on the tree?",
 						"answer": "73",
 						"solution": "28+17=45 leaves there were on the first side of the tree, 28+45=73 leaves were on the whole tree -> the answer is 73",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "Eric needs to do math problems for a week. On the Monday he did 11 problems, on Tuesday he did 17 problems more than on Monday, on Wednesday and Thursday he did 5 problems less than on Tuesday, on the Friday Eric didn't do any problems and on the weekend he did 25 problems. How many problems Eric did for a week?",
 						"answer": "87",
 						"solution": "11+17=28 problems Eric did on Tuesday, 28-5=23 problems Eric did on Wednesday and Thursday -> 11+28+23+25=87 problems Eric did for a week -> the answer is 87",
-                        "questionNumber": "6"						
-					  }
-				  ]
-			   },
-			   {
-				  "title": "Level 2",
-				  "levelNumber": "2",
-				  "questions": [		  
-					  {
-					    "title": "Question 1",
+						"questionNumber": "6"
+					}
+				]
+			},
+			{
+				"title": "Level 2",
+				"levelNumber": "2",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "For 9 photo albums they paid 63 dollars. How much in dollars cost 3 of these albums?",
 						"answer": "21",
 						"solution": "63/9=7 dollars paid for one album, 3*7=21 dollars cost 3 albums -> the answer is 21",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "9 jars cost 54 dollars. How much in dollars cost 4 of these jars?",
 						"answer": "24",
 						"solution": "54/9=6 dollars costs one jar, 4*6=24 dollars cost 4 of these jars -> the answer is 24",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "There are 24 kilograms of oranges in 4 packs. How many oranges there are in 9 such packs?",
 						"answer": "54",
 						"solution": "24/4=6 kilograms in each pack, 9*6=54 kilograms in 9 packs -> the answer is 54",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "Jessica eats 4 fruit's a day. Each fruit has value of 85 calories. How many calories Jessica earns for a week?",
 						"answer": "2380",
 						"solution": "4*85=340 calories Jessica earns a day, 340*7=2380 calories Jessica earns for a week -> the answer is 2380",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "Harry learned 8 spells on the lesson and each spell has 13 strings. But after lunch he forgot 5 strings of each spell. How many strings did Harry remember after lunch?",
 						"answer": "64",
 						"solution": "8*13=104 strings there are in all spells, 8*5=40 string Harry forgot after lunch, 104-40=64 string of spells Harry remembered -> the answer is 64",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "Lora really likes and cares about her garden. For the summer she grew for 25 kilograms of apples, 2 more kilograms than apples of pears and 4 less kilograms than apples of peaches. She decided to sell those fruits and the prices she set for apples is 2$ per kilogram, for pears is 3$ per kilogram and for peaches is 4$ per kilogram. How much money in dollars Lora earned if she sold all fruits?",
 						"answer": "215",
 						"solution": "25+2=27 kilograms of pears Lora grew, 25-4=21 kilograms of pears Lora grew, 25*2=50 dollars Lora earned for all apples, 27*3=81 dollars Lora earned for all pears, 21*4=84 dollars Lora earned for all peaches -> 50+81+84=215 dollars Lora earned for all fruits -> the answer is 215",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
 						"question": "Every day Mary does 9 exercises. Every exercise burns 70 calories. But every day Mary also eats on 1800 calories. How many calories does she earns for a month (30 days)?",
 						"answer": "35100",
 						"solution": "9*70=630 calories Mary burns for a day, 1800-630=1170 calories Mary earns a day after the exercises done, 30*1170=35100 calories Mary earns for a month (30 days) -> the answer is 35100",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "A store sold apples in the afternoon twice as many as in the morning. Throughout the day were sold 360 kg. How many kilograms were sold in the afternoon?",
 						"answer": "240",
 						"solution": "let x be the number of how many apples were sold in the morning, so in the afternoon there were sold 2*x apples, so x+2*x=360 -> x=120 kilograms of apples were sold in the morning -> 2*120=240 kilograms of apples were sold in the afternoon -> the answer is 240",
-                        "questionNumber": "8"				
-					  }
-				  ]
-			   },
-			   {
-				  "title": "Level 3 *",
-				  "levelNumber": "3",
-				  "questions": [
-				      {
-					    "title": "Question 1",
+						"questionNumber": "8"
+					}
+				]
+			},
+			{
+				"title": "Level 3 *",
+				"levelNumber": "3",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "Six builders and one engineer got an order. Builders salary is 25$ per hour, but an engineer has salary by 6$ more than average salary for everybody from seven people. What is the engineer's salary?",
 						"answer": "32",
 						"solution": "x - engineer's salary, so the average is (x + 25*6)/7 -> we got the equation (x + 25*6)/7 + 6 = x -> x = 32",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "Gnomes keep their caps in the chest. There are red, blue and green caps. Half of all caps are red. There are 16 less of blue caps than red caps. There are twice more of green caps than blue caps. How many caps there are in the chest overall?",
 						"answer": "48",
 						"solution": "n - quantity of all caps, n/2 - quantity of red caps, (n/2-16) - quantity of blue caps, (n/2-16)*2 - quantity of green caps -> we got the equation n/2 + (n/2-16) + (n/2-16)*2 = n -> n = 48 of all caps",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "An order for 110 parts is completed by the first worker 1 hour faster than the second. How many parts per hour does the second worker do if it is known that the first one in an hour makes 1 part more?",
 						"answer": "10",
-						"solution": "t - time for what the first worker does 110 parts,\n n - number of parts that does the first worker for an hour,\n according to that, the time for what the second worker does 110 parts is t-1 and the number of parts that does the second worker for an hour is n-1,\n so we have a system of equations\n n*t=110,\n (n-1)*(t+1)=110\n -> t+t0x00B2-110=0\n -> t=10 and n=11\n -> number of parts per hour the second worker does is n-1\n -> the answer is 10 parts",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"solution": "t - time for what the first worker does 110 parts,\n n - number of parts that does the first worker for an hour,\n according to that, the time for what the second worker does 110 parts is t-1 and the number of parts that does the second worker for an hour is n-1,\n so we have a system of equations\n n*t=110,\n (n-1)*(t+1)=110\n -> t+t²-110=0\n -> t=10 and n=11\n -> number of parts per hour the second worker does is n-1\n -> the answer is 10 parts",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "For the manufacture of 475 parts, the first worker spends 6 hours less than the second worker for the manufacture of 550 of the same parts. It is known that the first worker in an hour does 3 parts more than the second. How many parts per hour does the first worker do?",
 						"answer": "22",
-						"solution": "t - time for what the second worker does 550 parts,\n n - number of parts that does the second worker for an hour,\n according to that, the time for what the first worker does 475 parts is t-6 and the number of parts that does the first worker for an hour is n+3,\n so we have a system of equations\n (t-6)*(n+3)=475,\n n*t=550\n -> 2*n0x00B2-19*n-550=0\n -> n=22\n -> number of parts per hour the first worker does is n+3\n -> the answer is 25 parts",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"solution": "t - time for what the second worker does 550 parts,\n n - number of parts that does the second worker for an hour,\n according to that, the time for what the first worker does 475 parts is t-6 and the number of parts that does the first worker for an hour is n+3,\n so we have a system of equations\n (t-6)*(n+3)=475,\n n*t=550\n -> 2*n²-19*n-550=0\n -> n=22\n -> number of parts per hour the first worker does is n+3\n -> the answer is 25 parts",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "Two workers, working together, can do the job in 12 days. In how many days, working separately, will the first worker complete this work, if in two days he performs the same part of the work as the second in three days?",
 						"answer": "20",
-						"solution": "Let the work be 1, v1 - velocity of doing the parts in a day of the first worker and v2 - velocity of doing the parts in a day of the second worker, so we have a system of equations\n 12(v1+v2)=1,\n 2v1=3v2\n -> v1=1/30 and v2=1/20/n -> so if job is 1 and the velocity is v2=1/20/n -> the time of the first worker to complete his job is t2=1/v2 and so it equals 20 days\n -> the answer is 20 days",
-                        "questionNumber": "5"						
-					  }
-				  ]
-			   }
-			]
-		},
-		{
-			"title": "Basic geometry problems",
-			"categoryNumber": "2",
-			"levels": [
+						"solution": "Let the work be 1, v1 - velocity of doing the parts in a day of the first worker and v2 - velocity of doing the parts in a day of the second worker, so we have a system of equations\n 12(v1+v2)=1,\n 2v1=3v2\n -> v1=1/30 and v2=1/20  -> so if job is 1 and the velocity is v2=1/20  -> the time of the first worker to complete his job is t2=1/v2 and so it equals 20 days\n -> the answer is 20 days",
+						"questionNumber": "5"
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "Basic geometry problems",
+		"categoryNumber": "2",
+		"levels": [
 			{
-				  "title": "Rectangle perimeter (P = 2*(a + b))",
-				  "levelNumber": "1",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+				"title": "Rectangle perimeter (P = 2*(a + b))",
+				"levelNumber": "1",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "Rectangle has one side with the length of 5 centimetres and another side of 6 centimetres, find the perimeter of the rectangle in cm.",
 						"answer": "22",
 						"solution": "P = 2*(a + b) = 2*(5+6) = 22",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "Rectangle has one side with the length of 8 centimetres and another side of 9 centimetres, find the perimeter of the rectangle in cm.",
 						"answer": "34",
 						"solution": "P = 2*(a + b) = 2*(8+9) = 34",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "Rectangle has one side with the length of 13 centimetres and another side of 15 centimetres, find the perimeter of the rectangle in cm.",
 						"answer": "56",
 						"solution": "P = 2*(a + b) = 2*(13+15) = 56",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "If the perimeter of rectangle is 72 cm and one of the sides is 20 cm, what is the length of another side in cm?",
 						"answer": "16",
 						"solution": "P = 2*(a + b) = 72cm, a=20cm -> b = P/2 - a = 72/2-20 = 16cm",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "If the perimeter of rectangle is 84 cm and one of the sides is 22 cm, what is the length of another side in cm?",
 						"answer": "20",
 						"solution": "P = 2*(a + b) = 84cm, a=22cm -> b = P/2 - a = 84/2-22 = 20cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 5",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 5",
 						"question": "If the perimeter of rectangle is 112 cm and one of the sides is 32 cm, what is the length of another side in cm?",
 						"answer": "24",
 						"solution": "P = 2*(a + b) = 112cm, a=32cm -> b = P/2 - a = 112/2-32 = 24cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "Perimeter of square is 64 cm, what is length of squares side in cm?",
 						"answer": "16",
 						"solution": "P = 4*a -> a = P/4 -> a = 64/4 = 16cm",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
 						"question": "Perimeter of square is 72 cm, what is length of squares side in cm?",
 						"answer": "18",
 						"solution": "P = 4*a -> a = P/4 -> a = 42/4 = 18cm",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "A rectangle has a length of 22 cm and a width smaller by 6 cm. Find the perimeter of the rectangle in cm.",
 						"answer": "76",
 						"solution": "b=22-6=16cm the width, P = 2*(a + b) = 2*(22+16) = 76cm",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "A rectangle has a length of 35 cm and a width smaller by 12 cm. Find the perimeter of the rectangle in cm.",
 						"answer": "116",
 						"solution": "b=35-12=23cm the width, P = 2*(a + b) = 2*(35+23) = 116cm",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "A rectangle has a width of 18 cm and a length bigger by 8 cm. Find the perimeter of the rectangle in cm.",
 						"answer": "88",
 						"solution": "b=18+8=26cm the length, P = 2*(a + b) = 2*(18+26) = 88cm",
-                        "questionNumber": "10"						
-					  },
-					  {
-					    "title": "Question 11",
+						"questionNumber": "10"
+					},
+					{
+						"title": "Question 11",
 						"question": "A rectangle has a width of 45 cm and a length bigger by 19 cm. Find the perimeter of the rectangle in cm.",
 						"answer": "218",
 						"solution": "b=45+19=64cm the length, P = 2*(a + b) = 2*(45+64) = 218cm",
-                        "questionNumber": "11"						
-					  },
-					  {
-					    "title": "Question 12",
+						"questionNumber": "11"
+					},
+					{
+						"title": "Question 12",
 						"question": "A rectangle has a width of 27 cm and a length two times greater than its width. Find the perimeter of the rectangle in cm.",
 						"answer": "162",
 						"solution": "b=27*2=54cm the length, P = 2*(a + b) = 2*(27+54) = 162cm",
-                        "questionNumber": "12"						
-					  },
-					  {
-					    "title": "Question 13",
+						"questionNumber": "12"
+					},
+					{
+						"title": "Question 13",
 						"question": "A rectangle has a width of 23 cm and a length three times greater than its width. Find the perimeter of the rectangle in cm.",
 						"answer": "184",
 						"solution": "b=23*3=69cm the length, P = 2*(a + b) = 2*(23+69) = 184cm",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "A rectangle has a width of 26 cm and a length four times greater than its width. Find the perimeter of the rectangle in cm.",
 						"answer": "260",
 						"solution": "b=26*4=104cm the length, P = 2*(a + b) = 2*(26+104) = 260cm",
-                        "questionNumber": "14"						
-					  }
-				  ]
-			   },
-			   {
-				  "title": "Rectangle area (S = a * b)",
-				  "levelNumber": "2",
-				  "questions": [
-					  {
-					    "title": "Question 1",
-						"question": "Rectangle has one side with the length of 6 centimetres and another side of 8 centimetres, find the area of the rectangle in cm0x00B2.",
+						"questionNumber": "14"
+					}
+				]
+			},
+			{
+				"title": "Rectangle area (S = a * b)",
+				"levelNumber": "2",
+				"questions": [
+					{
+						"title": "Question 1",
+						"question": "Rectangle has one side with the length of 6 centimetres and another side of 8 centimetres, find the area of the rectangle in cm².",
 						"answer": "48",
-						"solution": "S = a * b = 6*8 = 48cm0x00B2",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
-						"question": "Rectangle has one side with the length of 7 centimetres and another side of 9 centimetres, find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b = 6*8 = 48cm²",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
+						"question": "Rectangle has one side with the length of 7 centimetres and another side of 9 centimetres, find the area of the rectangle in cm².",
 						"answer": "63",
-						"solution": "S = a * b = 7*9 = 63cm0x00B2",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
-						"question": "Rectangle has one side with the length of 15 centimetres and another side of 18 centimetres, find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b = 7*9 = 63cm²",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
+						"question": "Rectangle has one side with the length of 15 centimetres and another side of 18 centimetres, find the area of the rectangle in cm².",
 						"answer": "270",
-						"solution": "S = a * b = 15*18 = 270cm0x00B2",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
-						"question": "If the area of rectangle is 84 cm0x00B2 and one of the sides is 12 cm, what is the length of another side in cm?",
+						"solution": "S = a * b = 15*18 = 270cm²",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
+						"question": "If the area of rectangle is 84 cm² and one of the sides is 12 cm, what is the length of another side in cm?",
 						"answer": "7",
 						"solution": "S = a * b -> b = S/a -> b = 84/12=7cm",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
-						"question": "If the area of rectangle is 112 cm0x00B2 and one of the sides is 14 cm, what is the length of another side in cm?",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
+						"question": "If the area of rectangle is 112 cm² and one of the sides is 14 cm, what is the length of another side in cm?",
 						"answer": "8",
 						"solution": "S = a * b -> b = S/a -> b = 112/14=8cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
-						"question": "If the area of rectangle is 216 cm0x00B2 and one of the sides is 18 cm, what is the length of another side in cm?",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
+						"question": "If the area of rectangle is 216 cm² and one of the sides is 18 cm, what is the length of another side in cm?",
 						"answer": "12",
 						"solution": "S = a * b -> b = S/a -> b = 216/18=12cm",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
-						"question": "Area of square is 64 cm0x00B2, what is length of squares side in cm?",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
+						"question": "Area of square is 64 cm², what is length of squares side in cm?",
 						"answer": "8",
 						"solution": "S = a * a -> a = √64 = 8cm",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
-						"question": "Area of square is 121 cm0x00B2, what is length of squares side in cm?",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
+						"question": "Area of square is 121 cm², what is length of squares side in cm?",
 						"answer": "11",
 						"solution": "S = a * a -> a = √121 = 11cm",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
-						"question": "A rectangle has a length of 19 cm and a width smaller by 7 cm. Find the area of the rectangle in cm0x00B2.",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
+						"question": "A rectangle has a length of 19 cm and a width smaller by 7 cm. Find the area of the rectangle in cm².",
 						"answer": "228",
-						"solution": "S = a * b, a = 19cm, b = a-7cm = 19 - 7 = 12cm -> S = 19*12 = 228cm0x00B2",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10",
-						"question": "A rectangle has a length of 26 cm and a width smaller by 8 cm. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 19cm, b = a-7cm = 19 - 7 = 12cm -> S = 19*12 = 228cm²",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
+						"question": "A rectangle has a length of 26 cm and a width smaller by 8 cm. Find the area of the rectangle in cm².",
 						"answer": "468",
-						"solution": "S = a * b, a = 26cm, b = a-8cm = 26 - 8 = 18cm -> S = 26*18 = 468cm0x00B2",
-                        "questionNumber": "10"						
-					  },
-					  {
-					    "title": "Question 11",
-						"question": "A rectangle has a width of 22 cm and a length bigger by 7 cm. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 26cm, b = a-8cm = 26 - 8 = 18cm -> S = 26*18 = 468cm²",
+						"questionNumber": "10"
+					},
+					{
+						"title": "Question 11",
+						"question": "A rectangle has a width of 22 cm and a length bigger by 7 cm. Find the area of the rectangle in cm².",
 						"answer": "638",
-						"solution": "S = a * b, a = 22cm, b = a-7cm = 22 + 7 = 29cm -> S = 22*29 = 638cm0x00B2",
-                        "questionNumber": "11"						
-					  },
-					  {
-					    "title": "Question 12",
-						"question": "A rectangle has a width of 35 cm and a length bigger by 10 cm. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 22cm, b = a-7cm = 22 + 7 = 29cm -> S = 22*29 = 638cm²",
+						"questionNumber": "11"
+					},
+					{
+						"title": "Question 12",
+						"question": "A rectangle has a width of 35 cm and a length bigger by 10 cm. Find the area of the rectangle in cm².",
 						"answer": "1575",
-						"solution": "S = a * b, a = 35cm, b = a-10cm = 35 + 10 = 45cm -> S = 35*45 = 1575cm0x00B2",
-                        "questionNumber": "12"						
-					  },
-					  {
-					    "title": "Question 13",
-						"question": "A rectangle has a width of 12 cm and a length two times greater than its width. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 35cm, b = a-10cm = 35 + 10 = 45cm -> S = 35*45 = 1575cm²",
+						"questionNumber": "12"
+					},
+					{
+						"title": "Question 13",
+						"question": "A rectangle has a width of 12 cm and a length two times greater than its width. Find the area of the rectangle in cm².",
 						"answer": "288",
-						"solution": "S = a * b, a = 12cm, b = a*2 = 12*2 = 24cm -> S = 12*24 = 288cm0x00B2",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
-						"question": "A rectangle has a width of 15 cm and a length three times greater than its width. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 12cm, b = a*2 = 12*2 = 24cm -> S = 12*24 = 288cm²",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
+						"question": "A rectangle has a width of 15 cm and a length three times greater than its width. Find the area of the rectangle in cm².",
 						"answer": "675",
-						"solution": "S = a * b, a = 15cm, b = a*3 = 15*3 = 45cm -> S = 15*45 = 675cm0x00B2",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
-						"question": "A rectangle has a width of 14 cm and a length four times greater than its width. Find the area of the rectangle in cm0x00B2.",
+						"solution": "S = a * b, a = 15cm, b = a*3 = 15*3 = 45cm -> S = 15*45 = 675cm²",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
+						"question": "A rectangle has a width of 14 cm and a length four times greater than its width. Find the area of the rectangle in cm².",
 						"answer": "784",
-						"solution": "S = a * b, a = 14cm, b = a*4 = 14*4 = 56cm -> S = 14*56 = 784cm0x00B2",
-                        "questionNumber": "15"						
-					  },
-					  {
-					    "title": "Question 16",
-						"question": "A rectangle has a length two times greater than its width and area 128 cm0x00B2. Find the perimeter of the rectangle in cm.",
+						"solution": "S = a * b, a = 14cm, b = a*4 = 14*4 = 56cm -> S = 14*56 = 784cm²",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
+						"question": "A rectangle has a length two times greater than its width and area 128 cm². Find the perimeter of the rectangle in cm.",
 						"answer": "48",
 						"solution": "S = a * b, a = 2*b -> S=2*b*b -> b = √(S/2) = √(128/2) = 8cm -> P = 2*(b + 2*b) = 2*(8+2*8) = 48cm",
-                        "questionNumber": "16"						
-					  },
-					  {
-					    "title": "Question 17",
-						"question": "A rectangle has a length three times greater than its width and area 243 cm0x00B2. Find the perimeter of the rectangle in cm.",
+						"questionNumber": "16"
+					},
+					{
+						"title": "Question 17",
+						"question": "A rectangle has a length three times greater than its width and area 243 cm². Find the perimeter of the rectangle in cm.",
 						"answer": "72",
 						"solution": "S = a * b, a = 3*b -> S=3*b*b -> b = √(S/3) = √(243/3) = 9cm -> P = 2*(b + 3*b) = 2*(9+3*9) = 72cm",
-                        "questionNumber": "17"						
-					  },
-					  {
-					    "title": "Question 18",
-						"question": "A rectangle has a length four times greater than its width and area 196 cm0x00B2. Find the perimeter of the rectangle in cm.",
+						"questionNumber": "17"
+					},
+					{
+						"title": "Question 18",
+						"question": "A rectangle has a length four times greater than its width and area 196 cm². Find the perimeter of the rectangle in cm.",
 						"answer": "70",
 						"solution": "S = a * b, a = 4*b -> S=4*b*b -> b = √(S/4) = √(196/4) = 7cm -> P = 2*(b + 4*b) = 2*(7+4*7) = 70cm",
-                        "questionNumber": "18"						
-					  },
-					  {
-					    "title": "Question 19 *",
-						"question": "If the perimeter of rectangle is 42 cm the area of rectangle is 108 cm0x00B2, what is the length of smallest side in cm?",
+						"questionNumber": "18"
+					},
+					{
+						"title": "Question 19 *",
+						"question": "If the perimeter of rectangle is 42 cm the area of rectangle is 108 cm², what is the length of smallest side in cm?",
 						"answer": "9",
-						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 42, a*b = 108 -> a = 21-b insert this into the a*b=108 -> b0x00B2-21b+108=0 -> b1 = 12, b1 = 9 -> the length of smallest side is 9cm",
-                        "questionNumber": "19"						
-					  },
-					  {
-					    "title": "Question 20 *",
-						"question": "If the perimeter of rectangle is 46 cm the area of rectangle is 112 cm0x00B2, what is the length of biggest side in cm?",
+						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 42, a*b = 108 -> a = 21-b insert this into the a*b=108 -> b²-21b+108=0 -> b1 = 12, b1 = 9 -> the length of smallest side is 9cm",
+						"questionNumber": "19"
+					},
+					{
+						"title": "Question 20 *",
+						"question": "If the perimeter of rectangle is 46 cm the area of rectangle is 112 cm², what is the length of biggest side in cm?",
 						"answer": "16",
-						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 46, a*b = 112 -> a = 23-b insert this into the a*b=112 -> b0x00B2-23b+112=0 -> b1 = 16, b1 = 7 -> the length of biggest side is 16cm",
-                        "questionNumber": "20"						
-					  },
-					  {
-					    "title": "Question 21 *",
-						"question": "If the perimeter of rectangle is 64 cm the area of rectangle is 252 cm0x00B2, what is the length of biggest side in cm?",
+						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 46, a*b = 112 -> a = 23-b insert this into the a*b=112 -> b²-23b+112=0 -> b1 = 16, b1 = 7 -> the length of biggest side is 16cm",
+						"questionNumber": "20"
+					},
+					{
+						"title": "Question 21 *",
+						"question": "If the perimeter of rectangle is 64 cm the area of rectangle is 252 cm², what is the length of biggest side in cm?",
 						"answer": "18",
-						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 64, a*b = 252 -> a = 32-b insert this into the a*b=252 -> b0x00B2-32b+252=0 -> b1 = 18, b1 = 14 -> the length of biggest side is 18cm",
-                        "questionNumber": "21"						
-					  }
-				  ]
-			   },
-			   {
-				  "title": "Triangle perimeter (P = a + b + c)",
-				  "levelNumber": "3",
-				  "questions": [  
-					  {
-					    "title": "Question 1",
+						"solution": "P = 2*(a + b), S = a * b -> we got the system of equations -> 2*a + 2*b = 64, a*b = 252 -> a = 32-b insert this into the a*b=252 -> b²-32b+252=0 -> b1 = 18, b1 = 14 -> the length of biggest side is 18cm",
+						"questionNumber": "21"
+					}
+				]
+			},
+			{
+				"title": "Triangle perimeter (P = a + b + c)",
+				"levelNumber": "3",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "The triangle is scalene. One side is 70 cm, the other side is 60 cm and the last one is 100 cm. Find the perimeter of the triangle in cm.",
 						"answer": "230",
 						"solution": "P = a + b + c = 70 + 60 + 100 = 230cm",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "The triangle is scalene. One side is 18 cm, the other side is 23 cm and the last one is 25 cm. Find the perimeter of the triangle in cm.",
 						"answer": "66",
 						"solution": "P = a + b + c = 18 + 23 + 25 = 66cm",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "The triangle is scalene. One side is 27 cm, the other side is 33 cm and the last one is 36 cm. Find the perimeter of the triangle in cm.",
 						"answer": "96",
 						"solution": "P = a + b + c = 27 + 33 + 36 = 96cm",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "The triangle is scalene. One side is 32 cm, the other side is 41 cm and the perimeter is 101 cm. Find the last side of the triangle in cm.",
 						"answer": "28",
 						"solution": "P = a + b + c -> c = P - a - b -> c = 101 - 32 - 41 = 28cm",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "The triangle is scalene. One side is 56 cm, the other side is 75 cm and the perimeter is 193 cm. Find the last side of the triangle in cm.",
 						"answer": "62",
 						"solution": "P = a + b + c -> c = P - a - b -> c = 193 - 56 - 75 = 62cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "The triangle is scalene. One side is 79 cm, the other side is 77 cm and the perimeter is 239 cm. Find the last side of the triangle in cm.",
 						"answer": "83",
 						"solution": "P = a + b + c -> c = P - a - b -> c = 239 - 79 - 77 = 83cm",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
 						"question": "The triangle is isosceles. Two sides has equal length of 28 cm, the other side is 30 cm. Find the perimeter of the triangle in cm.",
 						"answer": "86",
 						"solution": "P = a + b + c, a=b -> P = 2*a + c -> P = 28*2 + 30 = 86cm",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "The triangle is isosceles. Two sides has equal length of 75 cm, the other side is 87 cm. Find the perimeter of the triangle in cm.",
 						"answer": "237",
 						"solution": "P = a + b + c, a=b -> P = 2*a + c -> P = 75*2 + 87 = 237cm",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "The triangle is isosceles. Two sides summ is 58 cm, and the perimeter of the triangle is 93 cm. Find the other side of the triangle in cm.",
 						"answer": "35",
 						"solution": "P = a + b + c, a + b = 58cm -> c = P - (a + b) = 93 - 58 = 35cm",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "The triangle is isosceles. One side has the length of 23 cm and the other two sides are equal. The perimeter of triangle is 79 cm. Find the length on one of equal sides in cm.",
 						"answer": "28",
 						"solution": "P = a + b + c, a + b = 58cm -> c = P - (a + b) = 93 - 58 = 35cm",
-                        "questionNumber": "10"						
-					  },
-					  {
-					    "title": "Question 11",
+						"questionNumber": "10"
+					},
+					{
+						"title": "Question 11",
 						"question": "The triangle is isosceles. One side has the length of 57 cm and the other two sides are equal. The perimeter of triangle is 183 cm. Find the length on one of equal sides in cm.",
 						"answer": "89",
 						"solution": "P = a + b + c, a = b -> P = 2*a + b, P = 183cm, b = 57cm -> 183 = 2*a + 57 -> a = 89cm",
-                        "questionNumber": "11"						
-					  },
-					  {
-					    "title": "Question 12",
+						"questionNumber": "11"
+					},
+					{
+						"title": "Question 12",
 						"question": "The triangle is equilateral with a side of 23 centimetres. Find the perimeter of the triangle in cm.",
 						"answer": "69",
 						"solution": "P = 3*a -> P = 23*3 = 69cm",
-                        "questionNumber": "12"						
-					  },
-					  {
-					    "title": "Question 13",
+						"questionNumber": "12"
+					},
+					{
+						"title": "Question 13",
 						"question": "The triangle is equilateral with a side of 35 centimetres. Find the perimeter of the triangle in cm.",
 						"answer": "105",
 						"solution": "P = 3*a -> P = 35*3 = 105cm",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "The triangle is equilateral with a perimeter of 84 centimetres. Find the side of the triangle in cm.",
 						"answer": "28",
 						"solution": "P = 3*a -> a = P/3 -> a = 84/3 = 28cm",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 14",
 						"question": "The triangle is equilateral with a perimeter of 111 centimetres. Find the side of the triangle in cm.",
 						"answer": "37",
 						"solution": "P = 3*a -> a = P/3 -> a = 111/3 = 37cm",
-                        "questionNumber": "14"						
-					  },  
-					  {
-					    "title": "Question 15",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "The triangle is scalene. One side 'a' has the length of 26 cm and the other side 'b' two times greater than 'a'. Find the length of last side 'c' if perimeter of triangle is 155 cm.",
 						"answer": "77",
 						"solution": "P = a + b + c, b = 2*a, -> P = 3*a + c -> c = P - 3*a -> c = 155 - 3*26 = 77cm",
-                        "questionNumber": "15"						
-					  },
-					  {
-					    "title": "Question 16",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
 						"question": "The triangle is scalene. One side 'a' has the length of 17 cm and the other side 'b' three times greater than 'a'. Find the length of last side 'c' if perimeter of triangle is 112 cm.",
 						"answer": "44",
 						"solution": "P = a + b + c, b = 3*a, -> P = 4*a + c -> c = P - 4*a -> c = 112 - 4*17 = 44cm",
-                        "questionNumber": "16"						
-					  },
-					  {
-					    "title": "Question 17",
+						"questionNumber": "16"
+					},
+					{
+						"title": "Question 17",
 						"question": "The triangle is scalene. One side 'a' has the length of 26 cm and the other side 'b' four times greater than 'a'. Find the length of last side 'c' if perimeter of triangle is 165 cm.",
 						"answer": "35",
 						"solution": "P = a + b + c, b = 4*a, -> P = 5*a + c -> c = P - 5*a -> c = 165 - 5*26 = 35cm",
-                        "questionNumber": "17"						
-					  }
-				   ]
-			   },
-			   {
-				  "title": "Triangle area (S = (a * h)/2)",
-				  "levelNumber": "4",
-				  "questions": [ 
-					  {
-					    "title": "Question 1",
-						"question": "The triangle is scalene. One side 'a' has the length of 18 cm and the vertical height to that side is 22 cm. Find the area of triangle in cm0x00B2.",
+						"questionNumber": "17"
+					}
+				]
+			},
+			{
+				"title": "Triangle area (S = (a * h)/2)",
+				"levelNumber": "4",
+				"questions": [
+					{
+						"title": "Question 1",
+						"question": "The triangle is scalene. One side 'a' has the length of 18 cm and the vertical height to that side is 22 cm. Find the area of triangle in cm².",
 						"answer": "198",
-						"solution": "S = (a * h)/2 -> S = (18 * 22)/2 = 198cm0x00B2",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
-						"question": "The triangle is scalene. One side 'a' has the length of 25 cm and the vertical height to that side is 32 cm. Find the area of triangle in cm0x00B2.",
+						"solution": "S = (a * h)/2 -> S = (18 * 22)/2 = 198cm²",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
+						"question": "The triangle is scalene. One side 'a' has the length of 25 cm and the vertical height to that side is 32 cm. Find the area of triangle in cm².",
 						"answer": "400",
-						"solution": "S = (a * h)/2 -> S = (25 * 32)/2 = 400cm0x00B2",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
-						"question": "One side of the triangle is two times bigger than vertical height to that. The area of the triangle is 256 cm0x00B2. Find vertical height length in cm.",
+						"solution": "S = (a * h)/2 -> S = (25 * 32)/2 = 400cm²",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
+						"question": "One side of the triangle is two times bigger than vertical height to that. The area of the triangle is 256 cm². Find vertical height length in cm.",
 						"answer": "16",
-						"solution": "S = (a * h)/2, a=2*h -> S = (2*h*h)/2 -> S = h0x00B2 -> h = √S -> h = √256 = 16cm",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
-						"question": "One side of the triangle is three times bigger than vertical height to that. The area of the triangle is 216 cm0x00B2. Find vertical height length in cm.",
+						"solution": "S = (a * h)/2, a=2*h -> S = (2*h*h)/2 -> S = h² -> h = √S -> h = √256 = 16cm",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
+						"question": "One side of the triangle is three times bigger than vertical height to that. The area of the triangle is 216 cm². Find vertical height length in cm.",
 						"answer": "12",
-						"solution": "S = (a * h)/2, a=3*h -> S = (3*h*h)/2 -> S = (3/2)*h0x00B2 -> h = √((2/3)*S) -> h = √((2/3)*216) = 12cm",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
-						"question": "One side of the triangle is four times bigger than vertical height to that. The area of the triangle is 882 cm0x00B2. Find vertical height length in cm.",
+						"solution": "S = (a * h)/2, a=3*h -> S = (3*h*h)/2 -> S = (3/2)*h² -> h = √((2/3)*S) -> h = √((2/3)*216) = 12cm",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
+						"question": "One side of the triangle is four times bigger than vertical height to that. The area of the triangle is 882 cm². Find vertical height length in cm.",
 						"answer": "21",
-						"solution": "S = (a * h)/2, a=4*h -> S = (4*h*h)/2 -> S = 2*h0x00B2 -> h = √(S/2) -> h = √(882/2) = 21cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
-						"question": "One side of the triangle is five times bigger than vertical height to that. The area of the triangle is 1210 cm0x00B2. Find vertical height length in cm.",
+						"solution": "S = (a * h)/2, a=4*h -> S = (4*h*h)/2 -> S = 2*h² -> h = √(S/2) -> h = √(882/2) = 21cm",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
+						"question": "One side of the triangle is five times bigger than vertical height to that. The area of the triangle is 1210 cm². Find vertical height length in cm.",
 						"answer": "22",
-						"solution": "S = (a * h)/2, a=5*h -> S = (5*h*h)/2 -> S = (5/2)*h0x00B2 -> h = √((2/5)*S) -> h = √((2/5)*1210) = 22cm",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7 *",
-						"question": "The triangle is scalene. One side 'a' has the length of 14 cm, the other side is 13 cm and the last side is 15 cm. Find the area of triangle in cm0x00B2. (Hint: use Heron's formula)",
+						"solution": "S = (a * h)/2, a=5*h -> S = (5*h*h)/2 -> S = (5/2)*h² -> h = √((2/5)*S) -> h = √((2/5)*1210) = 22cm",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7 *",
+						"question": "The triangle is scalene. One side 'a' has the length of 14 cm, the other side is 13 cm and the last side is 15 cm. Find the area of triangle in cm². (Hint: use Heron's formula)",
 						"answer": "84",
 						"solution": "Heron's formula: s = (a+b+c)/2, S = √(s*(s - a)*(s - b)*(s - c)) -> s = (13 + 14 + 15)/2 = 21 -> S = √(21*(21 - 13)*(21 - 14)*(21 - 15)) = √(21*8*7*6) = √(7056) = 84cm",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8 *",
-						"question": "The triangle is scalene. One side 'a' has the length of 51 cm, the other side is 52 cm and the last side is 53 cm. Find the area of triangle in cm0x00B2. (Hint: use Heron's formula)",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8 *",
+						"question": "The triangle is scalene. One side 'a' has the length of 51 cm, the other side is 52 cm and the last side is 53 cm. Find the area of triangle in cm². (Hint: use Heron's formula)",
 						"answer": "1170",
 						"solution": "Heron's formula: s = (a+b+c)/2, S = √(s*(s - a)*(s - b)*(s - c)) -> s = (51 + 51 + 53)/2 = 21 -> S = √(21*(21 - 51)*(21 - 52)*(21 - 53)) = √(21*8*7*6) = √(7056) = 84cm",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9 *",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9 *",
 						"question": "The triangle is equilateral, with the perimeter of 36 cm. Find the area of triangle, multiplied by √3. (Hint: use the formula of area of equilateral triangle)",
 						"answer": "108",
-						"solution": "Formula of area of equilateral triangle: S = (√3/4)*a0x00B2 -> a = P/3 = 36/3 = 12cm -> S = (√3/4)*(12*12) = 36*√3 -> √3S = 3*36 = 108cm0x00B2",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10 *",
+						"solution": "Formula of area of equilateral triangle: S = (√3/4)*a² -> a = P/3 = 36/3 = 12cm -> S = (√3/4)*(12*12) = 36*√3 -> √3S = 3*36 = 108cm²",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10 *",
 						"question": "The triangle is equilateral, with the perimeter of 84 cm. Find the area of triangle, multiplied by √3. (Hint: use the formula of area of equilateral triangle)",
 						"answer": "588",
-						"solution": "Formula of area of equilateral triangle: S = (√3/4)*a0x00B2 -> a = P/3 = 84/3 = 28cm -> S = (√3/4)*(28*28) = 196*√3 -> √3S = 3*196 = 588cm0x00B2",
-                        "questionNumber": "10"						
-					  }
-				   ]
-			   },
-			   {
-				  "title": "Right triangle (Pythagorean theorem: a 0x00B2 + b0x00B2 = c0x00B2)",
-				  "levelNumber": "5",
-				  "questions": [ 
-					  {
-					    "title": "Question 1",
+						"solution": "Formula of area of equilateral triangle: S = (√3/4)*a² -> a = P/3 = 84/3 = 28cm -> S = (√3/4)*(28*28) = 196*√3 -> √3S = 3*196 = 588cm²",
+						"questionNumber": "10"
+					}
+				]
+			},
+			{
+				"title": "Right triangle (Pythagorean theorem: a² + b² = c²)",
+				"levelNumber": "5",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "The triangle is right. One cathet is 3cm and the other one is 4cm. Find its hypotenuse.",
 						"answer": "5",
-						"solution": "c0x00B2 = 30x00B2 + 40x00B2 -> c = √25 = 5cm",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"solution": "c² = 3² + 4² -> c = √25 = 5cm",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "The triangle is right. One cathet is 15cm and the other one is 20cm. Find its hypotenuse.",
 						"answer": "25",
-						"solution": "c0x00B2 = 150x00B2 + 200x00B2 -> c = √625 = 25cm",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"solution": "c² = 15² + 20² -> c = √625 = 25cm",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "The triangle is right and isosceles. Two cathets are equal with the length 3√2. Find its hypotenuse.",
 						"answer": "6",
-						"solution": "c0x00B2 = (3√2)0x00B2 + (3√2)0x00B2 = 18 + 18 = 36 -> c = √36 = 6cm",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"solution": "c² = (3√2)² + (3√2)² = 18 + 18 = 36 -> c = √36 = 6cm",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "The triangle is right. Hypotenuse length is 7 cm and one cathet length is 2√6cm. Find its other cathet.",
 						"answer": "5",
-						"solution": "b0x00B2 = c0x00B2 - a0x00B2 -> b = √(c0x00B2 - a0x00B2) -> b = √(49 - (2√6)0x00B2) = √(49 - 24) = √25 = 5 cm",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"solution": "b² = c² - a² -> b = √(c² - a²) -> b = √(49 - (2√6)²) = √(49 - 24) = √25 = 5 cm",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "The triangle is right. Hypotenuse length is 25 cm and one cathet length is 7 cm. Find its other cathet.",
 						"answer": "2",
-						"solution": "b0x00B2 = c0x00B2 - a0x00B2 -> b = √(c0x00B2 - a0x00B2) -> b = √(625 - 48) = √576 = 24 cm",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"solution": "b² = c² - a² -> b = √(c² - a²) -> b = √(625 - 48) = √576 = 24 cm",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "The triangle is right. Hypotenuse is 3 cm more than one of the cathets and the other cathet is 9 cm. Find the triangles perimeter.",
 						"answer": "36",
-						"solution": "x - the length of unknown cathet -> using Pythagorean theorem we got the equation x0x00B2 + 90x00B2 = (x+3)0x00B2 -> x = 12 -> one cathet is 12 cm and the hypotenuse is 15 cm -> P = a + b + c = 36 cm",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
+						"solution": "x - the length of unknown cathet -> using Pythagorean theorem we got the equation x² + 9² = (x+3)² -> x = 12 -> one cathet is 12 cm and the hypotenuse is 15 cm -> P = a + b + c = 36 cm",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
 						"question": "The triangle is right. Hypotenuse is 8 cm more than one of the cathets, which length is 11 cm. Find the triangles area, multiplied by √15.",
 						"answer": "330",
-						"solution": "a = 11 cm, c = a + 8 = 19 cm -> b = √(c0x00B2 - a0x00B2) = √(361 - 121) = √240 = 4√15 -> S = (1/2)*a*b = (1/2)*11*(4√15) = 22√15 -> S√15 = 22*15 = 330 cm0x00B2",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"solution": "a = 11 cm, c = a + 8 = 19 cm -> b = √(c² - a²) = √(361 - 121) = √240 = 4√15 -> S = (1/2)*a*b = (1/2)*11*(4√15) = 22√15 -> S√15 = 22*15 = 330 cm²",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "The triangle is right. One cathet is 7 cm more than the other one and hypotenuse is 17 cm. Find the triangles perimeter.",
 						"answer": "40",
-						"solution": "x - the length of unknown cathet -> so the larger one cathet length is (x+7) -> we got the equation x0x00B2 + (x+7)0x00B2 = 170x00B2 -> x = 8 -> the larger cathet length is 8+7 = 15cm -> P = a + b + c = 8 + 15 + 17 = 40 cm",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"solution": "x - the length of unknown cathet -> so the larger one cathet length is (x+7) -> we got the equation x² + (x+7)² = 17² -> x = 8 -> the larger cathet length is 8+7 = 15cm -> P = a + b + c = 8 + 15 + 17 = 40 cm",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "One of the cathets of a right triangle is 1cm larger than the other cathet and 1 cm less than the hypotenuse. Find the area of the triangle.",
 						"answer": "6",
-						"solution": "x - one cathet of triangle, so the larger one cathet length is (x+1), hence the hypotenuse length is (x+2) -> using Pythagorean theorem we got the equation x0x00B2 + (x+1)0x00B2 = (x+2)0x00B2 -> x = 3cm -> the area of right triangle is equal S = (1/2)*a*b -> S = (1/2)*3*4 = 6cm0x00B2",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10",
+						"solution": "x - one cathet of triangle, so the larger one cathet length is (x+1), hence the hypotenuse length is (x+2) -> using Pythagorean theorem we got the equation x² + (x+1)² = (x+2)² -> x = 3cm -> the area of right triangle is equal S = (1/2)*a*b -> S = (1/2)*3*4 = 6cm²",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "In an isosceles right-angled triangle, the perimeter is 4+2√2 cm. Find its area.",
 						"answer": "2",
-						"solution": "x - the length of the cathet -> the hypotenuse length using Pythagorean theorem -> c = √(x0x00B2 + x0x00B2) = x√2 -> P = x + x + x√2 = 2*x + x√2, P = 4+2√2 cm -> x = 2cm -> S = (1/2)*a*b -> S = (1/2)*2*2 = 2cm0x00B2",
-                        "questionNumber": "10"						
-					  }
-				   ]
-			   }
-			]
-		},
-		{
-			"title": "Distance, velocity and time (S = v * t)",
-			"categoryNumber": "3",
-			"levels": [
-			   {
-				  "title": "Level 1",
-				  "levelNumber": "1",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+						"solution": "x - the length of the cathet -> the hypotenuse length using Pythagorean theorem -> c = √(x² + x²) = x√2 -> P = x + x + x√2 = 2*x + x√2, P = 4+2√2 cm -> x = 2cm -> S = (1/2)*a*b -> S = (1/2)*2*2 = 2cm²",
+						"questionNumber": "10"
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "Distance, velocity and time (S = v * t)",
+		"categoryNumber": "3",
+		"levels": [
+			{
+				"title": "Level 1",
+				"levelNumber": "1",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "The car drove 375 km in 3 hours. What is the speed of the car in km/h?",
 						"answer": "125",
-						"solution": "The velocity of car can be found as v = S/t\n, so S=375km, t=3h -> v=375/3=125km/n, the answer is 125km/h",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"solution": "The velocity of car can be found as v = S/t\n, so S=375km, t=3h -> v=375/3=125km , the answer is 125km/h",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "A plane flew 960 km in 3 hours, and a car drove 400 km in 5 hours. How many times is the speed of an airplane greater than the speed of a car?",
 						"answer": "4",
-						"solution": "S1 - the distance of the plane, S1=960km\n, t1 - the time for what the plane flew the distance S1, t1=3h/n,S2 - the distance of the car, S2=400km\n, t1 - the time for what the car drove the distance S2, t2=5h/n,The velocity of the plane is v1=S1/t1=960/3=240km/h/n,The velocity of the car is v2=S2/t2=400/5=80km/h/n -> v1/v2=4/n -> the answer is 4",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"solution": "S1 - the distance of the plane, S1=960km\n, t1 - the time for what the plane flew the distance S1, t1=3h ,S2 - the distance of the car, S2=400km\n, t1 - the time for what the car drove the distance S2, t2=5h ,The velocity of the plane is v1=S1/t1=960/3=240km/h ,The velocity of the car is v2=S2/t2=400/5=80km/h  -> v1/v2=4  -> the answer is 4",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "The boat sailed 28 km at a speed of 7 km/h. What time was it on its way in hours?",
 						"answer": "4",
-						"solution": "S - the distance boat sailed, S=28km,/n v - velocity with what boat sailed,/n t - time for what boat was on its way,/n t=S/v=28/7=4 hours/n the answer is 4 hours",
-                        "questionNumber": "3"						
-					  },
-					  {
-					    "title": "Question 4",
+						"solution": "S - the distance boat sailed, S=28km,  v - velocity with what boat sailed,  t - time for what boat was on its way,  t=S/v=28/7=4 hours  the answer is 4 hours",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "A boat travels 60 km in 2 hours. What distance in km can it travel in 5 hours?",
 						"answer": "150",
-						"solution": "S - the distance boat traveled for 2 hours, S=60km,/n S1 - the distance the boat can travel for 5 hours,/n t - time for what the boat traveled, t=5h/n t1 - time for what the boat can travel the distance S1/n v - velocity with what the boat traveled, v=S/t, so v=60/2=30km/h/n -> S1=v*t1=30*5=150km/n -> the answer is 150km",
-                        "questionNumber": "4"						
-					  },
-					  {
-					    "title": "Question 5",
+						"solution": "S - the distance boat traveled for 2 hours, S=60km,  S1 - the distance the boat can travel for 5 hours,  t - time for what the boat traveled, t=5h  t1 - time for what the boat can travel the distance S1  v - velocity with what the boat traveled, v=S/t, so v=60/2=30km/h  -> S1=v*t1=30*5=150km  -> the answer is 150km",
+						"questionNumber": "4"
+					},
+					{
+						"title": "Question 5",
 						"question": "A cyclist travels 24 km in 2 hours. What distance in km can he travel in 5 hours?",
 						"answer": "60",
-						"solution": "S - the distance cyclist traveled for 2 hours, S=24km,/n t - time the cyclist traveled the distance S, t=2h/n, S1 - the distance the cyclist can travel in 5 hours,/n t1 - time for what the cyclist can travel the distance S1,/n v - velocity with what the cyclist travels, v=S/t=24/2=12km/h,/n -> S1=v*t1=12*5=60km/n -> the answer is 60km/h",
-                        "questionNumber": "5"						
-					  },
-					  {
-					    "title": "Question 6",
+						"solution": "S - the distance cyclist traveled for 2 hours, S=24km,  t - time the cyclist traveled the distance S, t=2h , S1 - the distance the cyclist can travel in 5 hours,  t1 - time for what the cyclist can travel the distance S1,  v - velocity with what the cyclist travels, v=S/t=24/2=12km/h,  -> S1=v*t1=12*5=60km  -> the answer is 60km/h",
+						"questionNumber": "5"
+					},
+					{
+						"title": "Question 6",
 						"question": "The distance between trains going in the same direction is 100 km. After 5 hours, the distance between trains became 75 km. The speed of one train is 85 km/h. What is the speed of another train?",
 						"answer": "80",
-						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1-v2 - the velocity of approach, the difference between the distances S=S1-S2 is what had been overcame with the velocity v for time of 5 hours/n, so we got equation S=v*t -> 100-75=(85-v2)*5/n -> v2=80km/h/n the answer is 80km/h",
-                        "questionNumber": "6"						
-					  },
-					  {
-					    "title": "Question 7",
+						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1-v2 - the velocity of approach, the difference between the distances S=S1-S2 is what had been overcame with the velocity v for time of 5 hours , so we got equation S=v*t -> 100-75=(85-v2)*5  -> v2=80km/h  the answer is 80km/h",
+						"questionNumber": "6"
+					},
+					{
+						"title": "Question 7",
 						"question": "Two cars simultaneously left one point in opposite directions. The speed of one is 45 km/h, the speed of another is 50 km/h. After how many hours will the distance between them be 475 km?",
 						"answer":"5",
-						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1+v2 - the velocity of separation, v=45+50=95km/h,/n S - the distance what had been overcame with the velocity v, S=475km,/n t - time for what the distance S had been overcame, so t=S/v/n -> t=475/95=5h/n -> the answer is 5 hours",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1+v2 - the velocity of separation, v=45+50=95km/h,  S - the distance what had been overcame with the velocity v, S=475km,  t - time for what the distance S had been overcame, so t=S/v  -> t=475/95=5h  -> the answer is 5 hours",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "Two cars simultaneously left one point in one direction at speeds of 40 km/h and 55 km/h. After how many hours will the distance between them be 90 km?",
 						"answer": "6",
-						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1-v2 - the velocity of approach, v=55-40=15km/h,/n S - the distance what had been overcame with the velocity v, S=90km,/n t - time for what the distance S had been overcame, so t=S/v/n -> t=90/15=6h/n -> the answer is 6 hours",                                               
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1-v2 - the velocity of approach, v=55-40=15km/h,  S - the distance what had been overcame with the velocity v, S=90km,  t - time for what the distance S had been overcame, so t=S/v  -> t=90/15=6h  -> the answer is 6 hours",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "The cyclist must reach the destination by a certain date. It is known that if he travels at a speed of 15 km/h, he will arrive 1 hour earlier, and if the speed is 10 km/h, then he will be 1 hour late. What speed should the cyclist ride in order to arrive on time?",
 						"answer": "12",
-						"solution": "v - the velocity th cyclist should ride to reach the destination on time, S - the needed distance, t - the time for what the cyclist will travel the needed distance and will arrive in time,/n so with the velocity of 10km/h he will spend t+1 time and with the velocity of 15km/h t-1 time,/n -> we got equation 10*(t+1)=15*(t-1)/n -> t=5h/n -> the needed distance S=10*(5+1)=60km, so v=S/t=60/5=12km/h/n -> the answer is 12km/h",
-                        "questionNumber": "9"						
-					  },
-					  {
-					    "title": "Question 10",
+						"solution": "v - the velocity th cyclist should ride to reach the destination on time, S - the needed distance, t - the time for what the cyclist will travel the needed distance and will arrive in time,  so with the velocity of 10km/h he will spend t+1 time and with the velocity of 15km/h t-1 time,  -> we got equation 10*(t+1)=15*(t-1)  -> t=5h  -> the needed distance S=10*(5+1)=60km, so v=S/t=60/5=12km/h  -> the answer is 12km/h",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "The dog chased the fox, located at a distance of 120 m from it. In how many minutes will the dog catch up with the fox if the fox runs 320 m per minute and the dog is 350 m?",
 						"answer": "4",
-						"solution": "v1 - the velocity of the dog, v2 - the velocity of the fox, v=v1-v2 - the velocity of approach, v=350-320=30m/min/n S - the distance what had been overcame with the velocity v, S=120m,/n t - time for what the distance S had been overcame, so t=S/v/n -> t=120/30=4min/h -> the answer is 4 minutes",
-                        "questionNumber": "10"						
-					  },
-					  {
-					    "title": "Question 11",
+						"solution": "v1 - the velocity of the dog, v2 - the velocity of the fox, v=v1-v2 - the velocity of approach, v=350-320=30m/min  S - the distance what had been overcame with the velocity v, S=120m,  t - time for what the distance S had been overcame, so t=S/v  -> t=120/30=4min/h -> the answer is 4 minutes",
+						"questionNumber": "10"
+					},
+					{
+						"title": "Question 11",
 						"question": "From two cities, the distance between which is 700 km, two trains left at the same time to meet each other. The speed of one train is 45 km/h. Determine the speed of another train, if they met after 5 hours",
 						"answer": "95",
-						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach,/n S - the distance what had been overcame with the velocity v, S=700m,/n t - time for what the distance S had been overcame, so t=S/v/n -> we got the equation/n -> 5=700/(45+v2)/n ->v2+45=140/n -> v2=95km/h/n -> the answer is 95km/h",
-                        "questionNumber": "11"						
-					  },
-					  {
-					    "title": "Question 12",
+						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach,  S - the distance what had been overcame with the velocity v, S=700m,  t - time for what the distance S had been overcame, so t=S/v  -> we got the equation  -> 5=700/(45+v2)  ->v2+45=140  -> v2=95km/h  -> the answer is 95km/h",
+						"questionNumber": "11"
+					},
+					{
+						"title": "Question 12",
 						"question": "The train ran for 10 hours at a speed of 81 km/h. What speed does the train have to run to overcome the same distance in 9 hours?",
 						"answer": "90",
-						"solution": "S - the distance train ran, v - the speed with what train ran for 10 hours, v=81km/h,/n t - the time the train ran with the speed v, t=10h,/n v1 - the speed the train have to run to overcome the same distance in 9 hours, t1 - 9 hours/n -> find the distance -> S=v*t=81*10=810km,/n ->v1=S/t1=810/9=90km/h/n -> the answer is 90km/h",
-                        "questionNumber": "12"						
-					  },
-					  {
-					    "title": "Question 13",
+						"solution": "S - the distance train ran, v - the speed with what train ran for 10 hours, v=81km/h,  t - the time the train ran with the speed v, t=10h,  v1 - the speed the train have to run to overcome the same distance in 9 hours, t1 - 9 hours  -> find the distance -> S=v*t=81*10=810km,  ->v1=S/t1=810/9=90km/h  -> the answer is 90km/h",
+						"questionNumber": "12"
+					},
+					{
+						"title": "Question 13",
 						"question": "A freight train traveled a distance with the speed of 40km/h in 6 hours. How fast should a passenger train go in order to cover the same distance in 4 hours?",
 						"answer": "60",
-						"solution": "v1 - the velocity of th first train, v1=40km/h, t1 - time for what the first train traveled, t=6h, S - the distance the first train traveled, S=v1*t1=40*6=240km, v2 - the velocity of the second train, t2 - the time for what the second train must travel the distance S, t1=4h, -> v2=S/t2=240/4=60km/h -> the answer is 60km/h", 
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"solution": "v1 - the velocity of th first train, v1=40km/h, t1 - time for what the first train traveled, t=6h, S - the distance the first train traveled, S=v1*t1=40*6=240km, v2 - the velocity of the second train, t2 - the time for what the second train must travel the distance S, t1=4h, -> v2=S/t2=240/4=60km/h -> the answer is 60km/h",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "Two motor ships departed from the two piers at a distance of 90 km. The speed of one of them is 24 km/h, the speed of the other is 21 km/h. How many hours will the ships meet?",
 						"answer": "2",
-						"solution": "v1 - the velocity of the first ship, v2 - the velocity of the second ship, v=v1+v2 - the velocity of approach, v=24+21=45km/h,/n S - the distance what had been overcame with the velocity v, S=90km,/n t - time for what the distance S had been overcame, so t=S/v/n -> t=90/45=2h -> the answer is 2hours",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
+						"solution": "v1 - the velocity of the first ship, v2 - the velocity of the second ship, v=v1+v2 - the velocity of approach, v=24+21=45km/h,  S - the distance what had been overcame with the velocity v, S=90km,  t - time for what the distance S had been overcame, so t=S/v  -> t=90/45=2h -> the answer is 2hours",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "Of the two cities located at a distance of 528 km at the same time, two trains came out to meet each other and met after 4 hours. One train went at a speed of 60 km/h. How fast was the other train?",
 						"answer": "72",
-						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=60+v2,/n S - the distance what had been overcame with the velocity v, S=528km,/n t - time for what the distance S had been overcame, t=4h, so S=v*t/n -> we got the equation 528=4*(60+v2)/n -> v2=72km/h/n -> the answer is 72km/h",
-                        "questionNumber": "15"						
-					  },
-					  {
-					    "title": "Question 16",
+						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=60+v2,  S - the distance what had been overcame with the velocity v, S=528km,  t - time for what the distance S had been overcame, t=4h, so S=v*t  -> we got the equation 528=4*(60+v2)  -> v2=72km/h  -> the answer is 72km/h",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
 						"question": "Of the two cities, the distance between which is 484 km, two trains left at the same time to meet each other. The speed of one train is 45 km/h. Determine the speed of another train. if the trains met after 4 hours",
 						"answer": "75",
-						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=45+v2,/n S - the distance what had been overcame with the velocity v, S=484km,/n t - time for what the distance S had been overcame, t=4h, so S=v*t/n -> we got the equation 484=4*(45+v2)/n -> v2=75km/h/n -> the answer is 75km/h",
-                        "questionNumber": "16"						
-					  },
-					  {
-					    "title": "Question 17",
+						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=45+v2,  S - the distance what had been overcame with the velocity v, S=484km,  t - time for what the distance S had been overcame, t=4h, so S=v*t  -> we got the equation 484=4*(45+v2)  -> v2=75km/h  -> the answer is 75km/h",
+						"questionNumber": "16"
+					},
+					{
+						"title": "Question 17",
 						"question": "Passenger and freight trains departed from two cities at the same time and met after 12 hours. Determine the distance between the cities, if known. that the speed of the passenger train is 75 km/h. and commercial - 35 km/h",
 						"answer": "1320",
-						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=75+35=110km/h,/n S - the distance what had been overcame with the velocity v,/n t - time for what the distance S had been overcame, t=12h, so S=v*t/n -> S=110*12=1320km -> the answer is 1320km",
-                        "questionNumber": "17"						
-					  },
-					  {
-					    "title": "Question 18",
+						"solution": "v1 - the velocity of the first train, v2 - the velocity of the second train, v=v1+v2 - the velocity of approach, v=75+35=110km/h,  S - the distance what had been overcame with the velocity v,  t - time for what the distance S had been overcame, t=12h, so S=v*t  -> S=110*12=1320km -> the answer is 1320km",
+						"questionNumber": "17"
+					},
+					{
+						"title": "Question 18",
 						"question": "For 12 minutes the motorcyclist drove 10 km. How fast was he driving (in km/h)?",
 						"answer": "50",
 						"solution": "S - the distance the cyclist drove, S=10km, t - the time the cyclist drove the distance S, t=12min=1/5h, v - the velocity with what the cyclist drove, v=S/t=10/(1/5)=50km/h -> the answer is 50km/h",
-                        "questionNumber": "18"						
-					  },
-					  {
-					    "title": "Question 19",
+						"questionNumber": "18"
+					},
+					{
+						"title": "Question 19",
 						"question": "The speed of the wolf in case of danger is 55 km/h. How many kilometers can a wolf run at the same speed in 3 hours?",
 						"answer": "165",
 						"solution": "v - the velocity with what the wolf ran, v=55km/h, t - the time the wolf ran the distance S, t=3h, S - the distance the wolf ran, S=v*t=55*3=165km -> the answer id 165km",
-                        "questionNumber": "19"						
-					  },
-					  {
-					    "title": "Question 20",
+						"questionNumber": "19"
+					},
+					{
+						"title": "Question 20",
 						"question": "A single-humped camel can reach speeds of up to 16 km/h. How many kilometers will it travel in 5 hours?",
 						"answer": "80",
 						"solution": "v - the velocity with what the camel ran, v=16km/h, t - the time the camel ran the distance S, t=5h, S - the distance the camel ran, S=v*t=16*5=80km/h",
-                        "questionNumber": "20"						
-					  },
-					  {
-					    "title": "Question 21",
+						"questionNumber": "20"
+					},
+					{
+						"title": "Question 21",
 						"question": "In particularly lean years, squirrels leave their homes and move to where they eat food. They overcome hundreds of kilometers, moving at a speed of 4 km/h. How many hours will they cover 300 km?",
 						"answer": "75",
 						"solution": "v - the velocity with what the squirrel moves, v=4km/h, S - the distance the squirrel need to cover, S=300km, t - the time the squirrel can cover the distance S, t=S/v=300/4=75h -> the answer is 75h",
-                        "questionNumber": "21"						
-					  },
-					  {
-					    "title": "Question 22",
+						"questionNumber": "21"
+					},
+					{
+						"title": "Question 22",
 						"question": "From two marinas, the distance between which is 660 km, two motor ships set off at the same time to meet each other. The first ship passed an average of 350 m / min. Determine the speed of the second ship if, after 8 hours after the start of movement, 332 km remained between the ships.",
 						"answer": "20",
-						"solution": "v1 - the velocity of the first ship, v1=350m/min=350/(1/60)m/h=21000m/h=21km/h, v2 - the velocity of the second ship, v=v1+v2 - the velocity of approach, the difference between the distances S=S1-S2 is what had been overcame with the velocity v for time of 8 hours/n, so we got equation S=v*t -> 660-332=(21+v2)*8/n -> v2=20km/h/n the answer is 20km/h",
-                        "questionNumber": "22"						
-					  },
-					  {
-					    "title": "Question 23",
+						"solution": "v1 - the velocity of the first ship, v1=350m/min=350/(1/60)m/h=21000m/h=21km/h, v2 - the velocity of the second ship, v=v1+v2 - the velocity of approach, the difference between the distances S=S1-S2 is what had been overcame with the velocity v for time of 8 hours , so we got equation S=v*t -> 660-332=(21+v2)*8  -> v2=20km/h  the answer is 20km/h",
+						"questionNumber": "22"
+					},
+					{
+						"title": "Question 23",
 						"question": "From two cities, the distance between which is 300 km, two cars simultaneously left in the same direction. The car in front was moving at a speed of 60 km/h, and the other car was traveling at a speed of 80 km/h. How many hours after the start of movement does the second car catch up with the first?",
 						"answer": "15",
-						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1-v2 - the velocity of approach, v=80-60=20km/h,/n S - the distance what had been overcame with the velocity v, S=300km,/n t - time for what the distance S had been overcame, so t=S/v/n -> t=300/20=15h/n -> the answer is 15hours",
-                        "questionNumber": "23"						
-					  },
-					  {
-					    "title": "Question 24",
+						"solution": "v1 - the velocity of the first car, v2 - the velocity of the second car, v=v1-v2 - the velocity of approach, v=80-60=20km/h,  S - the distance what had been overcame with the velocity v, S=300km,  t - time for what the distance S had been overcame, so t=S/v  -> t=300/20=15h  -> the answer is 15hours",
+						"questionNumber": "23"
+					},
+					{
+						"title": "Question 24",
 						"question": "The cyclist had to travel a distance of 36 km at a speed of 7 km/h, but on the road he was delayed for 2 hours. To arrive on time at the destination, he had to double his speed after stopping. At what distance from the start of the movement did the delay occur?",
 						"answer": "8",
 						"solution": "S - the whole distance the cyclist had to travel, S=36km, S1 - the distance the cyclist covered before the stop, S=36km, v1 - the velocity with what the cyclist traveled before the stop, t1 - the time the cyclist spent on the distance before the stop, t0 - the time of stop, t0=2h, S2 - the distance the cyclist covered after the stop, S2=S-S1, v2 - the velocity with what the cyclist traveled after the stop, v2=14km/h, as the cyclist doubled his previous velocity, t2 - the time the cyclist spent on the distance after the stop, t - the time the cyclist could spend on the whole distance S without a stop with the primary velocity v1, so t=t1+t0+t2 -> t=S/v1, t1=S1/v1, t2=(S-S1)/v2 -> so we got the equation 36/7=S1/7+2+(36-S1)/14 -> S1=8km, so the delay occurred on distance of 8km -> the answer is 8km",
-                        "questionNumber": "24"						
-					  },
-					  {
-					    "title": "Question 25",
+						"questionNumber": "24"
+					},
+					{
+						"title": "Question 25",
 						"question": "The truck drove 240 km per day. Third part of the way he drove along a dirt road at a speed of 40 km/h, and the rest of the way - along a highway with a speed of 80 km/h. How many hours was the truck on its way?",
 						"answer": "4",
 						"solution": "S - the distance the truck drove per day, S=240km, S1 - the distance the truck drove along a dirt road, S1=1/3S=240/3=80km, v1 - the velocity with what the truck drove along a dirt road, v1=40km/h, t1 - the time for what the truck drove along a dirt road,t1=S1/v1=80/40=2h, S2 - the distance the truck drove along a highway, S2=S-S1=160km, v2 - the velocity with what the truck drove along a highway, v2=80km/h, t2 - the time for what the truck drove along a highway,t2=S2/v2=160/80=2h, -> the whole time the truck spent on its way is t=t1+t1=2+2=4h -> the answer is 4h",
-                        "questionNumber": "25"						
-					  }
-				   ]
-			   }
-			]
-		},
-		{
-			"title": "Percents",
-			"categoryNumber": "4",
-			"levels": [
-			   {
-				  "title": "Level 1",
-				  "levelNumber": "1",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+						"questionNumber": "25"
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "Percents",
+		"categoryNumber": "4",
+		"levels": [
+			{
+				"title": "Level 1",
+				"levelNumber": "1",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "What is the 50% of 100?",
 						"answer": "50",
 						"solution": "50%=0.5 -> 100*0.5=50",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "What is the 40% of 100?",
 						"answer": "40",
 						"solution": "40%=0.4 -> 100*0.4=40",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "What is the 75% of 100?",
 						"answer": "75",
 						"solution": "75%=0.75 -> 100*0.75=75",
-                        "questionNumber": "3"							
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "What is the 35% of 100?",
 						"answer": "35",
 						"solution": "35%=0.35 -> 100*0.35=35",
 						"questionNumber": "4"
-					  },
-					  {
-					    "title": "Question 5",
+					},
+					{
+						"title": "Question 5",
 						"question": "What is the 50% of 50?",
 						"answer": "25",
 						"solution": "50%=0.5 -> 50*0.5=25",
 						"questionNumber": "5"
-					  },
-					  {
-					    "title": "Question 6",
+					},
+					{
+						"title": "Question 6",
 						"question": "What is the 50% of 200?",
 						"answer": "100",
 						"solution": "50%=0.5 -> 200*0.5=100",
 						"questionNumber": "6"
-					  },
-					  {
-					    "title": "Question 7",
+					},
+					{
+						"title": "Question 7",
 						"question": "What is the 50% of 550?",
 						"answer": "275",
 						"solution": "50%=0.5 -> 550*0.5=275",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "What is the 40% of 200?",
 						"answer": "80",
 						"solution": "40%=0.4 -> 200*0.4=80",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "What is the 30% of 300?",
 						"answer": "100",
 						"solution": "30%=0.3 -> 300*0.3=100",
-                        "questionNumber": "9"							
-					  },
-					  {
-					    "title": "Question 10",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "What is the 60% of 300?",
 						"answer": "180",
 						"solution": "60%=0.6 -> 300*0.6=180",
 						"questionNumber": "10"
-					  },
-					  {
-					    "title": "Question 11",
+					},
+					{
+						"title": "Question 11",
 						"question": "What is the 20% of 200?",
 						"answer": "40",
 						"solution": "20%=0.2 -> 200*0.2=40",
 						"questionNumber": "11"
-					  },
-					  {
-					    "title": "Question 12",
+					},
+					{
+						"title": "Question 12",
 						"question": "What is the 40% of 50?",
 						"answer": "20",
 						"solution": "40%=0.4 -> 50*0.4=20",
 						"questionNumber": "12"
-					  },
-					  {
-					    "title": "Question 13",
+					},
+					{
+						"title": "Question 13",
 						"question": "What is the 10% of 70?",
 						"answer": "7",
 						"solution": "10%=0.1 -> 70*0.1=7",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "What is the 5% of 20?",
 						"answer": "1",
 						"solution": "5%=0.05 -> 20*0.05=1",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "What is the 10% of 150?",
 						"answer": "15",
 						"solution": "10%=0.1 -> 150*0.1=15",
-                        "questionNumber": "15"							
-					  },
-					  {
-					    "title": "Question 16",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
 						"question": "What is the 40% of 150?",
 						"answer": "60",
 						"solution": "40%=0.4 -> 150*0.4=60",
 						"questionNumber": "16"
-					  },
-					  {
-					    "title": "Question 17",
+					},
+					{
+						"title": "Question 17",
 						"question": "What is the 30% of 150?",
 						"answer": "75",
 						"solution": "30%=0.3 -> 150*0.3=75",
 						"questionNumber": "17"
-					  },
-					  {
-					    "title": "Question 18",
+					},
+					{
+						"title": "Question 18",
 						"question": "What is the 30% of 200?",
 						"answer": "60",
 						"solution": "30%=0.3 -> 200*0.3=60",
 						"questionNumber": "18"
-					  },
-					  {
-					    "title": "Question 19",
+					},
+					{
+						"title": "Question 19",
 						"question": "What is the 20% of 250?",
 						"answer": "50",
 						"solution": "20%=0.2 -> 250*0.2=50",
-                        "questionNumber": "19"						
-					  },
-					  {
-					    "title": "Question 20",
+						"questionNumber": "19"
+					},
+					{
+						"title": "Question 20",
 						"question": "What is the 10% of 1060?",
 						"answer": "106",
 						"solution": "10%=0.1 -> 1060*0.1=106",
-                        "questionNumber": "20"						
-					  }	
-				  ]
-			   },
-			   {
-				  "title": "Level 2",
-				  "levelNumber": "2",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+						"questionNumber": "20"
+					}
+				]
+			},
+			{
+				"title": "Level 2",
+				"levelNumber": "2",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "What is the 25% of 200?",
 						"answer": "50",
 						"solution": "25%=0.25 -> 200*0.25=50",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "What is the 25% of 400?",
 						"answer": "100",
 						"solution": "25%=0.25 -> 400*0.25=100",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "What is the 35% of 300?",
 						"answer": "175",
 						"solution": "35%=0.35 -> 300*0.35=175",
-                        "questionNumber": "3"							
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "What is the 45% of 200?",
 						"answer": "90",
 						"solution": "45%=0.45 -> 200*0.45=90",
 						"questionNumber": "4"
-					  },
-					  {
-					    "title": "Question 5",
+					},
+					{
+						"title": "Question 5",
 						"question": "What is the 55% of 120?",
 						"answer": "66",
 						"solution": "55%=0.55 -> 120*0.55=66",
 						"questionNumber": "5"
-					  },
-					  {
-					    "title": "Question 6",
+					},
+					{
+						"title": "Question 6",
 						"question": "What is the 35% of 320?",
 						"answer": "112",
 						"solution": "35%=0.35 -> 320*0.35=112",
 						"questionNumber": "6"
-					  },
-					  {
-					    "title": "Question 7",
+					},
+					{
+						"title": "Question 7",
 						"question": "What is the 25% of 220?",
 						"answer": "55",
 						"solution": "25%=0.25 -> 220*0.25=55",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "What is the 35% of 520?",
 						"answer": "182",
 						"solution": "35%=0.35 -> 520*0.35=182",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "What is the 42% of 350?",
 						"answer": "157",
 						"solution": "42%=0.42 -> 350*0.42=157",
-                        "questionNumber": "9"							
-					  },
-					  {
-					    "title": "Question 10",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "What is the 48% of 250?",
 						"answer": "120",
 						"solution": "48%=0.48 -> 250*0.48=120",
 						"questionNumber": "10"
-					  },
-					  {
-					    "title": "Question 11",
+					},
+					{
+						"title": "Question 11",
 						"question": "What is the 25% of 380?",
 						"answer": "95",
 						"solution": "25%=0.25 -> 380*0.25=95",
 						"questionNumber": "11"
-					  },
-					  {
-					    "title": "Question 12",
+					},
+					{
+						"title": "Question 12",
 						"question": "What is the 15% of 180?",
 						"answer": "29",
 						"solution": "15%=0.15 -> 180*0.15=29",
 						"questionNumber": "12"
-					  },
-					  {
-					    "title": "Question 13",
+					},
+					{
+						"title": "Question 13",
 						"question": "What is the 45% of 460?",
 						"answer": "207",
 						"solution": "45%=0.45 -> 460*0.45=207",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "What is the 32% of 550?",
 						"answer": "176",
 						"solution": "32%=0.32 -> 550*0.32=176",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "What is the 5% of 2100?",
 						"answer": "105",
 						"solution": "5%=0.05 -> 2100*0.05=105",
-                        "questionNumber": "15"							
-					  },
-					  {
-					    "title": "Question 16",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
 						"question": "What is the 33% of 8300?",
 						"answer": "2739",
 						"solution": "33%=0.33 -> 8300*0.33=2739",
 						"questionNumber": "16"
-					  },
-					  {
-					    "title": "Question 17",
+					},
+					{
+						"title": "Question 17",
 						"question": "What is the 21% of 4300?",
 						"answer": "903",
 						"solution": "21%=0.21 -> 4300*0.21=903",
 						"questionNumber": "17"
-					  },
-					  {
-					    "title": "Question 18",
+					},
+					{
+						"title": "Question 18",
 						"question": "What is the 47% of 2300?",
 						"answer": "1081",
 						"solution": "47%=0.47 -> 2300*0.47=1081",
 						"questionNumber": "18"
-					  },
-					  {
-					    "title": "Question 19",
+					},
+					{
+						"title": "Question 19",
 						"question": "What is the 77% of 5900?",
 						"answer": "4543",
 						"solution": "77%=0.77 -> 5900*0.77=4543",
-                        "questionNumber": "19"						
-					  },
-					  {
-					    "title": "Question 20",
+						"questionNumber": "19"
+					},
+					{
+						"title": "Question 20",
 						"question": "What is the 92% of 6700?",
 						"answer": "6164",
 						"solution": "92%=0.92 -> 6700*0.92=6164",
-                        "questionNumber": "20"						
-					  }	
-				  ]
-			   },
-			   {
-				  "title": "Level 3",
-				  "levelNumber": "3",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+						"questionNumber": "20"
+					}
+				]
+			},
+			{
+				"title": "Level 3",
+				"levelNumber": "3",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "If 10% of some number is 7, what is the number?",
 						"answer": "70",
 						"solution": "10%=0.1 -> 7/0.1=70",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "If 10% of some number is 20, what is the number?",
 						"answer": "200",
 						"solution": "10%=0.1 -> 20/0.1=200",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "If 30% of some number is 9, what is the number?",
 						"answer": "30",
 						"solution": "30%=0.3 -> 9/0.3=30",
-                        "questionNumber": "3"							
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "If 20% of some number is 8, what is the number?",
 						"answer": "40",
 						"solution": "20%=0.2 -> 8/0.2=40",
 						"questionNumber": "4"
-					  },
-					  {
-					    "title": "Question 5",
+					},
+					{
+						"title": "Question 5",
 						"question": "If 25% of some number is 75, what is the number?",
 						"answer": "300",
 						"solution": "25%=0.25 -> 75/0.25=300",
 						"questionNumber": "5"
-					  },
-					  {
-					    "title": "Question 6",
+					},
+					{
+						"title": "Question 6",
 						"question": "If 45% of some number is 36, what is the number?",
 						"answer": "80",
 						"solution": "45%=0.45 -> 36/0.45=80",
 						"questionNumber": "6"
-					  },
-					  {
-					    "title": "Question 7",
+					},
+					{
+						"title": "Question 7",
 						"question": "If 24% of some number is 96, what is the number?",
 						"answer": "400",
 						"solution": "24%=0.24 -> 96/0.24=400",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "If 32% of some number is 128, what is the number?",
 						"answer": "400",
 						"solution": "32%=0.32 -> 128/0.32=400",
-                        "questionNumber": "8"						
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "If 7% of some number is 84, what is the number?",
 						"answer": "1200",
 						"solution": "7%=0.07 -> 84/0.07=1200",
-                        "questionNumber": "9"							
-					  },
-					  {
-					    "title": "Question 10",
+						"questionNumber": "9"
+					},
+					{
+						"title": "Question 10",
 						"question": "If 56% of some number is 14, what is the number?",
 						"answer": "25",
 						"solution": "56%=0.56 -> 14/0.56=25",
 						"questionNumber": "10"
-					  },
-					  {
-					    "title": "Question 11",
+					},
+					{
+						"title": "Question 11",
 						"question": "If 18% of some number is 54, what is the number?",
 						"answer": "300",
 						"solution": "18%=0.18 -> 54/0.18=300",
 						"questionNumber": "11"
-					  },
-					  {
-					    "title": "Question 12",
+					},
+					{
+						"title": "Question 12",
 						"question": "If 23% of some number is 92, what is the number?",
 						"answer": "400",
 						"solution": "23%=0.23 -> 92/0.23=400",
 						"questionNumber": "12"
-					  },
-					  {
-					    "title": "Question 13",
+					},
+					{
+						"title": "Question 13",
 						"question": "If 11% of some number is 55, what is the number?",
 						"answer": "500",
 						"solution": "11%=0.11 -> 55/0.11=500",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "If 17% of some number is 68, what is the number?",
 						"answer": "400",
 						"solution": "17%=0.17 -> 68/0.17=400",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "If 31% of some number is 93, what is the number?",
 						"answer": "300",
 						"solution": "31%=0.31 -> 93/0.31=300",
-                        "questionNumber": "15"							
-					  },
-					  {
-					    "title": "Question 16",
+						"questionNumber": "15"
+					},
+					{
+						"title": "Question 16",
 						"question": "If 38% of some number is 152, what is the number?",
 						"answer": "400",
 						"solution": "38%=0.38 -> 152/0.38=400",
 						"questionNumber": "16"
-					  },
-					  {
-					    "title": "Question 17",
+					},
+					{
+						"title": "Question 17",
 						"question": "If 19% of some number is 247, what is the number?",
 						"answer": "1300",
 						"solution": "19%=0.19 -> 247/0.19=1300",
 						"questionNumber": "17"
-					  },
-					  {
-					    "title": "Question 18",
+					},
+					{
+						"title": "Question 18",
 						"question": "If 51% of some number is 714, what is the number?",
 						"answer": "1400",
 						"solution": "51%=0.51 -> 714/0.51=1400",
 						"questionNumber": "18"
-					  },
-					  {
-					    "title": "Question 19",
+					},
+					{
+						"title": "Question 19",
 						"question": "If 83% of some number is 1225, what is the number?",
 						"answer": "1500",
 						"solution": "83%=0.83 -> 1225/0.83=1500",
-                        "questionNumber": "19"						
-					  },
-					  {
-					    "title": "Question 20",
+						"questionNumber": "19"
+					},
+					{
+						"title": "Question 20",
 						"question": "If 78% of some number is 1638, what is the number?",
 						"answer": "2100",
 						"solution": "78%=0.78 -> 1638/0.78=2100",
-                        "questionNumber": "20"						
-					  }	
-				  ]
-			   },
-			   {
-				  "title": "Level 4",
-				  "levelNumber": "4",
-				  "questions": [
-					  {
-					    "title": "Question 1",
+						"questionNumber": "20"
+					}
+				]
+			},
+			{
+				"title": "Level 4",
+				"levelNumber": "4",
+				"questions": [
+					{
+						"title": "Question 1",
 						"question": "Find 70% of number, which is 14% of 500.",
 						"answer": "49",
 						"solution": "14%=0.14 -> 500*0.14=70 -> 70%=0.7 -> 70*0.7=49",
-                        "questionNumber": "1"						
-					  },
-					  {
-					    "title": "Question 2",
+						"questionNumber": "1"
+					},
+					{
+						"title": "Question 2",
 						"question": "Find 55% of number, which is 15% of 800.",
 						"answer": "66",
 						"solution": "15%=0.15 -> 800*0.15=120 -> 55%=0.55 -> 120*0.55=66",
-                        "questionNumber": "2"						
-					  },
-					  {
-					    "title": "Question 3",
+						"questionNumber": "2"
+					},
+					{
+						"title": "Question 3",
 						"question": "Find 44% of number, which is 10% of 5500.",
 						"answer": "242",
 						"solution": "10%=0.10 -> 5500*0.10=550 -> 44%=0.44 -> 550*0.44=242",
-                        "questionNumber": "3"							
-					  },
-					  {
-					    "title": "Question 4",
+						"questionNumber": "3"
+					},
+					{
+						"title": "Question 4",
 						"question": "Find 35% of number, which is 12% of 9500.",
 						"answer": "399",
 						"solution": "12%=0.12 -> 9500*0.12=1140 -> 35%=0.35 -> 1140*0.35=399",
 						"questionNumber": "4"
-					  },
-					  {
-					    "title": "Question 5",
+					},
+					{
+						"title": "Question 5",
 						"question": "Find 50% of number, which is 13% of 10800.",
 						"answer": "702",
 						"solution": "13%=0.13 -> 10800*0.13=1404 -> 50%=0.5 -> 1404*0.5=702",
 						"questionNumber": "5"
-					  },
-					  {
-					    "title": "Question 6",
+					},
+					{
+						"title": "Question 6",
 						"question": "If 35% of some number is 14, find 5% of this number.",
 						"answer": "2",
 						"solution": "35%=0.35 -> 14/0.35=40 -> 5%=0.05 -> 40*0.05=2",
 						"questionNumber": "6"
-					  },
-					  {
-					    "title": "Question 7",
+					},
+					{
+						"title": "Question 7",
 						"question": "If 38% of some number is 57, find 42% of this number.",
 						"answer": "63",
 						"solution": "38%=0.38 -> 57/0.38=150 -> 42%=0.42 -> 150*0.42=63",
-                        "questionNumber": "7"						
-					  },
-					  {
-					    "title": "Question 8",
+						"questionNumber": "7"
+					},
+					{
+						"title": "Question 8",
 						"question": "If 44% of some number is 176, find 59% of this number.",
 						"answer": "236",
 						"solution": "44%=0.44 -> 176/0.44=400 -> 59%=0.59 -> 400*0.59=236",
-                        "questionNumber": "8"							
-					  },
-					  {
-					    "title": "Question 9",
+						"questionNumber": "8"
+					},
+					{
+						"title": "Question 9",
 						"question": "If 67% of some number is 335, find 47% of this number.",
 						"answer": "235",
 						"solution": "67%=0.67 -> 3350/0.67=500 -> 47%=0.47 -> 500*0.47=235",
 						"questionNumber": "9"
-					  },
-					  {
-					    "title": "Question 10",
+					},
+					{
+						"title": "Question 10",
 						"question": "If 11% of some number is 341, find 22% of this number.",
 						"answer": "682",
 						"solution": "11%=0.11 -> 341/0.11=3100 -> 22%=0.22 -> 3100*0.22=682",
-                        "questionNumber": "10"						
-					  },
-					  {
-					    "title": "Question 11",
+						"questionNumber": "10"
+					},
+					{
+						"title": "Question 11",
 						"question": "If 29% of some number is 50% of 116, what is the number?",
 						"answer": "200",
 						"solution": "50%=0.5 -> 116*0.5=58 -> 29%=0.29 -> 58/0.29=200",
 						"questionNumber": "11"
-					  },
-					  {
-					    "title": "Question 12",
+					},
+					{
+						"title": "Question 12",
 						"question": "If 24% of some number is 25% of 96, what is the number?",
 						"answer": "100",
 						"solution": "25%=0.25 -> 96*0.25=24 -> 24%=0.24 -> 24/0.24=100",
 						"questionNumber": "12"
-					  },
-					  {
-					    "title": "Question 13",
+					},
+					{
+						"title": "Question 13",
 						"question": "If 48% of some number is 16% of 900, what is the number?",
 						"answer": "300",
 						"solution": "16%=0.16 -> 900*0.16=144 -> 48%=0.48 -> 144/0.48=300",
-                        "questionNumber": "13"						
-					  },
-					  {
-					    "title": "Question 14",
+						"questionNumber": "13"
+					},
+					{
+						"title": "Question 14",
 						"question": "If 11% of some number is 88% of 150, what is the number?",
 						"answer": "1200",
 						"solution": "88%=0.88 -> 150*0.88=132 -> 11%=0.11 -> 132/0.11=1200",
-                        "questionNumber": "14"						
-					  },
-					  {
-					    "title": "Question 15",
+						"questionNumber": "14"
+					},
+					{
+						"title": "Question 15",
 						"question": "If 9% of some number is 36% of 75, what is the number?",
 						"answer": "300",
 						"solution": "36%=0.36 -> 75*0.36=27 -> 9%=0.09 -> 27/0.09=300",
-                        "questionNumber": "15"							
-					  }
-				  ]
-			   }
-			]
-		}
+						"questionNumber": "15"
+					}
+				]
+			}
+		]
+	}
 ]}

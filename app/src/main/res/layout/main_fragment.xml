@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_fragment"
-    android:orientation="vertical"
-    android:background="@drawable/pattern">
-
-    <TextView
-        style="@style/AppTextViewStyle"
-        android:id="@+id/main_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/main_title"
-        android:gravity="center"
-        android:textSize="30sp" />
+    android:orientation="vertical">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,26 +16,32 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
         <Button
-            style="@style/AppMainButtonStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/random_examples"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/math_questions"
-            android:text="@string/random_examples_title" />
+            android:drawableLeft="@drawable/math_questions_icon"
+            android:text="@string/random_examples_title"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"/>
         <Button
-            style="@style/AppMainButtonStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/random_expressions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/math_expressions"
-            android:text="@string/random_expressions_title" />
+            android:drawableLeft="@drawable/math_expressions_icon"
+            android:text="@string/random_expressions_title"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"/>
         <Button
-            style="@style/AppMainButtonStyle"
+            style="@style/Widget.MaterialComponents.Button"
             android:id="@+id/solve_problems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/math_problems"
-            android:text="@string/solve_problems_title" />
+            android:drawableLeft="@drawable/math_problems_icon"
+            android:text="@string/solve_problems_title"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 </LinearLayout>
