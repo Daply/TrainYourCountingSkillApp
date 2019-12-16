@@ -3,7 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_fragment">
+    android:id="@+id/main_fragment"
+    android:background="@android:color/white">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="top"
+        android:background="@color/colorGreen"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -50,5 +57,21 @@
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <RelativeLayout
+        android:id="@+id/back_to_main_button_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <Button
+            style="@style/AppMainButtonStyle"
+            android:id="@+id/view_scores"
+            android:layout_centerInParent="true"
+            android:text="@string/view_scores"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

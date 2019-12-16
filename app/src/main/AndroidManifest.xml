@@ -28,9 +28,9 @@
             android:label="@string/app_name"
             android:parentActivityName=".activity.QuestionListActivity">
         </activity>
-        <activity android:name="com.dariapro.trainyourcountingskills.activity.SimpleQuestionPagerActivity"
+        <activity android:name="com.dariapro.trainyourcountingskills.activity.pager.SimpleQuestionPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.SimpleQuestionPagerActivity">
+            android:parentActivityName=".activity.pager.SimpleQuestionPagerActivity">
         </activity>
         <activity android:name="com.dariapro.trainyourcountingskills.activity.CategoryActivity"
             android:label="@string/app_name"
@@ -38,11 +38,11 @@
         </activity>
         <activity android:name="com.dariapro.trainyourcountingskills.activity.RandomQuestionStartActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.RandomQuestionPagerActivity">
+            android:parentActivityName=".activity.pager.RandomQuestionPagerActivity">
         </activity>
-        <activity android:name="com.dariapro.trainyourcountingskills.activity.RandomQuestionPagerActivity"
+        <activity android:name="com.dariapro.trainyourcountingskills.activity.pager.RandomQuestionPagerActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".activity.RandomQuestionPagerActivity">
+            android:parentActivityName=".activity.pager.RandomQuestionPagerActivity">
         </activity>
         <activity android:name="com.dariapro.trainyourcountingskills.activity.AnswerActivity"
             android:label="@string/app_name"

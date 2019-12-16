@@ -1,19 +1,19 @@
 package com.dariapro.trainyourcountingskills.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.adapter.ScorePagerAdapter;
-import com.dariapro.trainyourcountingskills.fragment.ScoresFragment;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class ScoresActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -21,6 +21,7 @@ public class ScoresActivity extends AppCompatActivity {
     private ScorePagerAdapter scorePagerAdapter;
     private TabItem tabQuestionScores;
     private TabItem tabExpressionScores;
+    private TabItem tabPercentsScores;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class ScoresActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.scores_tab_layout);
         tabQuestionScores = findViewById(R.id.question_scores_tab);
         tabExpressionScores = findViewById(R.id.expression_scores_tab);
+        tabPercentsScores = findViewById(R.id.percents_scores_tab);
         viewPager = findViewById(R.id.scores_pager);
 
         scorePagerAdapter = new ScorePagerAdapter(getSupportFragmentManager(),

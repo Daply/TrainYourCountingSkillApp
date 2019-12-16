@@ -1,4 +1,4 @@
-package com.dariapro.trainyourcountingskills.activity;
+package com.dariapro.trainyourcountingskills.activity.pager;
 
 import android.os.Bundle;
 import android.util.Log;

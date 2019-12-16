@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Тренируй навыки счёта</string>
+
+    <!-- Main screen -->
+    <string name="main_title">Тренируй навыки счёта</string>
+    <string name="menu_scores_title">Рекорды</string>
+    <string name="menu_language_title">Язык</string>
+    <string name="menu_language_english_title">Английский</string>
+    <string name="menu_language_russian_title">Русский</string>
+    <string name="random_examples_title">Математические примеры</string>
+    <string name="random_expressions_title">Математические выражения</string>
+    <string name="solve_percent_problems_title">Задачи на проценты</string>
+    <string name="solve_problems_title">Текстовые задачи</string>
+
+    <string name="set">TrainCounting</string>
+    <string name="start_randoms">Старт</string>
+
+    <!-- Titles -->
+    <string name="category_title">TrainCounting</string>
+    <string name="level_title">Сложность</string>
+    <string name="time_title">Время</string>
+    <string name="operators_title">Операторы (+ по умолчанию)</string>
+    <string name="math_questions_scores">Лучшие результаты в математических примерах</string>
+    <string name="math_expressions_scores">Лучшие результаты в математических выражениях</string>
+    <string name="score_level">Уровень</string>
+    <string name="score_time">Время</string>
+    <string name="score_number_of_questions">Количество отвеченных вопросов</string>
+
+    <!-- Operators -->
+    <string name="plus_operator">+</string>
+    <string name="minus_operator">-</string>
+    <string name="multiply_operator">*</string>
+    <string name="divide_operator">/</string>
+    <string name="root_operator">√</string>
+
+    <!-- Button titles -->
+    <string name="start_button">Старт</string>
+    <string name="answer_button">Ответить</string>
+    <string name="skip_button">Пропустить</string>
+    <string name="view_scores">Посмотреть результаты</string>
+
+    <string name="one_button">1</string>
+    <string name="two_button">2</string>
+    <string name="three_button">3</string>
+    <string name="four_button">4</string>
+    <string name="five_button">5</string>
+    <string name="six_button">6</string>
+    <string name="seven_button">7</string>
+    <string name="eight_button">8</string>
+    <string name="nine_button">9</string>
+    <string name="zero_button">0</string>
+    <string name="clear_all_button">C</string>
+    <string name="delete_button">Del</string>
+
+    <!-- Hint -->
+    <string name="answer_hint">ответ</string>
+
+    <!-- Extras -->
+    <string name="PACKAGE">com.dariapro.traincounting</string>
+    <string name="MODE">com.dariapro.traincounting.mode</string>
+    <string name="EXTRA_CATEGORY_ID">com.dariapro.traincounting.category_id</string>
+    <string name="EXTRA_LEVEL_ID">com.dariapro.traincounting.level_id</string>
+    <string name="EXTRA_QUESTION_ID">com.dariapro.traincounting.question_id</string>
+    <string name="ARG_QUESTION">com.dariapro.traincounting.question</string>
+    <string name="QUESTION_TYPE">com.dariapro.traincounting.question_type</string>
+    <string name="LEVEL_EXTRA">com.dariapro.traincounting.level</string>
+    <string name="TIME_EXTRA">com.dariapro.traincounting.time</string>
+    <string name="PLUS_EXTRA">com.dariapro.traincounting.plus</string>
+    <string name="MINUS_EXTRA">com.dariapro.traincounting.minus</string>
+    <string name="MULTIPLY_EXTRA">com.dariapro.traincounting.multiply</string>
+    <string name="DIVIDE_EXTRA">com.dariapro.traincounting.divide</string>
+    <string name="ROOT_EXTRA">com.dariapro.traincounting.root</string>
+
+    <!-- Answer -->
+    <string name="CORRECT">Правильно!</string>
+    <string name="NOT_CORRECT">Неправильно</string>
+
+    <!-- Score result headers-->
+    <string name="your_score">Твой результат</string>
+    <string name="your_best_score">Твой лучший результат</string>
+    <string name="score_questions">вопросов за</string>
+    <string name="score_time_scale">минут(у, ы)</string>
+
+    <!-- Score -->
+    <string name="questions_scores">Примеры</string>
+    <string name="expressions_scores">Выражения</string>
+    <string name="percents_scores">Проценты</string>
+    <string name="NEW_BEST_SCORE">Новый рекорд!</string>
+    <string name="all_scores">Все лучшие результаты</string>
+    <string name="no_scores">Пока что нет никакиих резльтатов</string>
+
+    <!-- Spinners -->
+    <string name="level_spinner">Сложность</string>
+    <string name="time_spinner">Время</string>
+
+    <!-- Answers -->
+    <string name="solution_title">Решение</string>
+    <string name="answer_title">Ответ</string>
+
+    <!-- Log tag -->
+    <string name="TAG">appLogs</string>
+    <string name="see_answer_button">Посмотреть ответ</string>
+</resources>

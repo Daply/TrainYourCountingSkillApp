@@ -3,8 +3,13 @@
 
     <!-- Main screen -->
     <string name="main_title">Train your counting skills</string>
+    <string name="menu_scores_title">Scores</string>
+    <string name="menu_language_title">Language</string>
+    <string name="menu_language_english_title">English</string>
+    <string name="menu_language_russian_title">Russian</string>
     <string name="random_examples_title">Math examples</string>
     <string name="random_expressions_title">Math expressions</string>
+    <string name="solve_percent_problems_title">Solve percent problems</string>
     <string name="solve_problems_title">Solve problems</string>
 
     <string name="set">TrainCounting</string>
@@ -32,6 +37,7 @@
     <string name="start_button">Start</string>
     <string name="answer_button">Answer</string>
     <string name="skip_button">Skip</string>
+    <string name="view_scores">View scores</string>
 
     <string name="one_button">1</string>
     <string name="two_button">2</string>
@@ -78,6 +84,7 @@
     <!-- Score -->
     <string name="questions_scores">Questions</string>
     <string name="expressions_scores">Expressions</string>
+    <string name="percents_scores">Percents</string>
     <string name="NEW_BEST_SCORE">New Best Score!</string>
     <string name="all_scores">All best scores</string>
     <string name="no_scores">No scores for a while</string>

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <menu
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
         <item android:id="@+id/scores"
-            android:title="Scores" />
+            android:title="@string/menu_scores_title" />
+
+        <!--<item android:id="@+id/language"-->
+            <!--android:title="@string/menu_language_title">-->
+
+            <!--<menu>-->
+
+                <!--<item android:id="@+id/en_lang"-->
+                    <!--android:title="@string/menu_language_english_title" />-->
+
+                <!--<item android:id="@+id/ru_lang"-->
+                    <!--android:title="@string/menu_language_russian_title" />-->
+
+            <!--</menu>-->
+
+        <!--</item>-->
     </menu>

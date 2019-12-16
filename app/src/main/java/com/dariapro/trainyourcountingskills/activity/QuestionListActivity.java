@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.dariapro.trainyourcountingskills.R;
+import com.dariapro.trainyourcountingskills.activity.pager.SimpleQuestionPagerActivity;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
-import com.dariapro.trainyourcountingskills.fragment.QuestionListFragment;
+import com.dariapro.trainyourcountingskills.fragment.list.QuestionListFragment;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +16,9 @@ import androidx.fragment.app.Fragment;
  * @author Pleshchankova Daria
  *
  */
-public class QuestionListActivity extends SingleFragmentActivity{
+public class QuestionListActivity extends SingleFragmentActivity {
+
+    private static long questionsLevelId = 0;
 
     @Override
     protected Fragment createFragment() {
@@ -31,6 +34,7 @@ public class QuestionListActivity extends SingleFragmentActivity{
                             " is null in " + getClass().getName());
                 }
                 levelId = args.getLong(getApplicationContext().getString(R.string.EXTRA_LEVEL_ID));
+                questionsLevelId = levelId;
                 if (levelId == 0){
                     throw new ExtraIsNullException("Extra " +
                             getApplicationContext().getString(R.string.EXTRA_LEVEL_ID) +
@@ -55,6 +59,7 @@ public class QuestionListActivity extends SingleFragmentActivity{
     public static Intent newIntent(Context packageContext, long questionId){
         Intent intent = new Intent(packageContext, SimpleQuestionPagerActivity.class);
         intent.putExtra(packageContext.getString(R.string.EXTRA_QUESTION_ID), questionId);
+        intent.putExtra(packageContext.getString(R.string.EXTRA_LEVEL_ID), questionsLevelId);
         return intent;
     }
 }

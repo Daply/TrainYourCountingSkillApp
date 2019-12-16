@@ -5,12 +5,16 @@ import android.os.Bundle;
 
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
-import com.dariapro.trainyourcountingskills.fragment.QuestionScoresFragment;
+import com.dariapro.trainyourcountingskills.fragment.list.ScoresListFragment;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class ScorePagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
@@ -25,21 +29,24 @@ public class ScorePagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
-        QuestionScoresFragment fragment = new QuestionScoresFragment();
+        ScoresListFragment fragment = new ScoresListFragment();
+        String questionType = null;
         switch (position) {
             case 0:
-                bundle.putString(context.getString(R.string.QUESTION_TYPE),
-                        QuestionType.QUESTION.name());
-                fragment.setArguments(bundle);
-                return fragment;
+                questionType = QuestionType.QUESTION.name();
+                break;
             case 1:
-                bundle.putString(context.getString(R.string.QUESTION_TYPE),
-                        QuestionType.EXPRESSION.name());
-                fragment.setArguments(bundle);
-                return fragment;
+                questionType = QuestionType.EXPRESSION.name();
+                break;
+            case 2:
+                questionType = QuestionType.PERCENTS_PROBLEM.name();
+                break;
             default:
-                return null;
+                questionType = new String();
         }
+        bundle.putString(context.getString(R.string.QUESTION_TYPE), questionType);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override

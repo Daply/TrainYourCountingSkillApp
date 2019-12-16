@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scores_fragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

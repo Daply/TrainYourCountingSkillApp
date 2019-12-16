@@ -9,12 +9,13 @@ import android.widget.Button;
 
 import com.dariapro.trainyourcountingskills.R;
 
-public class ResultDialog extends Dialog implements
-        android.view.View.OnClickListener {
+/**
+ * @author Pleshchankova Daria
+ *
+ */
+public class ResultDialog extends Dialog {
 
     public Activity currentActivity;
-    public Dialog dialog;
-    public Button okButton;
 
     public ResultDialog(Activity currentActivity) {
         super(currentActivity);
@@ -26,16 +27,6 @@ public class ResultDialog extends Dialog implements
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.result_dialog);
-//        okButton = (Button) findViewById(R.id.ok);
-//        okButton.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.ok:
-//                currentActivity.finish();
-//                break;
-//        }
-    }
 }

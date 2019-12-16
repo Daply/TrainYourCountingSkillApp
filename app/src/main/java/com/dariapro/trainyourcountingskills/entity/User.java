@@ -1,5 +1,9 @@
 package com.dariapro.trainyourcountingskills.entity;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class User {
 
     private String name;

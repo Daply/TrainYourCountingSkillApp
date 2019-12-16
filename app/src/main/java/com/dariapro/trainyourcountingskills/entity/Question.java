@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey;
                 childColumns = "questionLevelId",
                 onDelete = ForeignKey.CASCADE),
         indices = {@Index("title"), @Index("questionLevelId")})
-public class Question implements Serializable{
+public class Question implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "questionId")

@@ -114,7 +114,7 @@ public class RandomQuestionStartFragment extends Fragment {
         multiplyCheckBox = view.findViewById(R.id.multiply);
         divideCheckBox = view.findViewById(R.id.divide);
         rootCheckBox = view.findViewById(R.id.root);
-        if (questionType.equals(QuestionType.EXPRESSION)) {
+        if (!questionType.equals(QuestionType.QUESTION)) {
             view.findViewById(R.id.operators_title).setVisibility(View.GONE);
             view.findViewById(R.id.operators_layout).setVisibility(View.GONE);
         }

@@ -15,26 +15,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.activity.AnswerActivity;
-import com.dariapro.trainyourcountingskills.activity.RandomQuestionPagerActivity;
-import com.dariapro.trainyourcountingskills.activity.SimpleQuestionPagerActivity;
+import com.dariapro.trainyourcountingskills.activity.pager.RandomQuestionPagerActivity;
+import com.dariapro.trainyourcountingskills.activity.pager.SimpleQuestionPagerActivity;
 import com.dariapro.trainyourcountingskills.entity.Mode;
 import com.dariapro.trainyourcountingskills.entity.Question;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
-import com.dariapro.trainyourcountingskills.random.RandomQuestionGenerator;
+import com.dariapro.trainyourcountingskills.random.arguments.GeneratorArguments;
+import com.dariapro.trainyourcountingskills.random.provider.ExpressionGeneratorProvider;
+import com.dariapro.trainyourcountingskills.random.provider.GeneratorProvider;
+import com.dariapro.trainyourcountingskills.random.provider.ProblemGeneratorProvider;
+import com.dariapro.trainyourcountingskills.random.provider.QuestionGeneratorProvider;
+import com.dariapro.trainyourcountingskills.random.generator.RandomGenerator;
 import com.dariapro.trainyourcountingskills.viewmodel.QuestionViewModel;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -51,6 +52,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
     private long currentQuestionId = 0;
     private Question question = null;
 
+    private TextView questionTitle = null;
     private TextView problemTask = null;
     private Button answerButton = null;
     private Button skipButton = null;
@@ -93,6 +95,14 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
 
         initData();
 
+        questionTitle = view.findViewById(R.id.question_title);
+        LinearLayout questionTitleLayout = view.findViewById(R.id.question_title_layout);
+        if (modeValue.equals(Mode.RANDOM.name())) {
+            questionTitleLayout.setVisibility(View.GONE);
+        }
+        else {
+            questionTitle.setText(question.getTitle());
+        }
         problemTask = view.findViewById(R.id.question_expression);
         problemTask.setText(question.getQuestion());
         problemTask.setMovementMethod(new ScrollingMovementMethod());
@@ -105,7 +115,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
             public void onClick(View v) {
                 answer = answerField.getText().toString();
                 if (answer.equals(question.getRightAnswer())) {
-                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.colorGreen));
+                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(),
+                            R.color.colorGreen));
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -120,7 +131,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
                     }, 500);
                 }
                 else {
-                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.colorRed));
+                    answerButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(),
+                            R.color.colorRed));
                 }
             }
         });
@@ -183,23 +195,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
                 QuestionType questionType = QuestionType.valueOf(args.getString(getContext()
                         .getString(R.string.QUESTION_TYPE)));
                 int level = args.getInt(getContext().getString(R.string.LEVEL_EXTRA));
-                RandomQuestionGenerator randomQuestionGenerator = new RandomQuestionGenerator();
-                if (questionType.equals(QuestionType.EXPRESSION)) {
-                    question = randomQuestionGenerator.generateRandomExpression(level);
-                } else {
-                    boolean plusOperator = args.getBoolean(getContext()
-                                                .getString(R.string.PLUS_EXTRA));
-                    boolean minusOperator = args.getBoolean(getContext()
-                                                .getString(R.string.MINUS_EXTRA));
-                    boolean multiplyOperator = args.getBoolean(getContext()
-                                                .getString(R.string.MULTIPLY_EXTRA));
-                    boolean divideOperator = args.getBoolean(getContext()
-                                                .getString(R.string.DIVIDE_EXTRA));
-                    boolean rootOperator = args.getBoolean(getContext()
-                                                .getString(R.string.ROOT_EXTRA));
-                    question = randomQuestionGenerator.generateQuestion(level, plusOperator, minusOperator,
-                            multiplyOperator, divideOperator, rootOperator);
-                }
+                setGeneratedQuestion(args, questionType, level);
             }
             if (this.modeValue.equals(Mode.SIMPLE.name())) {
                 try {
@@ -218,6 +214,38 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    private void setGeneratedQuestion(Bundle args, QuestionType questionType, int level) {
+        RandomGenerator randomGenerator = new RandomGenerator();
+        GeneratorArguments genArgs = new GeneratorArguments();
+        genArgs.setLevel(level);
+        GeneratorProvider generatorProvider = null;
+        if (questionType.equals(QuestionType.PERCENTS_PROBLEM)) {
+            generatorProvider = new ProblemGeneratorProvider();
+            question = randomGenerator.generate(genArgs, generatorProvider);
+        }
+        else if (questionType.equals(QuestionType.EXPRESSION)) {
+            genArgs.setPlus(true);
+            genArgs.setMinus(true);
+            genArgs.setMultiply(true);
+            genArgs.setDivide(true);
+            generatorProvider = new ExpressionGeneratorProvider();
+            question = randomGenerator.generate(genArgs, generatorProvider);
+        } else if (questionType.equals(QuestionType.QUESTION)){
+            generatorProvider = new QuestionGeneratorProvider();
+            genArgs.setPlus(args.getBoolean(getContext()
+                    .getString(R.string.PLUS_EXTRA)));
+            genArgs.setMinus(args.getBoolean(getContext()
+                    .getString(R.string.MINUS_EXTRA)));
+            genArgs.setMultiply(args.getBoolean(getContext()
+                    .getString(R.string.MULTIPLY_EXTRA)));
+            genArgs.setDivide(args.getBoolean(getContext()
+                    .getString(R.string.DIVIDE_EXTRA)));
+            genArgs.setRoot(args.getBoolean(getContext()
+                    .getString(R.string.ROOT_EXTRA)));
+            question = randomGenerator.generate(genArgs, generatorProvider);
+        }
+    }
+
     private void initData() {
         if (this.modeValue.equals(Mode.SIMPLE.name())) {
             QuestionViewModel questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
@@ -225,18 +253,18 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void setQuestionPassed(Question question) {
+    private void setQuestionPassed(Question question) {
         question.setPassed(true);
         QuestionViewModel questionViewModel = ViewModelProviders
                 .of(this).get(QuestionViewModel.class);
         questionViewModel.update(question);
     }
 
-    public void clearFields() {
+    private void clearFields() {
         answerField.setText(new String());
     }
 
-    public void shiftRandomQuestion(boolean skip) {
+    private void shiftRandomQuestion(boolean skip) {
         RandomQuestionPagerActivity activity = (RandomQuestionPagerActivity) getActivity();
         if (activity != null) {
             int position = activity.getCurrentQuestion();
@@ -249,14 +277,15 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void shiftSimpleQuestion() {
+    private void shiftSimpleQuestion() {
         SimpleQuestionPagerActivity activity = (SimpleQuestionPagerActivity) getActivity();
         answerField.setEnabled(false);
         setQuestionPassed(question);
-        if (activity != null) {
-            int position = activity.getCurrentQuestion();
-            activity.setCurrentQuestion(position + 1);
-        }
+        // Saved for different future occurrences
+        //if (activity != null) {
+            //int position = activity.getCurrentQuestion();
+            //activity.setCurrentQuestion(position + 1);
+        //}
     }
 
     @Override
@@ -314,7 +343,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         answerField.moveCursorToVisibleOffset();
     }
 
-    public void cutText() {
+    private void cutText() {
         String text = answerField.getText().toString();
         if (text.length() > 0) {
             text = text.substring(0, text.length() - 1);
@@ -323,7 +352,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void switchToAnswerActivity() {
+    private void switchToAnswerActivity() {
         Intent intent = new Intent(getContext(), AnswerActivity.class);
         intent.putExtra(getContext().getString(R.string.ARG_QUESTION), question);
         startActivityForResult(intent, REQUEST_EVENT);

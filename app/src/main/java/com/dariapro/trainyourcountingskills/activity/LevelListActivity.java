@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.dariapro.trainyourcountingskills.R;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
-import com.dariapro.trainyourcountingskills.fragment.LevelListFragment;
+import com.dariapro.trainyourcountingskills.fragment.list.LevelListFragment;
 
 import androidx.fragment.app.Fragment;
 

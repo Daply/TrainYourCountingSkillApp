@@ -3,16 +3,17 @@ package com.dariapro.trainyourcountingskills.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.filters.LargeTest;
-import android.support.test.runner.AndroidJUnit4;
-import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
+import androidx.test.InstrumentationRegistry;
+import androidx.test.espresso.intent.rule.IntentsTestRule;
+import androidx.test.filters.LargeTest;
+import androidx.test.runner.AndroidJUnit4;
+import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
+import com.dariapro.trainyourcountingskills.activity.pager.RandomQuestionPagerActivity;
 import com.dariapro.trainyourcountingskills.entity.Mode;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
 
@@ -25,12 +26,12 @@ import org.junit.runner.RunWith;
 
 import java.util.Collection;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static android.support.test.runner.lifecycle.Stage.RESUMED;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.runner.lifecycle.Stage.RESUMED;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest

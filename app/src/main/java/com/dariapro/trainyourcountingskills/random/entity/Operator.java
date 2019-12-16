@@ -1,4 +1,4 @@
-package com.dariapro.trainyourcountingskills.random;
+package com.dariapro.trainyourcountingskills.random.entity;
 
 public enum Operator {
     PLUS,

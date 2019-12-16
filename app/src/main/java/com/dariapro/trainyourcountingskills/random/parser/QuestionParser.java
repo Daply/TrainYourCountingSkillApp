@@ -1,4 +1,4 @@
-package com.dariapro.trainyourcountingskills.random;
+package com.dariapro.trainyourcountingskills.random.parser;
 
 import com.dariapro.trainyourcountingskills.entity.Question;
 
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @author Pleshchankova Daria
  *
  */
-public class QuestionParser {
+public class QuestionParser extends Parser {
 
     public boolean questionIsValid(Question question) {
         Deque<String> tokens = tokenize(question.getQuestion());
@@ -32,7 +32,8 @@ public class QuestionParser {
         return false;
     }
 
-    public String parseQuestion(Question question) {
+    @Override
+    public String parse(Question question) {
         String questionCondition = "(" + question.getQuestion() + ")";
         Deque<String> tokens = tokenize(questionCondition);
 
@@ -78,18 +79,20 @@ public class QuestionParser {
                     }
                 }
                 int result = 0;
-                String operator = operators.pop();
-                if (operator.equals("+")) {
-                    result = firstNumber + secondNumber;
-                }
-                if (operator.equals("-")) {
-                    result = firstNumber - secondNumber;
-                }
-                if (operator.equals("*")) {
-                    result = firstNumber * secondNumber;
-                }
-                if (operator.equals("/")) {
-                    result = firstNumber / secondNumber;
+                if (!operators.isEmpty()) {
+                    String operator = operators.pop();
+                    if (operator.equals("+")) {
+                        result = firstNumber + secondNumber;
+                    }
+                    if (operator.equals("-")) {
+                        result = firstNumber - secondNumber;
+                    }
+                    if (operator.equals("*")) {
+                        result = firstNumber * secondNumber;
+                    }
+                    if (operator.equals("/")) {
+                        result = firstNumber / secondNumber;
+                    }
                 }
                 values.push(String.valueOf(result));
             }

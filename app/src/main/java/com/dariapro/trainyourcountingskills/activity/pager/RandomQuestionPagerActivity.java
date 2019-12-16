@@ -1,18 +1,17 @@
-package com.dariapro.trainyourcountingskills.activity;
+package com.dariapro.trainyourcountingskills.activity.pager;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
+import com.dariapro.trainyourcountingskills.activity.ScoresActivity;
 import com.dariapro.trainyourcountingskills.dialog.ResultDialog;
-import com.dariapro.trainyourcountingskills.entity.Mode;
 import com.dariapro.trainyourcountingskills.entity.QuestionType;
 import com.dariapro.trainyourcountingskills.entity.Record;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
@@ -200,6 +199,15 @@ public class RandomQuestionPagerActivity extends FragmentActivity {
         scoreView.setText(currentScore);
         TextView bestScoreView = findViewById(R.id.best_score_view);
         bestScoreView.setVisibility(View.GONE);
+        Button goToMainScreenButton = findViewById(R.id.view_scores);
+        goToMainScreenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),
+                        ScoresActivity.class);
+                startActivityForResult(intent, REQUEST_EVENT);
+            }
+        });
         if (this.currentRecord != null) {
             if (this.currentRecord.getNumberOfQuestions() > this.countNumberOfAnsweredQuestions) {
                 String bestScore = getApplicationContext()

@@ -1,6 +1,5 @@
-package com.dariapro.trainyourcountingskills.fragment;
+package com.dariapro.trainyourcountingskills.fragment.list;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,42 +7,30 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.dariapro.trainyourcountingskills.R;
-import com.dariapro.trainyourcountingskills.activity.QuestionListActivity;
+import com.dariapro.trainyourcountingskills.adapter.entity.QuestionEntityAdapter;
 import com.dariapro.trainyourcountingskills.entity.Level;
 import com.dariapro.trainyourcountingskills.entity.Question;
 import com.dariapro.trainyourcountingskills.exception.ExtraIsNullException;
 import com.dariapro.trainyourcountingskills.viewmodel.LevelViewModel;
 import com.dariapro.trainyourcountingskills.viewmodel.QuestionViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author Pleshchankova Daria
  *
  */
-public class QuestionListFragment extends Fragment {
+public class QuestionListFragment extends ListFragment {
 
-    public static final int REQUEST_EVENT = 1;
-
-    private String modeValue = null;
     private long levelId;
-
-    private RecyclerView recyclerView;
-    private QuestionAdapter adapter;
-
     private QuestionViewModel questionViewModel;
 
     @Override
@@ -73,7 +60,8 @@ public class QuestionListFragment extends Fragment {
         return view;
     }
 
-    private void getExtras() {
+    @Override
+    public void getExtras() {
         Bundle args = getArguments();
         if (args != null) {
             try {
@@ -100,22 +88,28 @@ public class QuestionListFragment extends Fragment {
     }
 
     private void updateUI(){
-        if(adapter == null){
-            adapter = new QuestionAdapter();
-            recyclerView.setAdapter(adapter);
+        if(entityAdapter == null){
+            entityAdapter = new QuestionEntityAdapter(getContext(), getActivity(), this.modeValue);
+            recyclerView.setAdapter(entityAdapter);
         }
         else{
-            adapter.notifyDataSetChanged();
+            entityAdapter.notifyDataSetChanged();
         }
         initData();
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
         questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
         questionViewModel.getQuestionListByLevelSorted(this.levelId).observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(@Nullable List<Question> questions) {
-                adapter.setQuestions(questions);
+                entityAdapter.setData(questions);
+                int numberOfAllQuestions = questions.size();
+                int numberOfPassedQuestions = questionViewModel.getPassedQuestionListByLevel(levelId);
+                if (numberOfAllQuestions == numberOfPassedQuestions) {
+                    updateLevel();
+                }
             }
         });
     }
@@ -126,80 +120,6 @@ public class QuestionListFragment extends Fragment {
         Level currentLevel = levelViewModel.getLevelById(levelId);
         currentLevel.setPassed(true);
         levelViewModel.update(currentLevel);
-    }
-
-    private class QuestionHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
-        private Question question;
-
-        private TextView titleTextView;
-        private ImageView passedImageView;
-
-        private QuestionHolder(View itemView) {
-            super(itemView);
-
-            itemView.setOnClickListener(this);
-            titleTextView = itemView.findViewById(R.id.question_item_level_title);
-            passedImageView = itemView.findViewById(R.id.list_item_question_passed);
-            passedImageView.setVisibility(View.GONE);
-        }
-
-        public void bindEvent(Question question){
-            if (question == null) {
-                return;
-            }
-            this.question = question;
-            titleTextView.setText(this.question.getTitle());
-            if (this.question.isPassed()) {
-                passedImageView.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = QuestionListActivity.newIntent(getActivity(), question.getQuestionId());
-            intent.putExtra(getContext().getString(R.string.MODE), modeValue);
-            intent.putExtra(getContext().getString(R.string.EXTRA_LEVEL_ID), levelId);
-            startActivityForResult(intent, REQUEST_EVENT);
-        }
-    }
-
-    private class QuestionAdapter extends RecyclerView.Adapter<QuestionHolder>{
-
-        private List<Question> questions;
-
-        private QuestionAdapter() {
-            questions = new ArrayList<>();
-        }
-
-        @Override
-        @NonNull
-        public QuestionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.question_item_list, parent, false);
-            return new QuestionHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull QuestionHolder holder, int position) {
-            Question question = questions.get(position);
-            holder.bindEvent(question);
-        }
-
-        public void setQuestions(List<Question> questions){
-            this.questions = questions;
-            notifyDataSetChanged();
-            int numberOfAllQuestions = this.questions.size();
-            int numberOfPassedQuestions = questionViewModel.getPassedQuestionListByLevel(levelId);
-            if (numberOfAllQuestions == numberOfPassedQuestions) {
-                updateLevel();
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return questions.size();
-        }
     }
 
 }

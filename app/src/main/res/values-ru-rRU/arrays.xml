@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Spinners arrays -->
+    <string-array name="levels">
+        <item>Уровень 1</item>
+        <item>Уровень 2</item>
+        <item>Уровень 3</item>
+    </string-array>
+    <string-array name="levels_map">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="time">
+        <item>1 минута</item>
+        <item>5 минут</item>
+        <item>10 минут</item>
+        <item>15 минут</item>
+        <item>20 минут</item>
+    </string-array>
+    <string-array name="time_map">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+</resources>

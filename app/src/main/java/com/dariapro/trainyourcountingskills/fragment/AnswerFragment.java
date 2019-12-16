@@ -24,8 +24,6 @@ import androidx.fragment.app.Fragment;
  */
 public class AnswerFragment extends Fragment {
 
-    private long questionId = 0;
-
     private TextView questionSolution = null;
     private TextView questionAnswer = null;
 
@@ -78,4 +76,5 @@ public class AnswerFragment extends Fragment {
             }
         }
     }
+
 }

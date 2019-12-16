@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scores_fragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/white">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/scores_tab_layout"
@@ -22,6 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/expressions_scores" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/percents_scores_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percents_scores" />
 
     </com.google.android.material.tabs.TabLayout>
 

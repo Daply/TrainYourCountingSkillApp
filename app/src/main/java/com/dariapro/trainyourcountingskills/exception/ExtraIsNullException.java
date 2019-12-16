@@ -1,5 +1,9 @@
 package com.dariapro.trainyourcountingskills.exception;
 
+/**
+ * @author Pleshchankova Daria
+ *
+ */
 public class ExtraIsNullException extends Exception {
 
     public ExtraIsNullException (String errorMessage) {

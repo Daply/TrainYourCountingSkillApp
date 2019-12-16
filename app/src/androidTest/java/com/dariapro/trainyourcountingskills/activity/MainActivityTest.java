@@ -1,11 +1,11 @@
 package com.dariapro.trainyourcountingskills.activity;
 
 import android.app.Activity;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.filters.LargeTest;
-import android.support.test.runner.AndroidJUnit4;
-import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
+import androidx.test.InstrumentationRegistry;
+import androidx.test.espresso.intent.rule.IntentsTestRule;
+import androidx.test.filters.LargeTest;
+import androidx.test.runner.AndroidJUnit4;
+import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import android.util.Log;
 
 import com.dariapro.trainyourcountingskills.R;
@@ -19,14 +19,14 @@ import org.junit.runner.RunWith;
 
 import java.util.Collection;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.runner.lifecycle.Stage.RESUMED;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.runner.lifecycle.Stage.RESUMED;
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.core.IsNull.notNullValue;
 
@@ -70,17 +70,17 @@ public class MainActivityTest {
         assertTrue(b);
     }
 
-    @Test
-    public void clickOnProblems() {
-        Log.i("@Test","Testing main activity, problems click");
-        onView(withId(R.id.solve_problems))
-                .perform(click());
-        Activity instance = getActivityInstance();
-        intended(toPackage(getActivityInstance().getPackageName()));
-        intended(hasExtra(getActivityInstance().getString(R.string.MODE), Mode.SIMPLE.name()));
-        boolean b = (instance instanceof CategoryActivity);
-        assertTrue(b);
-    }
+//    @Test
+//    public void clickOnProblems() {
+//        Log.i("@Test","Testing main activity, problems click");
+//        onView(withId(R.id.solve_problems))
+//                .perform(click());
+//        Activity instance = getActivityInstance();
+//        intended(toPackage(getActivityInstance().getPackageName()));
+//        intended(hasExtra(getActivityInstance().getString(R.string.MODE), Mode.SIMPLE.name()));
+//        boolean b = (instance instanceof CategoryActivity);
+//        assertTrue(b);
+//    }
 
     public Activity getActivityInstance() {
         final Activity[] activity = new Activity[1];
